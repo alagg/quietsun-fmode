@@ -1,0 +1,127 @@
+\documentclass[twocolumn,linenumbers,trackchanges]{aastex631}
+\input{journal}
+
+\input{macros}
+
+\begin{document}
+\title{Quiet-Sun Magnetism Depends on Solar Activity}
+\shorttitle{Quiet-Sun Solar Activity}
+
+\input{authors}
+
+\begin{abstract}
+
+Bla. Bla.
+
+\end{abstract}
+
+%% Keywords should appear after the \end{abstract} command. 
+%% The AAS Journals now uses Unified Astronomy Thesaurus concepts:
+%% https://astrothesaurus.org
+%% You will be asked to selected these concepts during the submission process
+%% but this old "keyword" functionality is maintained in case authors want
+%% to include these concepts in their preprints.
+\keywords{Sun}
+
+\section{Introduction} \label{sec:intro}
+
+\begin{itemize}
+\item so far all: no observational study with variation of quiet sun magnetism with solar cycle
+\item previous studies: internetwork (explain network - internetwork)
+\item argue why taking into account network is important: the IN flux is advected towards the network boundaries. A cycle variation of the IN flux therefore should be reflected in a variation of the network flux. Network accumulates IN flux and therefore acts as a memory of what happened in the IN. Helps to overcome detection of the weak IN fields (difficult enough), even more difficult to study variations of these weak fields.
+\item HMI: compared to Hinode / ground based / Sunrise: not the most sensitive instrument to B. But: Stability allows averaging. 8 hr time and spatial averaging allows to boost S/N ratio (can we give a number here?)
+
+\end{itemize}
+
+\cite[]{2019LRSP...16....1B}
+Luis Talk PHI meeting: 38\% of the flux emerging in the IN makes it to the network. Network flux is constant, the IN flux to the network accumulates quickly to network flux.
+
+\cite[]{2015ApJ...806..174J}
+
+\cite[]{2013A&A...555A..33B}
+
+\cite[]{2021arXiv210508657F}
+
+\cite[]{2021arXiv210514533R}
+
+\cite[]{ballot2021change}
+
+\section{Observations}
+
+HMI data sets used, and removal of lonmg-term trend
+
+About the long term trend: The jump in the data happened on 13 April 2016 (search for this date in \cite{2018SoPh..293...45H}). There it states:
+\begin{itemize}
+\item Standard HMI observations were initially obtained with a framelist called Mod C that
+repeated every 135 seconds. Mod L, a 90-second FTS, replaced Mod C on 13 April 2016.
+The two versions of Mod C have FTS ID 1001 or 1021; the Mod L HFTSACID is 1022.
+Some calibration framelists changed when the standard sequences changed.
+\item Since 13 April
+2016, filtergrams from the two cameras have been combined to compute the vector magnetic
+field \cite[]{2014SoPh..289.3483H,2016SoPh..291.1887C}
+\item On 13 April 2016, after the prime mission ended, HMI switched to
+a faster sequence, FTS ID 1022, also known as Mod L. The Mod-L sequence requires that
+images from both cameras be combined to determine the vector-field observables. 
+\end{itemize}
+Mod-L description here: http://hmi.stanford.edu/hminuggets/?p=1596: \textsl{
+Mod-L provides all of the filtergrams necessary to compute the Stokes parameters [I, Q, U, V] in 90 seconds, instead of the 135 seconds required for Mod-C. Thus Mod-L increases the maximum temporal resolution for measuring full Stokes parameters. At the same time, it decreases the noise because twice as many filtergrams are available. The 45s data products from the front camera are also improved; since there is no longer a 135s period in the instrument configuration, the corresponding peak in the Doppler power spectrum is now gone. The new 90s period is at the Nyquist frequency of the 45s-cadence Doppler data. The Stokes measurement is normally averaged over time (nominally 720 seconds) to derive [I, Q, U, V], and we now combine three times as many CP and 1.5 times as many LP measurements. Table 1 compares the Mod-C and Mod-L observations.}
+
+\subsection{Correction for HMI sensitivity change}
+
+On April 13 2016 HMI switched to a more efficient observing mode. By combining both HMI cameras to determine the vector-field observables the cadence for full-disk magnetograms could be reduced from 135\,s (observational mode MOD-C) to 90\,s (MOD-L). This reduced the noise level for Stokes $V$ measurements by 17\%, resulting in a decrease of the noise level in the \los{} magnetograms by 5\%.
+
+For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \IN{} dataset: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \IN{} dataset plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion (BIC)\todo{REF?} to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependant on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of degree 4. The so determined amplitude of the Heaviside step function is added to the data points after 13 April 2016 for all data presented in this paper.
+
+\colfig{fit-offset}{Determination of the correction for the HMI sensitivity change: the observing mode change on April 13 2016 causes a discontinuity in the level of \brms{} values of the \IN{} data. The original data are displayed in with the dark red and black dots, the corrected data with the light red dots. The dashed line indicates the polynomial fit of degree 4 used to obtain the offset.}
+
+
+HMI 720s full disk magnetograms; 
+Define \brms{}.
+
+\section{Data pipeline}
+
+\subsection{Magnetogram tracking}
+The full HMI magnetograms starting from 27.04.2010 and ending at 31.07.2021 were tracked for 8 hours to compensate for the solar rotation. The step between tracked sequences was 4 hours, so that total of 6 tracked sequences were gathered per one day. For each tracked sequence the visible solar disk between latitudes and longitudes from -80\deg to +80\deg was divided into 64$\times$64 grid of 15\deg overlapping patches and the following statistics were collected:
+\begin{itemize}
+	\item $\mu_B$ -- Mean of the magnetic field strength
+	\item $\sigma_B$ -- Standard deviation of the magnetic field strength
+	\item ${\rm skew}_B$ -- Skewness of the magnetic field strength
+	\item ${\rm kurt}_B$ -- Kurtosis of the magnetic field strength
+	\item $\mu_{|B|}$ -- Mean of the absulute value of the magnetic field strength
+    \item $\sigma_{|B|}$ --Standard deviation of the absulute value of the magnetic field strength
+    \item ${\rm skew}_{|B|}$ -- Skewness of the absulute value of the magnetic field strength
+    \item ${\rm kurt}_{|B|}$ --Kurtosis of the absulute value of the magnetic field strength
+	\item $\sqrt{\mu_{B^2}}$ -- Root mean square of the magnetic field strength
+    \item $\sqrt{\sigma:{B^2}}$ -- Root mean square of the standard deviation of the magnetic field strength
+    \item $\sqrt{{\rm skew}_{B^2}}$ -- Root mean square of the skewness of the magnetic field strength
+    \item $\sqrt{{\rm kurt}_{B^2}}$ -- Root mean square of the kurtosis of the magnetic field strength
+\end{itemize}
+These statistics for each patch were stored as data products including the information about latitudinal and longitudinal position as well as the Carrington longitude.
+
+\subsection{Quiet sun region selection}
+
+\subsection{Analysis of quiet sun dopplerograms}
+The coordinates of the selected quiet sun regions were sent using remote function call service funcX \footnote{\url{https://funcx.org/}}to MPS server where the dopplerogram database is located. Next, using mtrack command the tracked dopplerogram cubes were retrieved and sent back to CSC supercomputing environment. Subsequent processing involved calculating the 3d power spectra for each cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$. Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra. Such averaging is justified for the quiet sun spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. From the obtained spectra $f$-mode was easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$mode. The integration range was between $\omega$ values starting from 14.45 and ending at 29.03, where the significant part of the $f$-mode power resides. After completing described steps we had collected total of 18327 $f$-mode powers for patches close to central meridian over all latitudes covering the full solar cycle.
+
+\section{Results}
+
+
+definition of quiet regions in space and time: 
+The \brms{} computed over an area of 15$^\circ$ in latitude and longitude over a time of 8 hours. The solar rotation is compensated by taking into account the Carrington rotation only. A region is defined to be quiet when the \brms{} belongs to the 10\% most quiet patches every month.
+
+\colfig{Brms-lat00-percentile}{\brms{} determined from the most quiet patches from 2010 to 2021 at disk center. The patches of 15$^\circ$ size in longitude and latitude contain network and \IN{} fields. The solid red line display the 97\% percentile level, the dashed, gray line the mode of a log-normal fit to yearly-binned data moved in a sliding window of 100 days length.}
+
+\colfig{Brms-lat00-percentile-IN}{Same as \fig{Brms-lat00-percentile} , but for \brms{} determined patch size of only of 1$^\circ$ in longitude and latitude, corresponding to \IN{} patches. }
+
+
+
+
+\colfig{butterfly}{Butterfly diagram of $f$-mode strength.}
+
+\section{Discussion}
+
+
+\bibliography{main}{}
+\bibliographystyle{aasjournal}
+
+\end{document}

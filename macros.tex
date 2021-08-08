@@ -1,0 +1,57 @@
+\usepackage{graphicx}
+
+\definecolor{cmt}{rgb}{0.5,0.0,0.0}
+\definecolor{al}{rgb}{0.6,0.2,0.0}
+\definecolor{mk}{rgb}{0.4,0.4,0.0}
+\definecolor{no}{rgb}{0,0.0,0.4}
+\definecolor{ns}{rgb}{0.4,0.0,0.0}
+\definecolor{hr}{rgb}{0.4,0.0,0.0}
+
+\newcommand{\al}[1]{{\color{al}#1}}
+\newcommand{\mk}[1]{{\color{mvn}#1}}
+\newcommand{\no}[1]{{\color{corr}#1}}
+\newcommand{\ns}[1]{\textsc{\color{al}#1}} 
+\newcommand{\hr}[1]{\textbf{\color{ref}#1}} 
+\newcommand{\todo}[1]{{\color{cmt}#1}}
+
+\renewcommand{\fig}[1]{Fig.~\ref{#1}} 
+\newcommand{\Fig}[1]{Figure~\ref{#1}} 
+\newcommand{\eq}[1]{Eq.~\ref{#1}} 
+\newcommand{\figs}[1]{Figs.~\ref{#1}} 
+\newcommand{\tab}[1]{Tab.~\ref{#1}} 
+\newcommand{\Tab}[1]{Table~\ref{#1}} 
+\newcommand{\sect}[1]{Sec.~\ref{#1}} 
+\newcommand{\Sect}[1]{Section~\ref{#1}} 
+\newcommand{\secs}[1]{Sections~\ref{#1}} 
+\newcommand{\app}[1]{App.~\ref{#1}} 
+
+
+\newcommand{\kms}{km\,s$^{-1}$}
+\newcommand{\ms}{m\,s$^{-1}$}
+\newcommand{\grad}{$^\circ$}
+\newcommand{\carcsec}{$\mbox{.\hspace{-0.5ex}}^{\prime\prime}$}
+\newcommand{\halpha}{H$\alpha$}
+\newcommand{\hminus}{H$^-$}
+\newcommand{\hei}{He\,\textsc{i}}
+\newcommand{\sii}{Si\,\textsc{i}}
+\newcommand{\fei}{Fe\,\textsc{i}}
+\newcommand{\tii}{Ti\,\textsc{i}}
+\newcommand{\cai}{Ca\,\textsc{i}}
+\newcommand{\caii}{Ca\,\textsc{ii}}
+\newcommand{\caiih}{Ca\,\textsc{ii\,h}}
+\newcommand{\coi}{Co\,\textsc{i}}
+\newcommand{\helixp}{\textsc{HeLIx$^+$}}
+\newcommand{\imax}{{IMaX}}
+\newcommand{\sufi}{\textsc{SuFI}}
+\newcommand{\sunrise}{\textsc{Sunrise}}
+\newcommand{\los}{${\rm LOS}$}
+\newcommand{\vlos}{$v_{\rm LOS}$}
+
+\newcommand{\IN}{intra-network}
+\newcommand{\brms}{$B_{\rm RMS}$}
+
+\newcommand{\colfig}[3][1.]{\begin{figure}\centering
+    \includegraphics[width=#1\linewidth,clip=TRUE]{#2}
+    \caption{#3}
+    \label{#2}
+\end{figure}}
