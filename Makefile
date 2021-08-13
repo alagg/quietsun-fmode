@@ -3,3 +3,5 @@ default:
 	bibtex main
 	pdflatex main
 	pdflatex main
+clean:
+	rm *.bbl *.log *.aux *.out
