@@ -112,6 +112,9 @@ The coordinates of the selected quiet sun regions were sent using remote functio
 \section{Results}
 
 
+
+
+
 definition of quiet regions in space and time: 
 The \brms{} computed over an area of 15$^\circ$ in latitude and longitude over a time of 8 hours. The solar rotation is compensated by taking into account the Carrington rotation only. A region is defined to be quiet when the \brms{} belongs to the 10\% most quiet patches every month.
 
@@ -120,9 +123,41 @@ The \brms{} computed over an area of 15$^\circ$ in latitude and longitude over a
 \colfig{Brms-lat00-percentile-IN}{Same as \fig{Brms-lat00-percentile} , but for \brms{} determined patch size of only of 1$^\circ$ in longitude and latitude, corresponding to \IN{} patches. }
 
 
+\subsection{Butterfly}
 
+Error definitions:\\
+$\lambda$ = latitude, $t$=time, \\
+$N_t$ = number of bins (time), \\
+$N_\lambda$ = number of bins (latitude), \\
+$f(\lambda,t)$ = $f$-mode strength (unbinned)\\
+$f_P(\lambda,t)$ = $f$-mode strength in latitude / time bins (patches)\\
+$\overline{f}(\lambda) = 1/N_t \sum_t f(\lambda,t)$ = $f$-mode strength (in lat / time bins) averaged over time, \\
+$\overline{f_P}(\lambda) = 1/N_t \sum_t f_P(\lambda,t)$ = $f$-mode strength (in lat / time bins) averaged over time, \\
+(the overline indicates average over time)
+\begin{itemize}
+\item sdev(cycle) $\sigma(\lambda)$ (red shaded area): this quantity displays the variation of the $f$-mode over the solar cycle
+\begin{equation}
+\sigma^2_{\mbox{cyc}}(\lambda) = \frac{1}{N_t} \sum_{t} \left( f_P(\lambda,t) -\overline{f_P}(\lambda)\right)^2
+\end{equation}
 
-\colfig{butterfly}{Butterfly diagram of $f$-mode strength.}
+\item min/max $\sigma_{\mbox{mm}}$: (blue shaded area): this shows the minimum and the maximum  of $f(\lambda,t) - \overline{f}(\lambda)$:
+\begin{equation}
+\sigma_{\mbox{mm}}(\lambda) = [ \min_t (f(\lambda,t)),  \max_t (f(\lambda,t)) ] -\overline{f}(\lambda)
+\end{equation}
+
+\item min/max (mean) $\overline{\sigma}_{\mbox{mm}}$: (green shaded area): this shows the mean minimum and maximum  of $f(\lambda,t) - \overline{f}(\lambda)$:
+\begin{equation}
+\overline{\sigma}_{\mbox{mm}}(\lambda) = [ \overline{ \min_t (f(\lambda,t)) }, \overline{ \max_t (f(\lambda,t)) }] -\overline{f}(\lambda)
+\end{equation}
+
+\item mean(sdev(patch)) $\overline{\sigma_P}$ (error bars): the standard deviation of the $f$-mode strength is computed individually for all lat / time bins ($=\sigma_P(\lambda,t)$) and then averaged over time:
+\begin{equation}
+\overline{\sigma_P}(\lambda) =  \frac{1}{N_t} \sum_{t}  \sigma_P(\lambda,t)
+\end{equation} 
+
+\end{itemize}
+
+\colfig{butterfly_lat}{Butterfly diagram of $f$-mode strength.}
 
 \section{Discussion}
 
