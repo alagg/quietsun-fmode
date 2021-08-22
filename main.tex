@@ -129,11 +129,24 @@ Error definitions:\\
 $\lambda$ = latitude, $t$=time, \\
 $N_t$ = number of bins (time), \\
 $N_\lambda$ = number of bins (latitude), \\
+$\overline{X}$ indicates average over time, \\
 $f(\lambda,t)$ = $f$-mode strength (unbinned)\\
 $f_P(\lambda,t)$ = $f$-mode strength in latitude / time bins (patches)\\
-$\overline{f}(\lambda) = 1/N_t \sum_t f(\lambda,t)$ = $f$-mode strength (in lat / time bins) averaged over time, \\
-$\overline{f_P}(\lambda) = 1/N_t \sum_t f_P(\lambda,t)$ = $f$-mode strength (in lat / time bins) averaged over time, \\
-(the overline indicates average over time)
+$\overline{f}(\lambda) = 1/N_t \sum_t f(\lambda,t)$ = temporal mean of the $f$-mode strength (unbinned)\\ 
+%MJK I think this must be an error.
+%(in lat / time bins) averaged over time, \\
+%MJK Added this 
+$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the $f$-mode (unbinned)\\
+$\overline{f_P}(\lambda) = 1/N_t \sum_t f_P(\lambda,t)$ = 
+%MJK Reform due to the reform above
+temporal mean of 
+%MJK
+$f$-mode strength (in lat / time bins), 
+%MJK added
+$f'_P=f_P-\overline{f_P}$ is, correspondingly, the binned fluctuation\\
+%averaged over time, \\
+%MJK Moved above, is a central definition.
+%(the overline indicates average over time)
 \begin{itemize}
 \item sdev(cycle) $\sigma(\lambda)$ (red shaded area): this quantity displays the variation of the $f$-mode over the solar cycle
 \begin{equation}
@@ -156,6 +169,8 @@ $\overline{f_P}(\lambda) = 1/N_t \sum_t f_P(\lambda,t)$ = $f$-mode strength (in 
 \end{equation} 
 
 \end{itemize}
+
+
 
 \colfig{butterfly_lat}{Butterfly diagram of $f$-mode strength.}
 
