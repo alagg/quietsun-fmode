@@ -150,8 +150,13 @@ $f'_P=f_P-\overline{f_P}$ is, correspondingly, the binned fluctuation\\
 \begin{itemize}
 \item sdev(cycle) $\sigma(\lambda)$ (red shaded area): this quantity displays the variation of the $f$-mode over the solar cycle
 \begin{equation}
-\sigma^2_{\mbox{cyc}}(\lambda) = \frac{1}{N_t} \sum_{t} \left( f_P(\lambda,t) -\overline{f_P}(\lambda)\right)^2
+%MJK I think subscript P is missing from here, and the need for 'cyc' I cannot understand.
+%\sigma^2_{\mbox{cyc}}(\lambda) 
+\sigma_P^2(\lambda)  = \frac{1}{N_t} \sum_{t} \left( f_P(\lambda,t) -\overline{f_P}(\lambda)\right)^2,
 \end{equation}
+%MJK added this
+hence equalling to the rms value of $f'_P$ (without taking the square root). 
+%MJK
 
 \item min/max $\sigma_{\mbox{mm}}$: (blue shaded area): this shows the minimum and the maximum  of $f(\lambda,t) - \overline{f}(\lambda)$:
 \begin{equation}
@@ -165,8 +170,12 @@ $f'_P=f_P-\overline{f_P}$ is, correspondingly, the binned fluctuation\\
 
 \item mean(sdev(patch)) $\overline{\sigma_P}$ (error bars): the standard deviation of the $f$-mode strength is computed individually for all lat / time bins ($=\sigma_P(\lambda,t)$) and then averaged over time:
 \begin{equation}
-\overline{\sigma_P}(\lambda) =  \frac{1}{N_t} \sum_{t}  \sigma_P(\lambda,t)
+\overline{\sigma_P}(\lambda) =  \frac{1}{N_t} \sum_{t}  \sigma_P(\lambda,t).
 \end{equation} 
+%MJK Added this
+This quantity is, therefore, a mean of the $f'_{P, {\rm rms}}$ (so this time also taking the square root) values in individual bins. The problem is that the quantity we are interested in inspecting, and defining the significance of, is now defining the error bar of the measurement. 
+%MJK
+
 
 \end{itemize}
 
