@@ -118,7 +118,7 @@ In the CSC environment, subsequent processing involved calculating the 3d power 
 
 Since the $f$-mode power and area are computed from the \los{} dopplergrams, their values depend strongly on the viewing geometry. The dependence on the solar latitude, roughly following the cosine of the latitude, is additonally modulated by the orbital motion of the Earth around the Sun, which changes the viewing angle at any given solar latitude by $\approx \pm7^\circ$ during one year. We compensated for this effect by fitting the parameters ($x_0(\lambda)...x_3(\lambda)$) of the following function for all observations of a given latitude $\lambda$:
 \begin{equation}
-\ref{eq:orbitcorr}
+\label{eq:orbitcorr}
 A_{\mbox{corr}}(\lambda) = x_0(\lambda) (  2 ( (1+\cos(\alpha+x_1(\lambda)))/2)^{x_3(\lambda)}-1   )+ x_2(\lambda),
 \end{equation}
 with $\alpha$ being the phase angle of the Earth defined as the cotangens computed from the $x,y$ barycentric position of the Earth.
