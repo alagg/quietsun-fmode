@@ -109,7 +109,20 @@ These statistics for each patch were stored as data products including the infor
 \subsection{Analysis of quiet sun dopplerograms}
 The dopplerogram data is located in MPS server (Germany) whereas the analysis is executed in the CSC supercomputing environment (Finland). We have utilized  a function-as-a-service based on funcX \cite[]{chard20funcx}  for accessing the required data in the database server. We have developed functions based on funcX and deployed the functions in the MPS environment. These functions leverage mtrack command to retrieve dopplerogram cubes and moved the cubes data to the CSC. The coordinates of the selected quiet sun regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
 %{the using remote function call service funcX \cite{chard20funcx} to MPS server where the dopplerogram database is located. Next, using mtrack command the tracked dopplerogram cubes were retrieved and sent back to CSC supercomputing environment.}
+
+\subsubsection*{Computation of the $f$-mode power}
+
 In the CSC environment, subsequent processing involved calculating the 3d power spectra for each cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$. Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra. Such averaging is justified for the quiet sun spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. From the obtained spectra $f$-mode was easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$mode. The integration range was between $\omega$ values starting from 14.45 and ending at 29.03, where the significant part of the $f$-mode power resides. After completing described steps we had collected total of 18327 $f$-mode powers for patches close to central meridian over all latitudes covering the full solar cycle.
+
+\subsubsection*{Orbital correction of the $f$-mode power}
+
+Since the $f$-mode power and area are computed from the \los{} dopplergrams, their values depend strongly on the viewing geometry. The dependence on the solar latitude, roughly following the cosine of the latitude, is additonally modulated by the orbital motion of the Earth around the Sun, which changes the viewing angle at any given solar latitude by $\approx \pm7^\circ$ during one year. We compensated for this effect by fitting the parameters ($x_0(\lambda)...x_3(\lambda)$) of the following function for all observations of a given latitude $\lambda$:
+\begin{equation}
+\ref{eq:orbitcorr}
+A_{\mbox{corr}}(\lambda) = x_0(\lambda) (  2 ( (1+\cos(\alpha+x_1(\lambda)))/2)^{x_3(\lambda)}-1   )+ x_2(\lambda),
+\end{equation}
+with $\alpha$ being the phase angle of the Earth defined as the cotangens computed from the $x,y$ barycentric position of the Earth.
+This correction $A_{\mbox{corr}}(\lambda)$ is then subtracted from the computed $f$-mode area, which efficiently removes any yearly variation. 
 
 \section{Results}
 
