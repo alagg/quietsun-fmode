@@ -129,6 +129,8 @@ Error definitions:\\
 $\lambda$ = latitude, $t$=time, \\
 $N_t$ = number of bins (time), \\
 $N_\lambda$ = number of bins (latitude), \\
+%AL added
+$N_P$ = number of $f$-mode measurements in a patch, \\
 $\overline{X}$ indicates average over time, \\
 $f(\lambda,t)$ = $f$-mode strength (unbinned)\\
 $f_P(\lambda,t)$ = $f$-mode strength in latitude / time bins (patches)\\
@@ -148,12 +150,26 @@ $f'_P=f_P-\overline{f_P}$ is, correspondingly, the binned fluctuation\\
 %averaged over time, \\
 %MJK Moved above, is a central definition.
 %(the overline indicates average over time)
+
+%AL added this
+The following 4 definitions represent what is plotted in \fig{butterfly_lat_old}:
 \begin{itemize}
-\item sdev(cycle) $\sigma(\lambda)$ (red shaded area): this quantity displays the variation of the $f$-mode over the solar cycle
+\item sdev(cycle) 
+%AL added the subsript cyc to indicate that this sigma is computed  over the whole cycle, and to distinguish it from \sigma_P
+%$\sigma(\lambda)$ 
+$\sigma_{\mbox{cyc}}(\lambda)$ 
+(red shaded area): this quantity displays the variation of the $f$-mode over the solar cycle.
+%AL added
+the subscript 'cyc' should indicate that this variation includes also the solar cycle variation. This distinguishes it from $\sigma_P$ defined below, which does not contain the solar cycle variation.
 \begin{equation}
 %MJK I think subscript P is missing from here, and the need for 'cyc' I cannot understand.
+%AL correct. The P was missing. I tried to explain the 'cyc'
 %\sigma^2_{\mbox{cyc}}(\lambda) 
-\sigma_P^2(\lambda)  = \frac{1}{N_t} \sum_{t} \left( f_P(\lambda,t) -\overline{f_P}(\lambda)\right)^2,
+%AL commented out this:
+%\sigma_P^2(\lambda)  = 
+%AL and changed it to:
+\sigma^2_{\mbox{cyc}}(\lambda) =
+\frac{1}{N_t} \sum_{t} \left( f_P(\lambda,t) -\overline{f_P}(\lambda)\right)^2,
 \end{equation}
 %MJK added this
 hence equalling to the rms value of $f'_P$ (without taking the square root). 
@@ -169,20 +185,32 @@ hence equalling to the rms value of $f'_P$ (without taking the square root).
 \overline{\sigma}_{\mbox{mm}}(\lambda) = [ \overline{ \min_t (f(\lambda,t)) }, \overline{ \max_t (f(\lambda,t)) }] -\overline{f}(\lambda)
 \end{equation}
 
-\item mean(sdev(patch)) $\overline{\sigma_P}$ (error bars): the standard deviation of the $f$-mode strength is computed individually for all lat / time bins ($=\sigma_P(\lambda,t)$) and then averaged over time:
-\begin{equation}
-\overline{\sigma_P}(\lambda) =  \frac{1}{N_t} \sum_{t}  \sigma_P(\lambda,t).
-\end{equation} 
+\item mean(sdev(patch)) $\overline{\sigma_P}$ (error bars): the standard deviation of the $f$-mode strength
+%AL added this
+($f(\lambda,t)$)
+%AL
+ is computed individually for all lat / time bins. This quantity  ($=\sigma_P(\lambda,t)$) is then averaged over time:
+\begin{eqnarray}
+\overline{\sigma_P}(\lambda) &=&  \frac{1}{N_t} \sum_{t}  \sigma_P(\lambda,t) \mbox{, with} \\
+\sigma_P^2(\lambda,t) &=& \frac{1}{N_P}\sum_{\mbox{patch}} ( f(\lambda,t)
+- f_P(\lambda,t) )^2,
+\end{eqnarray} 
+%AL added this
+where $\sum_{\mbox{patch}}$ indicates the summation over all $f$-mode strengths within a patch, and $f_P(\lambda,t)$ being the mean $f$-mode strength in this patch. The patch size must be chosen small enough to not contain a significant variation in latitude or solar cycle. 
+This quantity $\overline{\sigma_P}(\lambda)$ is displayed as the orange shaded area in \fig{butterfly_lat}.\\
 %MJK Added this
 This quantity is, therefore, a mean of the $f'_{P, {\rm rms}}$ (so this time also taking the square root) values in individual bins. The problem is that the quantity we are interested in inspecting, and defining the significance of, is now defining the error bar of the measurement. 
 %MJK
-
+%AL comment:
+%My definition is maybe poor. What do you mean with $f'_{P, {\rm rms}}$? Is it the rms of $f'_{P}$ computed over the solar cycle? This is not what I wanted to define.
 
 \end{itemize}
 
 
 
 \colfig{butterfly_lat}{Butterfly diagram of $f$-mode strength. The latitudinal average over time, displayed in the right panel, was removed for better visibility of the variation. The orange shaded area in the latitudinal average represents $\overline{\sigma_P}(\lambda)$. The horizontal lines in the colorbar indicate $\pm \overline{\sigma_P}(\lambda)$. }
+
+\colfig{butterfly_lat_old}{Old version of the diagram, showing the attempts to define the error, and matching the color description from equations (1)-(4).}
 
 \section{Discussion}
 
