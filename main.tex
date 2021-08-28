@@ -141,64 +141,36 @@ The \brms{} computed over an area of 15$^\circ$ in latitude and longitude over a
 
 \subsection{Butterfly}
 
-%MJK Starting completely anew
-%MJK Not only errors
-%Error 
 Definitions:\\
 $\lambda$ = latitude, $t$=time, \\
-$N_t$ = number of bins 
-%MJK avoiding brackets
-in time \\
-%(time), \\
-$N_\lambda$ = number of bins 
-%MJK Avoiding brackets
-%(latitude), \\
-in latitude, \\
-%MJK Added, needed for the proper definition of fprime
+$N_t$ = number of bins in time \\
+$N_\lambda$ = number of bins in latitude, \\
 $n_t$ = total number of time points at a certain latitude, \\
-%AL added
 $N_P$ = number of $f$-mode measurements in a patch, \\
-$\overline{X}$ indicates average over full time span,
-%MJK added "without binning"
-%without binning,\\A
+$\overline{X}$ indicates average over full time span, \\
 $\left< X \right>$ indicates an average in a selected bin, \\
+%AL: The <> would remove the necessity for the subscript _P, 
+% which meant exactly the same
+% I removed all the _P and replaced it by <>
 $f(\lambda,t)$ = $f$-mode strength \\
-%MJK Unnecessary
-%(unbinned)\\
-$\left<f_P\right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean $f$-mode strength 
-%in latitude / time bins (patches)\\
-%MJK Reform
-calculated in patches of $N_t$ and $N_\lambda$ \\
-%MJK N_t is incorrect here N_t -> n_t
+%AL removed _P
+%$\left<f_P\right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean $f$-mode strength 
+$\left< f \right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean $f$-mode strength calculated in patches of $N_t$ and $N_\lambda$ \\
 $\overline{f}(\lambda) = 1/n_t \sum_t f(\lambda,t)$ = temporal mean of the $f$-mode strength, \\
-%MJK Unnecessary
-%(unbinned)\\ 
-%MJK I think this must be an error.
-%(in lat / time bins) averaged over time, \\
-%AL correct.
-%MJK Added this 
 %MJK This is what is plotted in the butterfly, and should appear in title/caption.
 %MJK It is further binned for plotting, the explanation of which is still missing, but this should not be here, but in the figure caption.
-$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the $f$-mode.
+$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the $f$-mode.\\
+%AL: In the butterfly we plot the binned f'. It is computed like this:
+$\left< f' \right> = \left< f - \overline{f} \right> $ is the same as $f'$, but computed in $N_\lambda \times N_P$ bins. This is the quantity we show in the left panel of \fig{butterfly_lat}.
 %MJK Added
-We assume that the solar cycle variation is a sinusoidal function, the amplitude of which can be approximated as $f'_{\rm A} (\lambda) = \sqrt{2} \sqrt{\left<{f'^2}\right>}$. The average over the bin is necessary to remove the noise from the estimate.
-%MJK Unnecessary
-%(unbinned)\\
-%MJK Where is this even needed? This quantity should not be used anywhere. For computation of fprime we use
-%MJK \overline{f}. I think this can be removed.
-%$\overline{f_P}(\lambda) = 1/N_t \sum_t f_P(\lambda,t)$ = 
-%%MJK Reform due to the reform above
-%temporal mean of 
-%%MJK
-%$f$-mode strength (in lat / time bins), \\
-%%MJK added
-%MJK The same applies here
-%$f'_P=f_P-\overline{f_P}$ is, correspondingly, the binned fluctuation\\
-%%averaged over time, \\
-%%MJK Moved above, is a central definition.
-%%(the overline indicates average over time)
+We assume that the solar cycle variation is a sinusoidal function, the amplitude of which can be approximated as 
+%AL Would it be more correct if we also use <> around the quantity f'_A?
+$f'_{\rm A} (\lambda) = 
+\sqrt{2} \sqrt{\left<{f'^2}\right>}$. 
+The average over the bin is necessary to remove the noise from the estimate.
+%AL added
+This quantity $f'_{\rm A} (\lambda)$ is plotted as the orange shaded area in the right panel of \fig{butterfly_lat}.
 
-%MJK Adding here the rest
 One measure of the noise contained in the $f$-mode strength is the standard deviation of the fluctuations
 around the signal. This is calculated in each bin as
 \begin{equation}
@@ -206,34 +178,25 @@ around the signal. This is calculated in each bin as
 - \left<f_P\right>)^2}.
 \end{equation}
 From this we form the average error at each latitude by taking an average over time and denote as $\overline{\sigma}$. 
-%MJK NEW STUFF ENDS HERE
+%AL added
+This quantity is plotted as the error bar in the right panel of \fig{butterfly_lat}.
 
-
+%AL BEGIN unnecessary stuff
+\color{cyan}
+\subsection*{All the stuff below this line not needed !!!}
 Error definitions:\\
 $\lambda$ = latitude, $t$=time, \\
 $N_t$ = number of bins (time), \\
 $N_\lambda$ = number of bins (latitude), \\
-%AL added
 $N_P$ = number of $f$-mode measurements in a patch, \\
 $\overline{X}$ indicates average over time, \\
 $f(\lambda,t)$ = $f$-mode strength (unbinned)\\
 $f_P(\lambda,t)$ = $f$-mode strength in latitude / time bins (patches)\\
 $\overline{f}(\lambda) = 1/N_t \sum_t f(\lambda,t)$ = temporal mean of the $f$-mode strength (unbinned)\\ 
-%MJK I think this must be an error.
-%(in lat / time bins) averaged over time, \\
-%AL correct.
-%MJK Added this 
 $f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the $f$-mode (unbinned)\\
-$\overline{f_P}(\lambda) = 1/N_t \sum_t f_P(\lambda,t)$ = 
-%MJK Reform due to the reform above
-temporal mean of 
-%MJK
+$\overline{f_P}(\lambda) = 1/N_t \sum_t f_P(\lambda,t)$ = temporal mean of 
 $f$-mode strength (in lat / time bins), \\
-%MJK added
 $f'_P=f_P-\overline{f_P}$ is, correspondingly, the binned fluctuation\\
-%averaged over time, \\
-%MJK Moved above, is a central definition.
-%(the overline indicates average over time)
 
 %AL added this
 The following 4 definitions represent what is plotted in \fig{butterfly_lat_old}:
@@ -288,12 +251,17 @@ This quantity is, therefore, a mean of the $f'_{P, {\rm rms}}$ (so this time als
 %AL comment:
 %My definition is maybe poor. Yes, I think it should be simply called the 'average rms fluctuation of the f-mode strength over 2 months' (in the above plot the patch size in time is 2 months).
 \end{itemize}
+\subsection*{All the stuff above this line not needed !!!}
+\color{black}
+%AL END unnecessary stuff
 
 
+\colfigtwocol{butterfly_lat}{Butterfly diagram of $f$-mode strength (left panel). The latitudinal average over time, displayed in the right panel, was removed for better visibility of the variation. The error bar, plotted on the latitudinal average of the $f$-mode strength, represents the time averaged standard deviation of the fluctuations of the $f$-mode strength around the signal for every bin ($\overline{\sigma (\lambda)}$). The orange shaded area shows the amplitude of the solar cycle variation ($f'_A(\lambda)$). 
+%The horizontal lines in the colorbar indicate $\pm \overline{\sigma_P}(\lambda)$.
+ }
 
-\colfig{butterfly_lat}{Butterfly diagram of $f$-mode strength. The latitudinal average over time, displayed in the right panel, was removed for better visibility of the variation. The orange shaded area in the latitudinal average represents $\overline{\sigma_P}(\lambda)$. The horizontal lines in the colorbar indicate $\pm \overline{\sigma_P}(\lambda)$. }
-
-\colfig{butterfly_lat_old}{Old version of the diagram, showing the attempts to define the error, and matching the color description from equations (1)-(4).}
+%AL removed this figure
+%\colfig{butterfly_lat_old}{Old version of the diagram, showing the attempts to define the error, and matching the color description from equations (1)-(4).}
 
 \section{Discussion}
 
