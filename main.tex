@@ -143,7 +143,6 @@ The \brms{} computed over an area of 15$^\circ$ in latitude and longitude over a
 
 %MJK Starting completely anew
 %MJK Not only errors
-%MJK Now I am assuming that the yearly variation has been removed, and from here onwards, we are dealing with the cleaned data.
 %Error 
 Definitions:\\
 $\lambda$ = latitude, $t$=time, \\
@@ -159,13 +158,14 @@ in latitude, \\
 $n_t$ = total number of time points at a certain latitude, \\
 %AL added
 $N_P$ = number of $f$-mode measurements in a patch, \\
-$\overline{X}$ indicates average over time
+$\overline{X}$ indicates average over full time span,
 %MJK added "without binning"
-without binning,\\
+%without binning,\\A
+$\left< X \right>$ indicates an average in a selected bin, \\
 $f(\lambda,t)$ = $f$-mode strength \\
 %MJK Unnecessary
 %(unbinned)\\
-$f_P=1/N_P \sum_{N_P} f (\lambda,t)$ = mean $f$-mode strength 
+$\left<f_P\right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean $f$-mode strength 
 %in latitude / time bins (patches)\\
 %MJK Reform
 calculated in patches of $N_t$ and $N_\lambda$ \\
@@ -181,7 +181,7 @@ $\overline{f}(\lambda) = 1/n_t \sum_t f(\lambda,t)$ = temporal mean of the $f$-m
 %MJK It is further binned for plotting, the explanation of which is still missing, but this should not be here, but in the figure caption.
 $f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the $f$-mode.
 %MJK Added
-The root-mean-square value of this quantity is used from calculating the amplitude of the solar cycle variation, and is defined as $f'_{\rm rms} (\lambda) = \sqrt{\overline{f'^2}}$.
+We assume that the solar cycle variation is a sinusoidal function, the amplitude of which can be approximated as $f'_{\rm A} (\lambda) = \sqrt{2} \sqrt{\left<{f'^2}\right>}$. The average over the bin is necessary to remove the noise from the estimate.
 %MJK Unnecessary
 %(unbinned)\\
 %MJK Where is this even needed? This quantity should not be used anywhere. For computation of fprime we use
@@ -203,9 +203,9 @@ One measure of the noise contained in the $f$-mode strength is the standard devi
 around the signal. This is calculated in each bin as
 \begin{equation}
 \sigma= \sqrt{\frac{1}{N_P}\sum_{\mbox{patch}} ( f(\lambda,t)
-- f_P)^2}.
+- \left<f_P\right>)^2}.
 \end{equation}
-From this we form the average error at each latitude by taking an average over time. 
+From this we form the average error at each latitude by taking an average over time and denote as $\overline{\sigma}$. 
 %MJK NEW STUFF ENDS HERE
 
 
