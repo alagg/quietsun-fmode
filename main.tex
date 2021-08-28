@@ -141,6 +141,74 @@ The \brms{} computed over an area of 15$^\circ$ in latitude and longitude over a
 
 \subsection{Butterfly}
 
+%MJK Starting completely anew
+%MJK Not only errors
+%MJK Now I am assuming that the yearly variation has been removed, and from here onwards, we are dealing with the cleaned data.
+%Error 
+Definitions:\\
+$\lambda$ = latitude, $t$=time, \\
+$N_t$ = number of bins 
+%MJK avoiding brackets
+in time \\
+%(time), \\
+$N_\lambda$ = number of bins 
+%MJK Avoiding brackets
+%(latitude), \\
+in latitude, \\
+%MJK Added, needed for the proper definition of fprime
+$n_t$ = total number of time points at a certain latitude, \\
+%AL added
+$N_P$ = number of $f$-mode measurements in a patch, \\
+$\overline{X}$ indicates average over time
+%MJK added "without binning"
+without binning,\\
+$f(\lambda,t)$ = $f$-mode strength \\
+%MJK Unnecessary
+%(unbinned)\\
+$f_P=1/N_P \sum_{N_P} f (\lambda,t)$ = mean $f$-mode strength 
+%in latitude / time bins (patches)\\
+%MJK Reform
+calculated in patches of $N_t$ and $N_\lambda$ \\
+%MJK N_t is incorrect here N_t -> n_t
+$\overline{f}(\lambda) = 1/n_t \sum_t f(\lambda,t)$ = temporal mean of the $f$-mode strength, \\
+%MJK Unnecessary
+%(unbinned)\\ 
+%MJK I think this must be an error.
+%(in lat / time bins) averaged over time, \\
+%AL correct.
+%MJK Added this 
+%MJK This is what is plotted in the butterfly, and should appear in title/caption.
+%MJK It is further binned for plotting, the explanation of which is still missing, but this should not be here, but in the figure caption.
+$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the $f$-mode.
+%MJK Added
+The root-mean-square value of this quantity is used from calculating the amplitude of the solar cycle variation, and is defined as $f'_{\rm rms} (\lambda) = \sqrt{\overline{f'^2}}$.
+%MJK Unnecessary
+%(unbinned)\\
+%MJK Where is this even needed? This quantity should not be used anywhere. For computation of fprime we use
+%MJK \overline{f}. I think this can be removed.
+%$\overline{f_P}(\lambda) = 1/N_t \sum_t f_P(\lambda,t)$ = 
+%%MJK Reform due to the reform above
+%temporal mean of 
+%%MJK
+%$f$-mode strength (in lat / time bins), \\
+%%MJK added
+%MJK The same applies here
+%$f'_P=f_P-\overline{f_P}$ is, correspondingly, the binned fluctuation\\
+%%averaged over time, \\
+%%MJK Moved above, is a central definition.
+%%(the overline indicates average over time)
+
+%MJK Adding here the rest
+One measure of the noise contained in the $f$-mode strength is the standard deviation of the fluctuations
+around the signal. This is calculated in each bin as
+\begin{equation}
+\sigma= \sqrt{\frac{1}{N_P}\sum_{\mbox{patch}} ( f(\lambda,t)
+- f_P)^2}.
+\end{equation}
+From this we form the average error at each latitude by taking an average over time. 
+%MJK NEW STUFF ENDS HERE
+
+
 Error definitions:\\
 $\lambda$ = latitude, $t$=time, \\
 $N_t$ = number of bins (time), \\
