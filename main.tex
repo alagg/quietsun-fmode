@@ -32,8 +32,9 @@
 \section{Introduction} \label{sec:intro}
 
 \begin{itemize}
-\item so far all: no observational study with variation of quiet sun magnetism with solar cycle
-\item previous studies: internetwork (explain network - internetwork)
+\item quiet Sun magnetism is weak. Measurement requires high sensitivity, high spatial resolution, otherwise signal cancellation. Variations in quiet Sun magnetism are even tougher to detect. Require long-term stability, constant conditions, HMI offers this, now 1 solar cycle in orbit. 
+\item what is the quiet Sun? simple: No AR. 98\% of the solar surface are in this state. But even the quiet regions are structured: network / internetwork. 
+\item what is expected to vary with solar cycle? network, IN, both, or nothing? A few words about the expectations.
 \item argue why taking into account network is important: the IN flux is advected towards the network boundaries. A cycle variation of the IN flux therefore should be reflected in a variation of the network flux. Network accumulates IN flux and therefore acts as a memory of what happened in the IN. Helps to overcome detection of the weak IN fields (difficult enough), even more difficult to study variations of these weak fields.
 \item HMI: compared to Hinode / ground based / Sunrise: not the most sensitive instrument to B. But: Stability allows averaging. 8 hr time and spatial averaging allows to boost S/N ratio (can we give a number here?)
 
@@ -54,7 +55,14 @@ Luis Talk PHI meeting: 38\% of the flux emerging in the IN makes it to the netwo
 
 \section{Observations}
 
-HMI data sets used, and removal of lonmg-term trend
+HMI data sets used, and removal of long-term trend
+
+Key issue: 
+How to obtain the most reliable HMI data product telling us about the variability of the quiet Sun magnetism during a solar cycle? Idea: combine spatial and temporal averaging, and analyze the statistics in space-time cubes to determine the level of quietness as a function of latitude. This requires the magnetic field information coming from specro-polarimetry. 
+
+In a next step, derive a data product not relying on spectropolarimetry, but on the \los{} velocity maps. The $f$-mode power provides an independent measure to quantify the solar cycle variation.
+
+But first the boring stuff: How to obtain a clean, 11-year long data set:
 
 About the long term trend: The jump in the data happened on 13 April 2016 (search for this date in \cite{2018SoPh..293...45H}). There it states:
 \begin{itemize}
@@ -80,6 +88,7 @@ For the long-term study presented in this paper, we need to correct for this sen
 
 \colfig{fit-offset}{Determination of the correction for the HMI sensitivity change: the observing mode change on April 13 2016 causes a discontinuity in the level of \brms{} values of the \IN{} data. The original data are displayed in with the dark red and black dots, the corrected data with the light red dots. The dashed line indicates the polynomial fit of degree 4 used to obtain the offset.}
 
+Mention also the focus change in 2018-10-16, leading to a change in the \los{} maps. 
 
 HMI 720s full disk magnetograms; 
 Define \brms{}.
