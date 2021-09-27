@@ -116,8 +116,6 @@ These statistics for each patch were stored as data products including the infor
 
 \todo{We should mention the effect of the HMI 24hr modulation of the B-field measurement, and check how it affects the values we derive.}
 
-\colfig{pipeline}{Data pipeline}
-
 \subsection{Quiet sun region selection}
 
 \subsection{Analysis of quiet sun dopplerograms}
@@ -127,6 +125,9 @@ The dopplerogram data is located in MPS server (Germany) whereas the analysis is
 \subsubsection*{Computation of the $f$-mode power}
 
 In the CSC environment, subsequent processing involved calculating the 3d power spectra for each cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$. Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra. Such averaging is justified for the quiet sun spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. From the obtained spectra $f$-mode was easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$mode. The integration range was between $\omega$ values starting from 14.45 and ending at 29.03, where the significant part of the $f$-mode power resides. After completing described steps we had collected total of 18327 $f$-mode powers for patches close to central meridian over all latitudes covering the full solar cycle.
+
+The detailed data pipeline is summarized in \fig{pipeline}.
+\colfig{pipeline}{Data pipeline}
 
 \subsubsection*{Orbital correction of the $f$-mode power}
 
@@ -194,6 +195,9 @@ around the signal. This is calculated in each bin as
 From this we form the average error at each latitude by taking an average over time and denote as $\overline{\sigma}$. 
 %AL added
 This quantity is plotted as the error bar in the right panel of \fig{butterfly_lat}.
+
+%NO Adding some words how we verified significance
+The significance of the results was verified by rejecting a null hypothesis in a following way: For all quiet sun patches we computed the power of noise in the azimuthally averaged spectra similarly as for $f$-modes. We assumed that noise level is independent of $k$ and selected a region towards higher $k$ values, where the $f$-mode is already decayed. The analysis showed that the noise power was an order of magnitude weaker than the corresponding $f$-mode powers.
 
 %AL BEGIN unnecessary stuff
 \color{cyan}
