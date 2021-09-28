@@ -2,6 +2,7 @@
 \documentclass{aa}
 \usepackage{xcolor}
 \usepackage{trackchanges}
+\usepackage{gensymb}
 \usepackage[colorlinks,allcolors=blue]{hyperref}
 %\input{journal} 
 
@@ -67,15 +68,15 @@ But first the boring stuff: How to obtain a clean, 11-year long data set:
 
 About the long term trend: The jump in the data happened on 13 April 2016 (search for this date in \cite{2018SoPh..293...45H}). There it states:
 \begin{itemize}
-\item Standard HMI observations were initially obtained with a framelist called Mod C that
-repeated every 135 seconds. Mod L, a 90-second FTS, replaced Mod C on 13 April 2016.
-The two versions of Mod C have FTS ID 1001 or 1021; the Mod L HFTSACID is 1022.
+\item Standard HMI observations were initially obtained with a framelist called Mod-C that
+repeated every 135 seconds. Mod-L, a 90-second FTS, replaced Mod-C on 13 April 2016.
+The two versions of Mod-C have FTS ID 1001 or 1021; the Mod-L HFTSACID is 1022.
 Some calibration framelists changed when the standard sequences changed.
 \item Since 13 April
 2016, filtergrams from the two cameras have been combined to compute the vector magnetic
 field \cite[]{2014SoPh..289.3483H,2016SoPh..291.1887C}
 \item On 13 April 2016, after the prime mission ended, HMI switched to
-a faster sequence, FTS ID 1022, also known as Mod L. The Mod-L sequence requires that
+a faster sequence, FTS ID 1022, also known as Mod-L. The Mod-L sequence requires that
 images from both cameras be combined to determine the vector-field observables. 
 \end{itemize}
 Mod-L description here: http://hmi.stanford.edu/hminuggets/?p=1596: \textsl{
@@ -85,7 +86,9 @@ Mod-L provides all of the filtergrams necessary to compute the Stokes parameters
 
 On April 13 2016 HMI switched to a more efficient observing mode. By combining both HMI cameras to determine the vector-field observables the cadence for full-disk magnetograms could be reduced from 135\,s (observational mode MOD-C) to 90\,s (MOD-L). This reduced the noise level for Stokes $V$ measurements by 17\%, resulting in a decrease of the noise level in the \los{} magnetograms by 5\%.
 
-For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \IN{} dataset: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \IN{} dataset plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion (BIC)\todo{REF?} to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependant on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of degree 4. The so determined amplitude of the Heaviside step function is added to the data points after 13 April 2016 for all data presented in this paper.
+For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \IN{} dataset: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \IN{} dataset plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion (BIC)\cite[]{Stoica2004}
+%NO Added same ref Jyri used in his paper
+to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependant on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of degree 4. The so determined amplitude of the Heaviside step function is added to the data points after 13 April 2016 for all data presented in this paper.
 
 \colfig{fit-offset}{Determination of the correction for the HMI sensitivity change: the observing mode change on April 13 2016 causes a discontinuity in the level of \brms{} values of the \IN{} data. The original data are displayed in with the dark red and black dots, the corrected data with the light red dots. The dashed line indicates the polynomial fit of degree 4 used to obtain the offset.}
 
@@ -95,39 +98,39 @@ HMI 720s full disk magnetograms;
 Define \brms{}.
 
 \section{Data pipeline}
+In the following we describe the full data processing pipeline for obtaining the final products. The detailed data pipeline is summarized in \fig{pipeline}.
+\colfig{pipeline}{Data pipeline}
+
 %\input{pipelinedesign}
 \subsection{Magnetogram tracking}
-The full HMI magnetograms starting from 27.04.2010 and ending at 31.07.2021 were tracked for 8 hours to compensate for the solar rotation. The step between tracked sequences was 4 hours, so that total of 6 tracked sequences were gathered per one day. For each tracked sequence the visible solar disk between latitudes and longitudes from $-80\deg$ to +$80\deg$ was divided into 64$\times$64 grid of $15\deg$ overlapping patches and the following statistics were collected:
+The full HMI magnetograms starting from 27.04.2010 and ending at \todo{Insert the date at the moment we have produced the final plot} were tracked for 8 hours to compensate for the solar rotation. The step between tracked sequences was 4 hours, so that total of 6 tracked sequences were gathered per one day. For each tracked sequence the visible solar disk between latitudes and longitudes from $-80\degree$ to +$80\degree$ was divided into $64\times 64$ grid of $15\degree$ overlapping patches and the following statistics were collected:
 \begin{itemize}
 	\item $\mu_B$ -- Mean of the magnetic field strength
 	\item $\sigma_B$ -- Standard deviation of the magnetic field strength
 	\item ${\rm skew}_B$ -- Skewness of the magnetic field strength
 	\item ${\rm kurt}_B$ -- Kurtosis of the magnetic field strength
-	\item $\mu_{|B|}$ -- Mean of the absulute value of the magnetic field strength
-    \item $\sigma_{|B|}$ --Standard deviation of the absulute value of the magnetic field strength
-    \item ${\rm skew}_{|B|}$ -- Skewness of the absulute value of the magnetic field strength
-    \item ${\rm kurt}_{|B|}$ --Kurtosis of the absulute value of the magnetic field strength
+	\item $\mu_{|B|}$ -- Mean of the absolute value of the magnetic field strength
+    \item $\sigma_{|B|}$ --Standard deviation of the absolute value of the magnetic field strength
+    \item ${\rm skew}_{|B|}$ -- Skewness of the absolute value of the magnetic field strength
+    \item ${\rm kurt}_{|B|}$ --Kurtosis of the absolute value of the magnetic field strength
 	\item $\sqrt{\mu_{B^2}}$ -- Root mean square of the magnetic field strength
     \item $\sqrt{\sigma:{B^2}}$ -- Root mean square of the standard deviation of the magnetic field strength
     \item $\sqrt{{\rm skew}_{B^2}}$ -- Root mean square of the skewness of the magnetic field strength
     \item $\sqrt{{\rm kurt}_{B^2}}$ -- Root mean square of the kurtosis of the magnetic field strength
 \end{itemize}
-These statistics for each patch were stored as data products including the information about latitudinal and longitudinal position as well as the Carrington longitude.
+These statistics for each patch were stored as data products (see also \fig{pipeline}) including the information about latitudinal and longitudinal position as well as the Carrington longitude.
 
 \todo{We should mention the effect of the HMI 24hr modulation of the B-field measurement, and check how it affects the values we derive.}
 
 \subsection{Quiet sun region selection}
 
 \subsection{Analysis of quiet sun dopplerograms}
-The dopplerogram data is located in MPS server (Germany) whereas the analysis is executed in the CSC supercomputing environment (Finland). We have utilized  a function-as-a-service based on funcX \cite[]{chard20funcx}  for accessing the required data in the database server. We have developed functions based on funcX and deployed the functions in the MPS environment. These functions leverage mtrack command to retrieve dopplerogram cubes and moved the cubes data to the CSC. The coordinates of the selected quiet sun regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
+The dopplerogram data is located in MPS server (Germany) whereas the analysis is executed in the CSC supercomputing environment (Finland). We have utilized  a function-as-a-service based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We have developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to retrieve dopplerogram cubes and moved the cubes data to the CSC environment. The coordinates of the selected quiet sun regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
 %{the using remote function call service funcX \cite{chard20funcx} to MPS server where the dopplerogram database is located. Next, using mtrack command the tracked dopplerogram cubes were retrieved and sent back to CSC supercomputing environment.}
 
 \subsubsection*{Computation of the $f$-mode power}
 
-In the CSC environment, subsequent processing involved calculating the 3d power spectra for each cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$. Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra. Such averaging is justified for the quiet sun spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. From the obtained spectra $f$-mode was easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$mode. The integration range was between $\omega$ values starting from 14.45 and ending at 29.03, where the significant part of the $f$-mode power resides. After completing described steps we had collected total of 18327 $f$-mode powers for patches close to central meridian over all latitudes covering the full solar cycle.
-
-The detailed data pipeline is summarized in \fig{pipeline}.
-\colfig{pipeline}{Data pipeline}
+In the CSC environment, subsequent processing involved calculating the 3d power spectra for each dopplerogram cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$. Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra. Such averaging is justified for the quiet sun spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. From the obtained spectra $f$-mode was easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$-mode. The integration range was chosen between $\omega$ values starting from 14.45 and ending at 29.03, where the significant part of the $f$-mode power resides. After completing described steps we had collected total of 18327 $f$-mode powers for patches close to central meridian over all latitudes covering the full solar cycle.
 
 \subsubsection*{Orbital correction of the $f$-mode power}
 
@@ -151,7 +154,7 @@ The \brms{} computed over an area of 15$^\circ$ in latitude and longitude over a
 
 \colfig{Brms-lat00-percentile}{\brms{} determined from the most quiet patches from 2010 to 2021 at disk center. The patches of 15$^\circ$ size in longitude and latitude contain network and \IN{} fields. The solid red line display the 97\% percentile level, the dashed, gray line the mode of a log-normal fit to yearly-binned data moved in a sliding window of 100 days length.}
 
-\colfig{Brms-lat00-percentile-IN}{Same as \fig{Brms-lat00-percentile} , but for \brms{} determined patch size of only of 1$^\circ$ in longitude and latitude, corresponding to \IN{} patches. }
+\colfig{Brms-lat00-percentile-IN}{Same as \fig{Brms-lat00-percentile}, but for \brms{} determined from patch size of only of 1$^\circ$ in longitude and latitude, corresponding to \IN{} patches. }
 
 
 \subsection{Butterfly}
@@ -197,7 +200,8 @@ From this we form the average error at each latitude by taking an average over t
 This quantity is plotted as the error bar in the right panel of \fig{butterfly_lat}.
 
 %NO Adding some words how we verified significance
-The significance of the results was verified by rejecting a null hypothesis in a following way: For all quiet sun patches we computed the power of noise in the azimuthally averaged spectra similarly as for $f$-modes. We assumed that noise level is independent of $k$ and selected a region towards higher $k$ values, where the $f$-mode is already decayed. The analysis showed that the noise power was an order of magnitude weaker than the corresponding $f$-mode powers.
+As the average error described above does not necessarily prove that the patterns seen in the left panel of \fig{butterfly_lat} are statistically significant, we did more detailed analysis and estimated the significance of $\left< f' \right>$ for each patch separately. The following test was made: For all quiet sun patches we computed the power of noise in the azimuthally averaged spectra similarly as for $f$-modes. We assumed that noise level is independent of $k$ and selected the region towards higher $k$ values, where the $f$-mode is already decayed. Then we calculated fluctuations in the noise power $\left< f'_{\rm noise} \right>$ in an identical manner as for $\left< f' \right>$.
+The analysis showed that for all patches $\left< f'_{\rm noise} \right>$ was an order of magnitude weaker than the corresponding $\left< f' \right>$.
 
 %AL BEGIN unnecessary stuff
 \color{cyan}
