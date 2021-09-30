@@ -130,7 +130,14 @@ The dopplerogram data is located in MPS server (Germany) whereas the analysis is
 
 \subsubsection*{Computation of the $f$-mode power}
 
-In the CSC environment, subsequent processing involved calculating the 3d power spectra for each dopplerogram cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$. Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra. Such averaging is justified for the quiet sun spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. From the obtained spectra $f$-mode was easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$-mode. The integration range was chosen between $\omega$ values starting from 14.45 and ending at 29.03, where the significant part of the $f$-mode power resides. After completing described steps we had collected total of 18327 $f$-mode powers for patches close to central meridian over all latitudes covering the full solar cycle.
+In the CSC environment, subsequent processing involved calculating the 3d power spectra for each dopplerogram cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$ (See \fig{ring_diagram}). Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra. Such averaging is justified for the quiet sun spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. From the obtained spectra $f$-mode was easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$-mode. The integration range was chosen between $\omega$ values starting from 14.45 and ending at 29.03, where the significant part of the $f$-mode power resides. After completing described steps we had collected total of 18327 $f$-mode powers for patches close to central meridian over all latitudes covering the full solar cycle.
+
+\begin{figure}\centering
+	\includegraphics[width=1.0\linewidth,clip=TRUE]{ring_diagram}\\
+	\includegraphics[width=1.0\linewidth,clip=TRUE]{az_avg_spec}
+	\caption{Top: example of the quiet sun ring diagram at $\nu=$. Bottom: spectrum obtained by azimuthally averaging the ring diagram. The red vertical line marks the position of the maximum of the $f$-mode and the black vertical lines the range of integration.}
+	\label{ring_diagram}
+\end{figure}
 
 \subsubsection*{Orbital correction of the $f$-mode power}
 
