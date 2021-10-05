@@ -55,9 +55,15 @@ Luis Talk PHI meeting: 38\% of the flux emerging in the IN makes it to the netwo
 
 \cite[]{ballot2021changes}
 
+The paper is structured in two parts
+
 \section{Observations}
 
-Our analysis is based on data from the Helioseismic Magnetograph and Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by comining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line. 
+Our analysis is based on data from the Helioseismic Magnetograph and Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by comining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). 
+
+The first data product was selected to provide a direct measurement of the variability of the quiet-sun magnetism during a solar cycle. To enhance the signal-to-noise ratio in the LOS magnetograms we performed a newly developed algorithm for spatial and temporal averaging, described in \sect{magnetogramtracking}. 
+\al{I think we have to describe the pipeline here, and not in a separate pipeline section. We do the tracking, the binning to 64x64, and then we do the cleaning up of the sensitivity jump, and the yearly fluctuations, which would not be visible in the individual maps.}
+
 
 HMI data sets used, and removal of long-term trend
 
@@ -104,7 +110,7 @@ In the following we describe the full data processing pipeline for obtaining the
 \colfig{pipeline}{Data pipeline}
 
 %\input{pipelinedesign}
-\subsection{Magnetogram tracking}
+\subsection{Magnetogram tracking\label{magnetogramtracking}}
 The full HMI magnetograms starting from 27.04.2010 and ending at \todo{Insert the date at the moment we have produced the final plot} were tracked for 8 hours to compensate for the solar rotation. The step between tracked sequences was 4 hours, so that total of 6 tracked sequences were gathered per one day. For each tracked sequence the visible solar disk between latitudes and longitudes from $-80\degree$ to +$80\degree$ was divided into $64\times 64$ grid of $15\degree$ overlapping patches and the following statistics were collected:
 \begin{itemize}
 	\item $\mu_B$ -- Mean of the magnetic field strength
