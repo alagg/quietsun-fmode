@@ -103,11 +103,22 @@ The analysis of the solar-cycle variation of the quiet-sun magnetism required a 
 	\item\label{c3}  this pixel must be the most quiet pixel within a three-day interval.
 \end{enumerate}
 
-Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along the central meridian. (\ref{c2}) guarantees an equal distribution of quiet pixels over the 11-year period of available HMI measurements, and (\ref{c3}) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}.
+Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along the central meridian. (\ref{c2}) guarantees an equal distribution of quiet pixels over the 11-year period of available HMI measurements, and (\ref{c3}) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}. The result of this selection were two time series of the $\sqrt{\mu_{B^2}}$ for the most quiet patches in the network and the \IN{} regions.
+
+\subsubsection{Correction for HMI sensitivity change}
+
+The 11-year temporal evolution of \inw{} time series{the $\sqrt{\mu_{B^2}}$} value revealed clearly a change in the HMI observing mode, performed on 13-Apr-2016. On this day, HMI switched to a more efficient observing mode \cite[see][]{2018SoPh..293...45H,2014SoPh..289.3483H,2016SoPh..291.1887C}. By combining both HMI cameras to determine the vector-field observables the cadence for full-disk magnetograms could be reduced from 135\,s (observational mode MOD-C) to 90\,s (MOD-L). This reduced the noise level for Stokes $V$ measurements by 17\%, resulting in a decrease of the noise level in the \los{} magnetograms by 5\%.
+
+For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \inw{} time series: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \inw{} time series plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion \cite[BIC,][]{Stoica2004} to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependant on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of degree 4. The so determined amplitude of the Heaviside step function is added to the data points after 13-Apr-2016 for all data presented in this paper.
+
+\colfig{fit-offset}{Determination of the correction for the HMI sensitivity change: the observing mode change on April 13 2016 causes a discontinuity in the level of \brms{} values of the \IN{} data. The original data are displayed in with the dark red and black dots, the corrected data with the light red dots. The dashed line indicates the polynomial fit of degree 4 used to obtain the offset.}
+
+\todo{Mention also the focus change in 2018-10-16, leading to a change in the \los{} maps.} 
 
 
+\todo{We should mention the effect of the HMI 24hr modulation of the B-field measurement, and check how it affects the values we derive.}
 
-\todo{Then: sensitivity issue}
+
 
 \cmt{
 Key issue: 
@@ -134,20 +145,7 @@ Mod-L description here: http://hmi.stanford.edu/hminuggets/?p=1596: \textsl{
 Mod-L provides all of the filtergrams necessary to compute the Stokes parameters [I, Q, U, V] in 90 seconds, instead of the 135 seconds required for Mod-C. Thus Mod-L increases the maximum temporal resolution for measuring full Stokes parameters. At the same time, it decreases the noise because twice as many filtergrams are available. The 45s data products from the front camera are also improved; since there is no longer a 135s period in the instrument configuration, the corresponding peak in the Doppler power spectrum is now gone. The new 90s period is at the Nyquist frequency of the 45s-cadence Doppler data. The Stokes measurement is normally averaged over time (nominally 720 seconds) to derive [I, Q, U, V], and we now combine three times as many CP and 1.5 times as many LP measurements. Table 1 compares the Mod-C and Mod-L observations.}
 }
 
-\subsection{Correction for HMI sensitivity change}
 
-On April 13 2016 HMI switched to a more efficient observing mode. By combining both HMI cameras to determine the vector-field observables the cadence for full-disk magnetograms could be reduced from 135\,s (observational mode MOD-C) to 90\,s (MOD-L). This reduced the noise level for Stokes $V$ measurements by 17\%, resulting in a decrease of the noise level in the \los{} magnetograms by 5\%.
-
-For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \IN{} dataset: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \IN{} dataset plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion (BIC)\cite[]{Stoica2004}
-%NO Added same ref Jyri used in his paper
-to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependant on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of degree 4. The so determined amplitude of the Heaviside step function is added to the data points after 13 April 2016 for all data presented in this paper.
-
-\colfig{fit-offset}{Determination of the correction for the HMI sensitivity change: the observing mode change on April 13 2016 causes a discontinuity in the level of \brms{} values of the \IN{} data. The original data are displayed in with the dark red and black dots, the corrected data with the light red dots. The dashed line indicates the polynomial fit of degree 4 used to obtain the offset.}
-
-Mention also the focus change in 2018-10-16, leading to a change in the \los{} maps. 
-
-HMI 720s full disk magnetograms; 
-Define \brms{}.
 
 \subsection{Dopplergrams}
 
@@ -155,11 +153,7 @@ In a next step, derive a data product not relying on spectropolarimetry, but on 
 
 
 
-\todo{We should mention the effect of the HMI 24hr modulation of the B-field measurement, and check how it affects the values we derive.}
-
-\subsection{Quiet sun region selection}
-
-\subsection{Analysis of quiet sun dopplerograms}
+\subsubsection{Analysis of quiet sun dopplerograms}
 The dopplerogram data is located in MPS server (Germany) whereas the analysis is executed in the CSC supercomputing environment (Finland). We have utilized  a function-as-a-service based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We have developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to retrieve dopplerogram cubes and moved the cubes data to the CSC environment. The coordinates of the selected quiet sun regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
 %{the using remote function call service funcX \cite{chard20funcx} to MPS server where the dopplerogram database is located. Next, using mtrack command the tracked dopplerogram cubes were retrieved and sent back to CSC supercomputing environment.}
 
