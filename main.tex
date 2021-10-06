@@ -73,7 +73,7 @@ The first data product was selected to provide a direct measurement of the varia
 The step between tracked sequences was 4 hours, so that total of 6 tracked sequences were gathered per one day, resulting in $>24\,000$ tracked sequences. 
 
 From each tracked sequences, we extracted two data products by dividing the visible solar disk  between latitudes and longitudes from $-80\degree$ to +$80\degree$ into (i) $64\times 64$  overlapping patches of $15\degree$ (in solar latitude and longitude)  and (ii) $180\times 180$ patches of $1\degree$.
-Every of these patches therefore contains a space-time cube of LOS magnetograms at full spatial resolution at a 12-minute cadence, allowing to compute the statistical properties (mean, standard deviation, skewness, kurtosis) of the following parameters: $\mu_B$ -- mean of the magnetic field strength, $\mu_{|B|}$ -- mean of the absolute value of the magnetic field strength, and $\sqrt{\mu_{B^2}}$ -- root mean square of the magnetic field strength. The $15\degree$ patches (i) are large enough to cover several network cells \cite[supergranulation cells, see][]{2010LRSP....7....2R} with a typical size of 30\,Mm (\nw{} cubes), and the $1\degree$ patches (ii) are small enough that some of them lie completely in the \IN{} (\inw{} cubes). 
+Every of these patches therefore contains a space-time cube of LOS magnetograms at full spatial resolution at a 12-minute cadence, allowing to compute the statistical properties (mean, standard deviation, skewness, kurtosis) of the following parameters: $\mu_B$ -- mean of the magnetic field strength, $\mu_{|B|}$ -- mean of the absolute value of the magnetic field strength, and $\sqrt{\mu_{B^2}}$ -- root mean square of the magnetic field strength. The $15\degree$ patches (i) are large enough to cover several supergranulation cells containing network and \IN{} fields \cite[]{2010LRSP....7....2R} with a typical size of 30--35\,Mm (we refer to them as \nw{} cubes), and the $1\degree$ patches (ii) are small enough that some of them lie completely in the \IN{} (\inw{} cubes). 
 These statistics for each patch were stored as data products (see also \fig{pipeline}) including the information about latitudinal and longitudinal position as well as the Carrington longitude for network and \IN{}.
 
  
@@ -92,7 +92,8 @@ These statistics for each patch were stored as data products (see also \fig{pipe
 %     \item $\sqrt{{\rm kurt}_{B^2}}$ -- Root mean square of the kurtosis of the magnetic field strength
 % \end{itemize}
 
-\todo{Now: quiet patch selection}
+\subsubsection{Quiet region selection}
+
 
 \todo{Then: sensitivity issue}
 
