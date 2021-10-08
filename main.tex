@@ -88,7 +88,7 @@ The statistics for each patch were stored as data products (see also \fig{pipeli
 %     \item $\sqrt{{\rm kurt}_{B^2}}$ -- Root mean square of the kurtosis of the magnetic field strength
 % \end{itemize}
 
-\subsection{Quiet region selection}
+\subsection{Quiet region selection\label{quietregion}}
 
 From the parameters computed from the cubes the root mean square of the magnetic field strength (\brms{}) turned out to be the best tracer for determining the magnetic activity level. It could clearly distinguish between $15\degree$ patches containing active regions, plage, enhanced network and quiet network. Also, it depicted very well the low-field \IN{} regions.
 
@@ -101,7 +101,7 @@ The analysis of the solar-cycle variation of the quiet-sun magnetism required a 
 
 Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along the central meridian. (\ref{c2}) guarantees an equal distribution of quiet pixels over the 11-year period of available HMI measurements, and (\ref{c3}) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}. The result of this selection were two time series of the \brms{} for the most quiet patches in the network and the \IN{} regions. Note that the this selection also efficiently removes the 24\,h modulation present in the HMI magnetograms.
 
-\subsection{Correction for HMI sensitivity change}
+\subsection{Correction for HMI sensitivity change\label{sensicorr}}
 
 The 11-year temporal evolution of \inw{} time series{the \brms{}} value revealed clearly a change in the HMI observing mode, performed on 13-Apr-2016. On this day, HMI switched to a more efficient observing mode \cite[see][]{2018SoPh..293...45H,2014SoPh..289.3483H,2016SoPh..291.1887C}. By combining both HMI cameras to determine the vector-field observables the cadence for full-disk magnetograms could be reduced from 135\,s (observational mode MOD-C) to 90\,s (MOD-L). This reduced the noise level for Stokes $V$ measurements by 17\%, resulting in a decrease of the noise level in the \los{} magnetograms by 5\%.
 
@@ -176,12 +176,11 @@ This correction $A_{\mbox{corr}}(\lambda)$ is then subtracted from the computed 
 
 \section{Results}
 
+After applying the selection criteria described in \sect{quietregion} and the subsequent correction for the HMIS sensitivity change (\sect{sensicorr}) we obtain the dependency of the \brms{} values of the most quiet region at the central longitude as a function of heliographic latitude and time. \fig{Brms-lat00-percentile} presents the \brms{} values from May 2010 until October 2021 for the heliographic latitude $\lambda = 0\degree$. The individual data points (red dots) are computed over an area of 15$^\circ$ in latitude and longitude and over a time of 8 hours. At disk center, this corresponds to an area of $\approx 180 \times 180$\,Mm$^2$, and therefore contains 30--40 supergranular cells. The \brms{} value therfore contans network and \IN{} fields.
 
+\fig{Brms-lat00-percentile} clearly indicates the solar cycle dependence of the quiet-sun magnetic fields, consisting of network and \IN{}. The \brms{} values peak in the second half of 2014, close to the declared maximum od solar cycle \#24 (April 2014, \todo{REF!}. The variation is statistically significant, as indicated by the the mode and the 97\% percentiles, computed by fitting a log-normal distribution over a 1-year sliding window.
 
-
-
-definition of quiet regions in space and time: 
-The \brms{} computed over an area of 15$^\circ$ in latitude and longitude over a time of 8 hours. The solar rotation is compensated by taking into account the Carrington rotation only. A region is defined to be quiet when the \brms{} belongs to the 10\% most quiet patches every month.
+A similar plot is presented in \fig{Brms-lat00-percentile-IN}, but now the \brms{} value was computed only for a $1\degree$ window in latitude and longitude, correspondinf to an area of only $12\times 12$\,Mm$^2$ at disk center. The quiet-region selection criteria (\sect{quietregion}) guarantees, that this patch lies fully within the \IN{}, and is not `contaminated' by network fields. Clearly, there is no dependence of \brms{} with solar cycle detectable. The slight increase over the 11-year period might be an effect of the aging of the HMI instrument and the resulting decrease in the sensitivity for magnetic field measurements.
 
 \colfig{Brms-lat00-percentile}{\brms{} determined from the most quiet patches from 2010 to 2021 at disk center. The patches of 15$^\circ$ size in longitude and latitude contain network and \IN{} fields. The solid red lines display the 97\% percentile level, the dashed, gray line the mode of a log-normal fit to yearly-binned data moved in a sliding window of 100 days length.}
 
