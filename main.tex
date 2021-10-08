@@ -99,7 +99,7 @@ The analysis of the solar-cycle variation of the quiet-sun magnetism required a 
 	\item\label{c3}  this pixel must be the most quiet pixel within a 4-day interval.
 \end{enumerate}
 
-Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along the central meridian. (\ref{c2}) guarantees an equal distribution of quiet pixels over the 11-year period of available HMI measurements, and (\ref{c3}) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}. The result of this selection were two time series of the \brms{} for the most quiet patches in the network and the \IN{} regions.
+Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along the central meridian. (\ref{c2}) guarantees an equal distribution of quiet pixels over the 11-year period of available HMI measurements, and (\ref{c3}) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}. The result of this selection were two time series of the \brms{} for the most quiet patches in the network and the \IN{} regions. Note that the this selection also efficiently removes the 24\,h modulation present in the HMI magnetograms.
 
 \subsection{Correction for HMI sensitivity change}
 
@@ -107,10 +107,10 @@ The 11-year temporal evolution of \inw{} time series{the \brms{}} value revealed
 
 For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \inw{} time series: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \inw{} time series plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion \cite[BIC,][]{Stoica2004} to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependant on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of degree 4. The so determined amplitude of the Heaviside step function is added to the data points after 13-Apr-2016 for all data presented in this paper.
 
+
+
 \colfig{fit-offset}{Determination of the correction for the HMI sensitivity change: the observing mode change on April 13 2016 causes a discontinuity in the level of \brms{} values of the \IN{} data. The original data are displayed in with the dark red and black dots, the corrected data with the light red dots. The dashed line indicates the polynomial fit of degree 4 used to obtain the offset.}
 
-
-\todo{We should mention the effect of the HMI 24hr modulation of the B-field measurement, and check how it affects the values we derive.}
 
 
 
