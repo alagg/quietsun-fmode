@@ -96,7 +96,7 @@ The analysis of the solar-cycle variation of the quiet-sun magnetism required a 
 \begin{enumerate}[(i)]
 	\item\label{c1} the most quiet pixel must be within $\pm10\degree$ around the central meridian,
 	\item\label{c2}  this pixel must belong to the 3\% most quiet pixels of the month,
-	\item\label{c3}  this pixel must be the most quiet pixel within a three-day interval.
+	\item\label{c3}  this pixel must be the most quiet pixel within a 4-day interval.
 \end{enumerate}
 
 Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along the central meridian. (\ref{c2}) guarantees an equal distribution of quiet pixels over the 11-year period of available HMI measurements, and (\ref{c3}) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}. The result of this selection were two time series of the $\sqrt{\mu_{B^2}}$ for the most quiet patches in the network and the \IN{} regions.
@@ -143,35 +143,34 @@ For the long-term study presented in this paper, we need to correct for this sen
 
 \subsection{Dopplergrams}
 
-In a next step, derive a data product not relying on spectropolarimetry, but on the \los{} velocity maps. The $f$-mode power provides an independent measure to quantify the solar cycle variation.
+The second data product used in this paper are the \los{} velocity maps. The goal is to compute the power of the surface gravity mode, the so-called $f$-mode power, as an independent measure to quantify the solar cycle variation.
 
+The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a server at the Max Planck Institute for Solar System Research (MPS Göttingen, Germany) whereas the analysis is executed in the CSC supercomputing environment (Aalto, Finland). We have utilized  a function-as-a-service client based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We have developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage the mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to prepare the dopplergram cubes within the GDC-SDO environment and subsequently transfer them to the CSC environment. The coordinates of the selected quiet-sun regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
+%{the using remote function call service funcX \cite{chard20funcx} to MPS server where the dopplergram database is located. Next, using mtrack command the tracked dopplergram cubes were retrieved and sent back to CSC supercomputing environment.}
 
+\todo{details of the tracking: Central coordinate from quiet region selection, Harsha's parameters. $300\times 300$ pixels, 8 hrs ... }
 
-\subsubsection{Analysis of quiet sun dopplerograms}
-The dopplerogram data is located in MPS server (Germany) whereas the analysis is executed in the CSC supercomputing environment (Finland). We have utilized  a function-as-a-service based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We have developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to retrieve dopplerogram cubes and moved the cubes data to the CSC environment. The coordinates of the selected quiet sun regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
-%{the using remote function call service funcX \cite{chard20funcx} to MPS server where the dopplerogram database is located. Next, using mtrack command the tracked dopplerogram cubes were retrieved and sent back to CSC supercomputing environment.}
+\subsection{Computation of the $f$-mode power}
 
-\subsubsection*{Computation of the $f$-mode power}
-
-In the CSC environment, subsequent processing involved calculating the 3d power spectra for each dopplerogram cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$ (See \fig{ring_diagram}). Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra. Such averaging is justified for the quiet sun spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. From the obtained spectra $f$-mode was easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$-mode. The integration range was chosen between $\omega$ values starting from 14.45 and ending at 29.03, where the significant part of the $f$-mode power resides. After completing described steps we had collected total of 18327 $f$-mode powers for patches close to central meridian over all latitudes covering the full solar cycle.
+In the CSC environment, subsequent processing involved calculating the 3d power spectra for each dopplergram cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$ (See \fig{ring_diagram}). Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra. Such averaging is justified for the quiet-sun spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. From the obtained spectra $f$-mode was easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$-mode. The integration range was chosen between $\omega$ values starting from 14.45 and ending at 29.03, where the significant part of the $f$-mode power resides. After completing described steps we had collected total of \todo{18327} $f$-mode powers for patches close to central meridian over all latitudes covering the full solar cycle.
 
 \begin{figure}\centering
 	\includegraphics[width=1.0\linewidth,trim={0cm 0.4cm 0cm 0.3cm},clip=TRUE]{ring_diagram}\\
 	\includegraphics[width=1.0\linewidth,trim={0cm 0cm 0cm 1cm},clip=TRUE]{az_avg_spec}
-	\caption{Top: example of quiet sun ring diagram at $\nu=3.56$. Bottom: spectrum obtained by azimuthally averaging the ring diagram. The red vertical line marks the position of the maximum of the $f$-mode and the black vertical lines the range of integration.}
+	\caption{Top: example of quiet-sun ring diagram at $\nu=3.56$. Bottom: spectrum obtained by azimuthally averaging the ring diagram. The red vertical line marks the position of the maximum of the $f$-mode and the black vertical lines the range of integration.}
 	\label{ring_diagram}
 \end{figure}
 
 \subsubsection*{Orbital correction of the $f$-mode power}
 
 %AL We have to be consistent. Do we call it f-mode power, strength or area?
-Since the $f$-mode power is computed from the \los{} dopplergrams, its value depends strongly on the viewing geometry. This dependence,  roughly following the cosine of the solar latitude for data taken at the central meridian, is additionally modulated by the orbital motion of the Earth around the Sun, which changes the viewing angle at any given solar latitude by $\approx\pm7^\circ$ during one year. We compensated for this periodic variation by fitting the parameters ($x_0(\lambda)...x_3(\lambda)$) of the following function for all observations of a given latitude $\lambda$:
+Since the $f$-mode power is computed from the \los{} dopplergrams, its value depends strongly on the viewing geometry. This dependence,  roughly following the cosine of the solar latitude for data taken at the central meridian, is additionally modulated by the orbital motion of the Earth around the Sun, which changes the viewing angle at any given solar latitude by $\approx\pm7^\circ$ during one year. We compensated for this periodic variation by fitting the parameters ($x_0(\lambda), ..., x_3(\lambda)$) of the following function to all observations of a given latitude $\lambda$:
 \begin{equation}
 \label{eq:orbitcorr}
 A_{\mbox{corr}}(\lambda) = x_0(\lambda) (  2 ( (1+\cos(\alpha+x_1(\lambda)))/2)^{x_3(\lambda)}-1   )+ x_2(\lambda),
 \end{equation}
 with $\alpha$ being the phase angle of the Earth defined as the cotangens computed from the $x,y$ barycentric position of the Earth.
-This correction $A_{\mbox{corr}}(\lambda)$ is then subtracted from the computed $f$-mode area, which efficiently removes any yearly variation. 
+This correction $A_{\mbox{corr}}(\lambda)$ is then subtracted from the computed $f$-mode power, which efficiently removes any yearly variation. 
 
 \section{Results}
 
@@ -230,7 +229,7 @@ From this we form the average error at each latitude by taking an average over t
 This quantity is plotted as the error bar in the right panel of \fig{butterfly_lat}.
 
 %NO Adding some words how we verified significance
-As the average error described above does not necessarily prove that the patterns seen in the left panel of \fig{butterfly_lat} are statistically significant, we did more detailed analysis and estimated the significance of $\left< f' \right>$ for each patch separately. The following test was made: For all quiet sun patches we computed the power of noise in the azimuthally averaged spectra similarly as for $f$-modes. We assumed that noise level is independent of $k$ and selected the region towards higher $k$ values, where the $f$-mode is already decayed. Then we calculated fluctuations in the noise power $\left< f'_{\rm noise} \right>$ in an identical manner as for $\left< f' \right>$.
+As the average error described above does not necessarily prove that the patterns seen in the left panel of \fig{butterfly_lat} are statistically significant, we did more detailed analysis and estimated the significance of $\left< f' \right>$ for each patch separately. The following test was made: For all quiet-sun patches we computed the power of noise in the azimuthally averaged spectra similarly as for $f$-modes. We assumed that noise level is independent of $k$ and selected the region towards higher $k$ values, where the $f$-mode is already decayed. Then we calculated fluctuations in the noise power $\left< f'_{\rm noise} \right>$ in an identical manner as for $\left< f' \right>$.
 The analysis showed that for all patches $\left< f'_{\rm noise} \right>$ was an order of magnitude weaker than the corresponding $\left< f' \right>$.
 
 %AL BEGIN unnecessary stuff
