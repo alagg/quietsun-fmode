@@ -230,6 +230,8 @@ Integration range in $\omega$ space was chosen between values starting from 14.4
 \subsubsection*{Orbital correction of the $f$-mode power}
 
 %AL We have to be consistent. Do we call it f-mode power, strength or area?
+%NS: strength is perhaps better; we could mention somewhere the strength and power
+%NS: are being used interchangeably, if needed
 Since the $f$-mode power is computed from the \los{} dopplergrams, its value depends strongly on the viewing geometry. This dependence,  roughly following the cosine of the solar latitude for data taken at the central meridian, is additionally modulated by the orbital motion of the Earth around the Sun, which changes the viewing angle at any given solar latitude by $\approx\pm7^\circ$ during one year. We compensated for this periodic variation by fitting the parameters ($x_0(\lambda), ..., x_3(\lambda)$) of the following function to all observations of a given latitude $\lambda$:
 \begin{equation}
 \label{eq:orbitcorr}
@@ -324,7 +326,11 @@ are larger, and around cycle maximum\footnote{the Sun reached its peak magnetic 
 in terms of number of sunspots during the cycle~24 in April 2014.} to the declining phase,
 the $f$-mode power is suppressed.
 %AL 
-This correlation is strongest at the solar equator, and decreases with higher latitudes.
+%This correlation is strongest at the solar equator, and decreases with higher latitudes.
+%NS: modified a bit so that it is easier to relate with magnetic field which are
+%NS: away but near the equator, please check
+This correlation is strongest near the solar equator, within about $\pm 20\degree$ in
+latitude, and it decreases with higher latitudes.
 %AL
 Interestingly, we observe a temporal shift in the $f$-mode butterfly diagram with respect to the
 solar cycle, such that the minimum of the $f$-mode occurs later, i.e., in the declining phase of
@@ -337,10 +343,31 @@ the cycle.
 
 \section{Discussion}
 
+%NS: added for anticorrelation; could be speculative, so please check and change as needed
+%NS: a bit rushed writing as well, but it can be polished later
+Anticorrelation of the $f$-mode strength with the solar cycle as seen in \fig{butterfly_lat}
+is expected, as the magnetic fields of ARs tend to absorb the modes resulting in the
+$f$-mode damping which has been reported in a number of earlier works
+\citep{Cally+94,CB97,SRB16}. Transient effects, such as the strengthening of the mode
+prior to emergence of ARs as found in \citet{SRB16}, are washed out in such a study aimed
+at global behavior of $f$-mode over the whole cycle. Relevant effect here is the damping
+caused by the presence of ARs. This is a nonlocal effect where quiet patches in the
+vicinity of ARs too display the damping of the $f$-mode. This hypothesis was tested
+by a detailed analysis of a magnetically quiet patch next to AR~12529; figures 11 and 12
+in \citet{SRB16}. This is further established in the present work, where, though only the
+quiet patches are selected in the analysis, damping around the time of solar maximum is
+nevertheless observed, as there are a large number of ARs present on the surface during this
+phase, thus nonlocally affecting the strengths of the $f$-mode.
+%NS.
+
 %NS: adding for now as a subsection, but can be changed later
 %NS: to continue later on this ...
 \subsection{Dynamo origin of the shift in the $f$-mode butterfly diagram}
-
+We speculate here on the origin of shift observed in the $f$-mode butterfly diagram
+with respect to the solar cycle; see \fig{butterfly_lat}.
+Series of earlier numerical and observational works have established that the $f$-mode can be
+significantly perturbed in the presence of magnetic fields \citep{S+14,S+15,SRB16,S+20}.
+%NS: appears too much of self-citation above; will select only most relevant ones later
 %NS.
 
 \begin{acknowledgements}
