@@ -20,21 +20,35 @@
 
 \abstract{The origin of the quiet Sun magnetism is under debate. Investigating the solar cycle variation observationally in more detail can give us clues about how to resolve the controversies.}
 {We investigate the solar cycle variation of the most magnetically quiet regions and
-their surface gravity oscillation mode integrated power as function of latitude.}
+their surface gravity oscillation (f-) mode integrated power as function of latitude.}
 {We use 11 years of HMI data and apply a stringent selection criteria, based on
 spatial and temporal quietness, to avoid any influence of active regions (ARs).
 We develop an automated high throughput pipeline to go through all available magnetogram data
 and to compute the surface gravity mode power for the selected quiet regions.}
 {We observe a clear solar cycle dependence of the magnetic field strength in the most
 quiet regions containing several supergranular cells. For patch sizes smaller than a supergranular
-cell, no significant cycle dependence is detected. The surface gravity mode at the supergranular
-scale shows a weak cycle dependence, which is not completely in phase with the cycle.}
+cell, no significant cycle dependence is detected. The f-mode at the supergranular scale 
+%MJK 
+is not constant over time.
+%shows a weak cycle dependence, which is not 
+%completely in phase with the cycle.
+%MJK Trying anew
+During the late ascending phase of Cycle 24 (2011-2012), the f-mode strength is roughly constant, but starts diminishing in 2013, as the maximum of Cycle 24 is approached. This trend continues
+until 2017, in the middle of which year we see hints of strengthening.
+Slow strengthening continues, stronger at higher latitudes than at the equatorial regions, but the f-mode strength never returns back to the values seen in 2011-2012. Also, the strengthening trend continues past the solar minimum, to the years when Cycle 25 is already clearly ascending. Hence the f-mode behavior is not in phase with the solar cycle. 
+%MJK
+}
 {The solar cycle dependence at the supergranular scale is indicative for the fluctuating magnetic
 field being replenished by tangling from the large-scale magnetic field, and not solely due to
-the action of a fluctuation dynamo process in the surface regions. Similar conclusion applies
-to the variation of the surface gravity mode power, although the reason for the phase lag
-is not yet understood. The absence of variation at smaller scales might be an effect of the
-limited spatial resolution and magnetic sensitivity of HMI.}
+the action of a fluctuation dynamo process in the surface regions. 
+The absence of variation at smaller scales might be an effect of the
+limited spatial resolution and magnetic sensitivity of HMI.
+%MJK Commenting this out now
+%Similar conclusion applies
+%to the variation of the surface gravity mode power, although the reason %for the phase lag
+%is not yet understood. 
+An anticorrelation of the f-mode strength w.r.t. the solar cycle is expected, as active regions efficiently damp it. The f-mode behavior, although showing such behavior in gross terms, is much more complex than this - in addition we see a phase shift, and different damping behavior of the ascending phases of Cycles 24 and 25. We speculate that the latter two could be related to the magnetic helicity-constrained subsurface toroidal field rather than instrumental effects.
+}
 %\end{abstract}
 
 %% Keywords should appear after the \end{abstract} command. 
@@ -97,6 +111,9 @@ from the magnetically quiet patches. Present work aims to address this by carefu
 the quietest regions on the solar surface based on the level of magnetic activity observed in
 line-of-sight (LOS) magnetograms that are readily available from HMI. 
 %NS.
+
+%MJK We would need some text about the magnetic helicity business
+%MJK also to the intro.
 
 \begin{itemize}
 \item quiet Sun magnetism is weak. Measurement requires high sensitivity, high spatial resolution, otherwise signal cancellation. Variations in quiet Sun magnetism are even tougher to detect. Require long-term stability, constant conditions, HMI offers this, now 1 solar cycle in orbit. 
@@ -334,9 +351,15 @@ latitude, and it decreases with higher latitudes.
 %AL
 Interestingly, we observe a temporal shift in the $f$-mode butterfly diagram with respect to the
 solar cycle, such that the minimum of the $f$-mode occurs later, i.e., in the declining phase of
-the cycle.
+%MJK
+%the cycle.
+Cycle 24, roughly around the end of the year 2016.
 %NS.
 
+
+%MJK New para; describing the rest of our observations.
+During mid-2017, we see weak strengthening of the f-mode strength to commence. During the minimum (2018-2019) between the Cycles 24 and 25, the strengthening appears stronger in the higher latitudes. It also continues after the minimum, when Cycle 25 has already started its ascending phase. What is also noteworthy is that the f-mode strength never rises as high as the values observed during the ascending phase of Cycle 24 (2011-2012).
+%MJK
 
 %AL removed this figure
 %\colfig{butterfly_lat_old}{Old version of the diagram, showing the attempts to define the error, and matching the color description from equations (1)-(4).}
@@ -363,6 +386,18 @@ phase, thus nonlocally affecting the strengths of the $f$-mode.
 %NS: adding for now as a subsection, but can be changed later
 %NS: hasty writing. will revise later, but essential point i thought is made
 %NS: see if you agree, feel free to remove if you don't
+%MJK I do agree with the importance of the toroidal subsurface 
+%MJK (horizontal) field. In the patches that are used to compute
+%MJK the f-mode from, there are no AR vertical fields, but 
+%MJK magnetic fluctuations from SSD and tangling from the large-scale
+%MJK horizontal field. If the latter is stronger, then one might
+%MJK expect what you describe as the delayed damping due to the
+%MJK late-rejuvenated large-scale field due to the helicity 
+%MJK conservation. This would lead to the interesting conclusion
+%MJK that perhaps the subsurface toroidal field is somehow much
+%MJK stronger during Cycle 25 than Cycle 24. But, instrumental
+%MJK degradation could easily produce something similar, hence
+%MJK I think we cannot make too strong statements.
 \subsection{Dynamo origin of the shift in the $f$-mode butterfly diagram}
 We speculate here on the origin of shift observed in the $f$-mode butterfly diagram
 with respect to the solar cycle; see \fig{butterfly_lat}.
