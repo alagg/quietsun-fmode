@@ -70,75 +70,139 @@ Localized regions of intense bipolar magnetic structures, called active regions
 butterfly diagrams which exhibit a cyclic magnetic activity of the Sun in a latitude--time
 domain. Such diagrams have proved to be useful and reveal some properties of solar
 magnetism, origin of which is not yet fully understood.
-Due to a number of reasons, it would be extremely useful to identify those localized regions
-in advance where ARs are going to emerge later. In an observational study involving
+%Due to a number of reasons, it would be %extremely useful to identify those localized regions
+%in advance where ARs are going to emerge later. 
+In an observational study involving
 HMI data, \cite{SRB16} reported strengthening of solar surface or the fundamental $f$-mode
 about one to two days before
-the formation of AR on the same corotating patch of area $(180\, \Mm)^2$.
-Detections of such localized perturbations in the solar $f$-mode due to ARs can have
-important applications for early forecasting of the space weather. These could also shed light
+the formation of AR on the same corotating patch of area $(180\, \Mm)^2$,
+%MJK
+and quenching of the mode after the formation of the AR has been postulated
+(REFS) and reported (REFS).
+Very recently, another study reported similar results using a different
+helioseismic technique (Fourier-Hankel method, \cite{Waidele22}).
+%MJK
+%Detections of such localized perturbations in the solar $f$-mode due to ARs can have
+%important applications for early forecasting of the space weather. 
+%These 
+Detection of such localized perturbations
+could also shed light
 on the physics behind the formation of ARs.
+%MJK
+Furthermore, such behavior of the f-mode has been seen in compressible
+isothermal MHD simulations (REFS). 
 
-Nature of AR induced $f$-mode perturbations appear complex with respect to a level
-corresponding to the quiet Sun. There is first an enhancement of
-$f$-mode power about 1-2 days before the emergence, followed by a damping of the mode
-as the AR begins to emerge; see \cite{SRB16}, for more details.
-This makes it harder to predict a newly forming ARs in close proximity to existing ARs
-which would have already caused the damping of $f$-mode in such a `crowded' environment.
-Even in the quiet phase of the Sun, local $f$-mode power displays a systematic variation
-depending on the location of the patch on the solar disk. Its power decreases as we move away
-from the disk center --- an effect which may be largely attributed to the limb-darkening.
+%MJK
+The observational studies of \cite{SRB16} and \cite{Waidele22} used quiet Sun (QS)
+regions on the opposite hemisphere to compare with the AR f-mode. This method
+requires that a quiet patch exists on the other hemisphere, and hence 
+limits the number of ARs that can be included in the hindcasting procedure. It is
+also prone to be affected by the probable fluctuations in the QS
+f-mode level. Although the results look promising, proper calibration with
+statistically sound QS level, not just a comparison of a random QS patch on the
+other hemisphere, is necessary to prove these findings robust. Also,
+such a calibration procedure is necessary for increasing the sample size. 
+Building such a QS calibration data product is one of the main aims of this
+study: we carefully identify the quietest regions on the solar surface based on the level of magnetic activity observed in
+line-of-sight (LOS) magnetograms that are readily available from HMI, and
+compute the f-mode strength at the central meridian as function of latitude
+and time with suitable averaging. 
+%MJK
+
+%MJK 
+Building such a data product for the f-mode, requiring us to identify the most
+inactive regions on the solar surface, allows us to extract statistics
+of the QS magnetism as well. 
+Although QS magnetism is weak, HMI provides high sensitivity, high spatial
+resolution, long-term stability, and constant conditions.
+It has been argued that the QS magnetic field is 
+independent of the solar cycle (REFS) and some other studies have proposed
+that some dependence should exist (REFS). There are two sources of magnetic
+fluctuations: the small-scale dynamo (SSD) instability and the action of turbulent
+convective motions on the underlying large-scale magnetic field (usually
+called tangling, REFS). These processes are inseparable and without a clear boundary, 
+as the turbulent driving of the SSD and tangling most likely occur at similar
+scales, akin to the convective turbulence itself being the driver of both
+effects. These effects, however, might have a different timescale, and hence
+be distinguishable: SSD is prone to replenish the magnetic fluctuations 
+exponentially, while the tangling can be expected to be linear in time.  
+Hence, we could expect a scenario, where at the smallest scales, the magnetic
+field would be only be replenished rapidly by the SSD, while the larger
+convective cell boundaries would accumulate magnetic field from both the
+ effects due to flux expulsion (REFS). Hence, one would expect no solar cycle
+ dependence for the interiors of the convective cells, while a dependence
+  should be observed for the magnetic fields at scales that include also
+  the convective cell boundaries. We also set out to investigate these
+  possible scenarios with our data products. 
+%MJK
+
+%MJK
+The paper is organized as follows: in Sect.\ref{pipeline} we describe
+the data, the necessary steps to prune it, and the automated pipeline we built for harvesting the data and compiling the end products, namely the QS magnetism data products, and the QS f-mode and AR data. In
+Sect.\ref{results} we discuss our findings for the QS magnetism, f-mode, and the lastly present some AR data with the QS calibration
+applied. 
+%MJK
+
+%Nature of AR induced $f$-mode perturbations appear complex with respect to a level
+%corresponding to the quiet Sun. There is first an enhancement of
+%$f$-mode power about 1-2 days before the emergence, followed by a damping of the mode
+%as the AR begins to emerge; see \cite{SRB16}, for more details.
+%This makes it harder to predict a newly forming ARs in close proximity to existing ARs
+%which would have already caused the damping of $f$-mode in such a `crowded' environment.
+%Even in the quiet phase of the Sun, local $f$-mode power displays a systematic variation
+%depending on the location of the patch on the solar disk. Its power decreases as we move away
+%from the disk center --- an effect which may be largely attributed to the limb-darkening.
 %AL I'd rather say it's an effect of foreshortening: 
 %AL: The amplitude of the oscillations in the LOS component decreases.
-\cite{SRB16} suggested the following fitting function to account for this variation
-in the $f$-mode power during the quiet phase of the Sun:
-$\zeta(\cos \alpha)=\cos \alpha [q+(1-q)\cos \alpha]$ with $q=0.5$,
+%\cite{SRB16} suggested the following fitting function to account for this variation
+%in the $f$-mode power during the quiet phase of the Sun:
+%$\zeta(\cos \alpha)=\cos \alpha [q+(1-q)\cos \alpha]$ with $q=0.5$,
 %AL We updated this formula a bit after the quiet Sun calibration to account mainly for effects
 %AL at high alpha. But we do not use this calibration in this paper, maybe we can skip this eq.
-where the angular distance $\alpha$ from the disk center can be expressed in terms of
-latitude $(\vartheta)$ and longitude $(\varphi)$ of point of interest as
-$\cos \alpha = \cos \vartheta \cos \varphi$.
+%where the angular distance $\alpha$ from the disk center can be expressed in terms of
+%latitude $(\vartheta)$ and longitude $(\varphi)$ of point of interest as
+%$\cos \alpha = \cos \vartheta \cos \varphi$.
 %NS.
 
 %NS: continued
-It would be extremely useful to understand the background evolution of quiet-Sun $f$-mode
-over solar cycles in order to more reliably predict the photospheric emergence of ARs,
-regardless of their environment, crowded or isolated. This is expected to enable us explore
-a statistically large number of ARs by studying the properties and evolution of their
-associated local $f$-mode power. This provides a good motivation to determine a butterfly
-diagram for the whole cycle, as mentioned above, but now based on the solar $f$-mode power
-from the magnetically quiet patches. Present work aims to address this by carefully identifying
-the quietest regions on the solar surface based on the level of magnetic activity observed in
-line-of-sight (LOS) magnetograms that are readily available from HMI. 
+%It would be extremely useful to understand the background evolution of quiet-Sun $f$-mode
+%over solar cycles in order to more reliably predict the photospheric emergence of ARs,
+%regardless of their environment, crowded or isolated. This is expected to enable us explore
+%a statistically large number of ARs by studying the properties and evolution of their
+%associated local $f$-mode power. This provides a good motivation to determine a butterfly
+%diagram for the whole cycle, as mentioned above, but now based on the solar $f$-mode power
+%from the magnetically quiet patches. Present work aims to address this by carefully identifying
+%the quietest regions on the solar surface based on the level of magnetic activity %observed in
+%line-of-sight (LOS) magnetograms that are readily available from HMI. 
 %NS.
 
 %MJK We would need some text about the magnetic helicity business
 %MJK also to the intro.
 
-\begin{itemize}
-\item quiet Sun magnetism is weak. Measurement requires high sensitivity, high spatial resolution, otherwise signal cancellation. Variations in quiet Sun magnetism are even tougher to detect. Require long-term stability, constant conditions, HMI offers this, now 1 solar cycle in orbit. 
-\item what is the quiet Sun? simple: No AR. 98\% of the solar surface are in this state. But even the quiet regions are structured: network / internetwork. 
-\item what is expected to vary with solar cycle? network, IN, both, or nothing? A few words about the expectations.
-\item argue why taking into account network is important: the IN flux is advected towards the network boundaries. A cycle variation of the IN flux therefore should be reflected in a variation of the network flux. Network accumulates IN flux and therefore acts as a memory of what happened in the IN. Helps to overcome detection of the weak IN fields (difficult enough), even more difficult to study variations of these weak fields.
-\item HMI: compared to Hinode / ground based / Sunrise: not the most sensitive instrument to B. But: Stability allows averaging. 8 hr time and spatial averaging allows to boost S/N ratio (can we give a number here?)
+%\begin{itemize}
+%\item quiet Sun magnetism is weak. Measurement requires high sensitivity, high spatial %resolution, otherwise signal cancellation. Variations in quiet Sun magnetism are even %tougher to detect. Require long-term stability, constant conditions, HMI offers this, %now 1 solar cycle in orbit. 
+%\item what is the quiet Sun? simple: No AR. 98\% of the solar surface are in this %state. But even the quiet regions are structured: network / internetwork. 
+%\item what is expected to vary with solar cycle? network, IN, both, or nothing? A few %words about the expectations.
+%\item argue why taking into account network is important: the IN flux is advected %towards the network boundaries. A cycle variation of the IN flux therefore should be %reflected in a variation of the network flux. Network accumulates IN flux and %therefore acts as a memory of what happened in the IN. Helps to overcome detection of %the weak IN fields (difficult enough), even more difficult to study variations of %these weak fields.
+%\item HMI: compared to Hinode / ground based / Sunrise: not the most sensitive %instrument to B. But: Stability allows averaging. 8 hr time and spatial averaging %allows to boost S/N ratio (can we give a number here?)%
+%
+%\end{itemize}
+%
+%\cite[]{2019LRSP...16....1B}
+%Luis Talk PHI meeting: 38\% of the flux emerging in the IN makes it to the network. %Network flux is constant, the IN flux to the network accumulates quickly to network %flux.
+%
+%\cite[]{2015ApJ...806..174J}
+%
+%\cite[]{2013A&A...555A..33B}
+%
+%\cite[]{2021arXiv210508657F}
+%
+%\cite[]{2021arXiv210514533R}
+%
+%\cite[]{ballot2021changes}
 
-\end{itemize}
 
-\cite[]{2019LRSP...16....1B}
-Luis Talk PHI meeting: 38\% of the flux emerging in the IN makes it to the network. Network flux is constant, the IN flux to the network accumulates quickly to network flux.
-
-\cite[]{2015ApJ...806..174J}
-
-\cite[]{2013A&A...555A..33B}
-
-\cite[]{2021arXiv210508657F}
-
-\cite[]{2021arXiv210514533R}
-
-\cite[]{ballot2021changes}
-
-
-\section{Observations}
+\section{Observations}\label{pipeline}
 
 Our analysis is based on data from the Helioseismic Magnetograph and Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by comining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). We processed the two data sets in a semi-automatic pipeline (see \fig{pipeline}), optimized for obtaining reliable information abount the magnetic field in the quiet Sun regions and for a robust computation of the $f$-mode power from the dopplergrams. The left tree in \fig{pipeline} describes the pipeline used for the magnetograms, the right tree for the dopplergrams.
 
@@ -261,7 +325,7 @@ This correction $A_{\mbox{corr}}(\lambda)$ is then subtracted from the computed 
 
 %AL Mention also the focus change in 2018-10-16, leading to a change in the \los{} maps.
 
-\section{Results}
+\section{Results}\label{results}
 
 After applying the selection criteria described in \sect{quietregion} and the subsequent correction for the HMIS sensitivity change (\sect{sensicorr}) we obtain the dependency of the \brms{} values of the most quiet region at the central longitude as a function of heliographic latitude and time. \fig{Brms-lat00-percentile} presents the \brms{} values from May 2010 until October 2021 for the heliographic latitude $\lambda = 0\degree$. The individual data points (red dots) are computed over an area of 15$^\circ$ in latitude and longitude and over a time of 8 hours. At disk center, this corresponds to an area of $\approx 180 \times 180$\,Mm$^2$, and therefore contains 30--40 supergranular cells. The \brms{} value therfore contans network and \IN{} fields.
 Typical magnetograms at disk center at solar minimum (July 2010) and maximum (Nov 2014) are presented in \fig{2010-07-21_2014-11-09}. There is no obvious difference between the two maps: both show similar minimum and maximum field strengths, and the visible impression of the supergranular cells with the strong field patches of both polarities surrounding the \IN{} regions is indistinguishable.
