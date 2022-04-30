@@ -343,7 +343,10 @@ The average \brms{} value in the \IN{} is in $\approx6$\,G. Using the area of on
 \colfig{Brms-lat00-percentile-IN}{Same as \fig{Brms-lat00-percentile}, but for \brms{} determined from patch size of only of 1$^\circ$ in longitude and latitude, corresponding to \IN{} patches. }
 
 
-\subsection{Butterfly}
+%\subsection{Butterfly}
+\subsection{Quiet Sun f-mode butterfly diagram}\label{qsf}
+
+
 
 Definitions:\\
 $\lambda$ = latitude, $t$=time, \\
@@ -394,13 +397,20 @@ The analysis showed that for all patches $\left< f'_{\rm noise} \right>$ was an 
 \colfigtwocol{butterfly_lat}{Butterfly diagram of $f$-mode strength computed from azimuthal average of the ring diagram (left panel). The latitudinal average over time, displayed in the right panel, was removed for better visibility of the variation. The error bar, plotted on the latitudinal average of the $f$-mode strength, represents the time averaged standard deviation of the fluctuations of the $f$-mode strength around the signal for every bin ($\overline{\sigma (\lambda)}$). The orange shaded area shows the amplitude of the solar cycle variation ($f'_A(\lambda)$). }
 %The horizontal lines in the colorbar indicate $\pm \overline{\sigma_P}(\lambda)$.
 
-\colfigtwocol{butterfly_lat_FFOV_KX0}{Same as \fig{butterfly_lat}, computed from a wedge of $\pm10^\circ$ around the $k_y$ axis, representing the poloidal component.}
+\colfigtwocol{butterfly_lat_FFOV_KX0}{Same as \fig{butterfly_lat}, computed from a wedge of $\pm10^\circ$ around the $k_y$ axis, representing the poloidal component.\label{butkx0}}
 
-\colfigtwocol{butterfly_lat_FFOV_KY0}{Same as \fig{butterfly_lat}, computed from a wedge of $\pm10^\circ$ around the $k_x$ axis, representing the toroidal component.} 
+\colfigtwocol{butterfly_lat_FFOV_KY0}{Same as \fig{butterfly_lat}, computed from a wedge of $\pm10^\circ$ around the $k_x$ axis, representing the toroidal component. \label{butky0}}
 
 %NS: added following for butterfly-figure
-\Fig{butterfly_lat} displays the butterfly diagram of the quiet-Sun $f$-mode power determined
+\Fig{butterfly_lat} displays the butterfly diagram of the 
+%MJK
+%quiet-Sun 
+QS
+$f$-mode power determined
 from $15\degree \times 15\degree$ patches that showed only weak, small-scale magnetic structures.
+%MJK
+To compute the f-mode power, we have used the whole ring diagram data.
+%MJK
 Temporally averaged profile in latitude is removed for highlighting the variation in the
 $f$-mode power. The period covered is somewhat larger than the 11 year solar cycle~24, which
 began to show some magnetic activity from early 2010; this cycle ended by around 2020.
@@ -428,8 +438,21 @@ Cycle 24, roughly around the end of the year 2016.
 During mid-2017, we see weak strengthening of the f-mode strength to commence. During the minimum (2018-2019) between the Cycles 24 and 25, the strengthening appears stronger in the higher latitudes. It also continues after the minimum, when Cycle 25 has already started its ascending phase. What is also noteworthy is that the f-mode strength never rises as high as the values observed during the ascending phase of Cycle 24 (2011-2012).
 %MJK
 
+%MJK We also need to show the scatterplot of Brms vs. f-mode per year.
+
+%MJK
+Next we investigate whether constructing the f-mode power near
+the ring axes will affect the results. Such a difference could be caused by the underlying magnetic field running in a preferred direction. 
+%MJK
+\Fig{butkx0} shows the butterfly near the $k_x$=0 axis, tracing f-mode sensitivity on the poloidal component of the
+magnetic field, and \Fig{butky0} the same near the $k_y$=0 axis,
+tracing the sensitivity to the toroidal field. Interestingly,
+differences can be discerned. 
+
 %AL removed this figure
 %\colfig{butterfly_lat_old}{Old version of the diagram, showing the attempts to define the error, and matching the color description from equations (1)-(4).}
+
+\subsection{AR f-mode with QS calibration}\label{arf}
 
 %AL adding two AR plots as placeholders. Needs to be discussed what should be shown
 \colfig{AR11130_track}{$f$-mode strength (top) and $B_{\mbox{rms}}$ (bottom) for AR11130. Orange: quiet-Sun calibration, blue: cosine calibration.}
