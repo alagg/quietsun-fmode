@@ -20,22 +20,22 @@
 
 \abstract{The origin of the quiet Sun magnetism is under debate. Investigating the solar cycle variation observationally in more detail can give us clues about how to resolve the controversies.}
 {We investigate the solar cycle variation of the most magnetically quiet regions and
-their surface gravity oscillation (f-) mode integrated power as function of latitude.}
+their surface gravity oscillation ($f$-) mode integrated power as function of latitude.}
 {We use 11 years of HMI data and apply a stringent selection criteria, based on
 spatial and temporal quietness, to avoid any influence of active regions (ARs).
 We develop an automated high throughput pipeline to go through all available magnetogram data
 and to compute the surface gravity mode power for the selected quiet regions.}
 {We observe a clear solar cycle dependence of the magnetic field strength in the most
 quiet regions containing several supergranular cells. For patch sizes smaller than a supergranular
-cell, no significant cycle dependence is detected. The f-mode at the supergranular scale 
+cell, no significant cycle dependence is detected. The \fff at the supergranular scale 
 %MJK 
 is not constant over time.
 %shows a weak cycle dependence, which is not 
 %completely in phase with the cycle.
 %MJK Trying anew
-During the late ascending phase of Cycle 24 (2011-2012), the f-mode strength is roughly constant, but starts diminishing in 2013, as the maximum of Cycle 24 is approached. This trend continues
+During the late ascending phase of Cycle 24 (2011-2012), the \fff strength is roughly constant, but starts diminishing in 2013, as the maximum of Cycle 24 is approached. This trend continues
 until 2017, in the middle of which year we see hints of strengthening.
-Slow strengthening continues, stronger at higher latitudes than at the equatorial regions, but the f-mode strength never returns back to the values seen in 2011-2012. Also, the strengthening trend continues past the solar minimum, to the years when Cycle 25 is already clearly ascending. Hence the f-mode behavior is not in phase with the solar cycle. 
+Slow strengthening continues, stronger at higher latitudes than at the equatorial regions, but the \fff strength never returns back to the values seen in 2011-2012. Also, the strengthening trend continues past the solar minimum, to the years when Cycle 25 is already clearly ascending. Hence the \fff behavior is not in phase with the solar cycle. 
 %MJK
 }
 {The solar cycle dependence at the supergranular scale is indicative for the fluctuating magnetic
@@ -47,7 +47,7 @@ limited spatial resolution and magnetic sensitivity of HMI.
 %Similar conclusion applies
 %to the variation of the surface gravity mode power, although the reason %for the phase lag
 %is not yet understood. 
-An anticorrelation of the f-mode strength w.r.t. the solar cycle is expected, as active regions efficiently damp it. The f-mode behavior, although showing such behavior in gross terms, is much more complex than this - in addition we see a phase shift, and different damping behavior of the ascending phases of Cycles 24 and 25. We speculate that the latter two could be related to the magnetic helicity-constrained subsurface toroidal field rather than instrumental effects.
+An anticorrelation of the \fff strength w.r.t. the solar cycle is expected, as active regions efficiently damp it. The \fff behavior, although showing such behavior in gross terms, is much more complex than this - in addition we see a phase shift, and different damping behavior of the ascending phases of Cycles 24 and 25. We speculate that the latter two could be related to the magnetic helicity-constrained subsurface toroidal field rather than instrumental effects. 
 }
 %\end{abstract}
 
@@ -73,7 +73,7 @@ magnetism, origin of which is not yet fully understood.
 %Due to a number of reasons, it would be %extremely useful to identify those localized regions
 %in advance where ARs are going to emerge later. 
 In an observational study involving
-HMI data, \cite{SRB16} reported strengthening of solar surface or the fundamental $f$-mode
+HMI data, \cite{SRB16} reported strengthening of solar surface or the fundamental \fff
 about one to two days before
 the formation of AR on the same corotating patch of area $(180\, \Mm)^2$,
 %MJK
@@ -82,35 +82,35 @@ and quenching of the mode after the formation of the AR has been postulated
 Very recently, another study reported similar results using a different
 helioseismic technique (Fourier-Hankel method, \cite{Waidele22}).
 %MJK
-%Detections of such localized perturbations in the solar $f$-mode due to ARs can have
+%Detections of such localized perturbations in the solar \fff due to ARs can have
 %important applications for early forecasting of the space weather. 
 %These 
 Detection of such localized perturbations
 could also shed light
 on the physics behind the formation of ARs.
 %MJK
-Furthermore, such behavior of the f-mode has been seen in compressible
+Furthermore, such behavior of the \fff has been seen in compressible
 isothermal MHD simulations (REFS). 
 
 %MJK
 The observational studies of \cite{SRB16} and \cite{Waidele22} used quiet Sun (QS)
-regions on the opposite hemisphere to compare with the AR f-mode. This method
+regions on the opposite hemisphere to compare with the AR \fff. This method
 requires that a quiet patch exists on the other hemisphere, and hence 
 limits the number of ARs that can be included in the hindcasting procedure. It is
 also prone to be affected by the probable fluctuations in the QS
-f-mode level. Although the results look promising, proper calibration with
+\fff level. Although the results look promising, proper calibration with
 statistically sound QS level, not just a comparison of a random QS patch on the
 other hemisphere, is necessary to prove these findings robust. Also,
 such a calibration procedure is necessary for increasing the sample size. 
 Building such a QS calibration data product is one of the main aims of this
 study: we carefully identify the quietest regions on the solar surface based on the level of magnetic activity observed in
 line-of-sight (LOS) magnetograms that are readily available from HMI, and
-compute the f-mode strength at the central meridian as function of latitude
+compute the \fff  strength at the central meridian as function of latitude
 and time with suitable averaging. 
 %MJK
 
 %MJK 
-Building such a data product for the f-mode, requiring us to identify the most
+Building such a data product for the \fff, requiring us to identify the most
 inactive regions on the solar surface, allows us to extract statistics
 of the QS magnetism as well. 
 Although QS magnetism is weak, HMI provides high sensitivity, high spatial
@@ -138,24 +138,24 @@ convective cell boundaries would accumulate magnetic field from both the
 
 %MJK
 The paper is organized as follows: in Sect.\ref{pipeline} we describe
-the data, the necessary steps to prune it, and the automated pipeline we built for harvesting the data and compiling the end products, namely the QS magnetism data products, and the QS f-mode and AR data. In
-Sect.\ref{results} we discuss our findings for the QS magnetism, f-mode, and the lastly present some AR data with the QS calibration
+the data, the necessary steps to prune it, and the automated pipeline we built for harvesting the data and compiling the end products, namely the QS magnetism data products, and the QS \fff and AR data. In
+Sect.\ref{results} we discuss our findings for the QS magnetism, \fff, and the lastly present some AR data with the QS calibration
 applied. 
 %MJK
 
-%Nature of AR induced $f$-mode perturbations appear complex with respect to a level
+%Nature of AR induced \fff perturbations appear complex with respect to a level
 %corresponding to the quiet Sun. There is first an enhancement of
-%$f$-mode power about 1-2 days before the emergence, followed by a damping of the mode
+%\fff power about 1-2 days before the emergence, followed by a damping of the mode
 %as the AR begins to emerge; see \cite{SRB16}, for more details.
 %This makes it harder to predict a newly forming ARs in close proximity to existing ARs
-%which would have already caused the damping of $f$-mode in such a `crowded' environment.
-%Even in the quiet phase of the Sun, local $f$-mode power displays a systematic variation
+%which would have already caused the damping of \fff in such a `crowded' environment.
+%Even in the quiet phase of the Sun, local \fff power displays a systematic variation
 %depending on the location of the patch on the solar disk. Its power decreases as we move away
 %from the disk center --- an effect which may be largely attributed to the limb-darkening.
 %AL I'd rather say it's an effect of foreshortening: 
 %AL: The amplitude of the oscillations in the LOS component decreases.
 %\cite{SRB16} suggested the following fitting function to account for this variation
-%in the $f$-mode power during the quiet phase of the Sun:
+%in the \fff power during the quiet phase of the Sun:
 %$\zeta(\cos \alpha)=\cos \alpha [q+(1-q)\cos \alpha]$ with $q=0.5$,
 %AL We updated this formula a bit after the quiet Sun calibration to account mainly for effects
 %AL at high alpha. But we do not use this calibration in this paper, maybe we can skip this eq.
@@ -165,12 +165,12 @@ applied.
 %NS.
 
 %NS: continued
-%It would be extremely useful to understand the background evolution of quiet-Sun $f$-mode
+%It would be extremely useful to understand the background evolution of quiet-Sun \fff
 %over solar cycles in order to more reliably predict the photospheric emergence of ARs,
 %regardless of their environment, crowded or isolated. This is expected to enable us explore
 %a statistically large number of ARs by studying the properties and evolution of their
-%associated local $f$-mode power. This provides a good motivation to determine a butterfly
-%diagram for the whole cycle, as mentioned above, but now based on the solar $f$-mode power
+%associated local \fff power. This provides a good motivation to determine a butterfly
+%diagram for the whole cycle, as mentioned above, but now based on the solar \fff power
 %from the magnetically quiet patches. Present work aims to address this by carefully identifying
 %the quietest regions on the solar surface based on the level of magnetic activity %observed in
 %line-of-sight (LOS) magnetograms that are readily available from HMI. 
@@ -204,7 +204,7 @@ applied.
 
 \section{Observations}\label{pipeline}
 
-Our analysis is based on data from the Helioseismic Magnetograph and Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by comining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). We processed the two data sets in a semi-automatic pipeline (see \fig{pipeline}), optimized for obtaining reliable information abount the magnetic field in the quiet Sun regions and for a robust computation of the $f$-mode power from the dopplergrams. The left tree in \fig{pipeline} describes the pipeline used for the magnetograms, the right tree for the dopplergrams.
+Our analysis is based on data from the Helioseismic Magnetograph and Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by comining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). We processed the two data sets in a semi-automatic pipeline (see \fig{pipeline}), optimized for obtaining reliable information abount the magnetic field in the quiet Sun regions and for a robust computation of the \fff power from the dopplergrams. The left tree in \fig{pipeline} describes the pipeline used for the magnetograms, the right tree for the dopplergrams.
 
 \colfig{pipeline}{Data pipeline}
 
@@ -291,7 +291,7 @@ For the long-term study presented in this paper, we need to correct for this sen
 
 \subsection{Dopplergrams}
 
-The second data product used in this paper are the \los{} velocity maps. The goal is to compute the power of the surface gravity mode, the so-called $f$-mode power, as an independent measure to quantify the solar cycle variation.
+The second data product used in this paper are the \los{} velocity maps. The goal is to compute the power of the surface gravity mode, the so-called \fff power, as an independent measure to quantify the solar cycle variation.
 
 The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a server at the Max Planck Institute for Solar System Research (MPS Göttingen, Germany) whereas the analysis is executed in the CSC supercomputing environment (Aalto, Finland). We have utilized  a function-as-a-service client based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We have developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage the mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to prepare the dopplergram cubes within the GDC-SDO environment and subsequently transfer them to the CSC environment. The coordinates of the selected quiet-sun regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
 %{the using remote function call service funcX \cite{chard20funcx} to MPS server where the dopplergram database is located. Next, using mtrack command the tracked dopplergram cubes were retrieved and sent back to CSC supercomputing environment.}
@@ -299,7 +299,7 @@ The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a 
 %AL: TODO details of the tracking: Central coordinate from quiet region selection, Harsha's parameters. $300\times 300$ pixels, 8 hrs ... 
 
 %MJK To be decided how we refer to the final number obtained.
-%MJK Nishant16 called that f-mode energy, and used E_f for it.
+%MJK Nishant16 called that \fff energy, and used E_f for it.
 %MJK As we are practically computing the same number, then 
 %MJK we should possibly stick to using the same notation.
 %MJK Main data product is the normalized E_f, for which
@@ -310,14 +310,14 @@ The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a 
 %MJK Explanation of its removal was not yet included, now
 %MJK added something preliminary. Should we also show the
 %MJK non-subtracted spectrum? 
-\subsection{Computation of the $f$-mode power}
+\subsection{Computation of the \fff power}
 
 %In the CSC environment, 
 %MJK
 Subsequent processing involved calculating the 3d power spectra for each dopplergram cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$,
 %MJK
-to obtain $P_{\omega,k}$. An illustrative case for a frequency
-value at which f-mode is strong, is shown in 
+to obtain $P(\omega,k)$. An illustrative case for a frequency
+value at which \fff is strong, is shown in 
 %(see 
 \fig{ring_diagram},
 %MJK
@@ -327,7 +327,7 @@ Such averaging significantly reduced the noise level leading to smooth one dimen
 %. 
 %MJK
 an example being shown in the lower panel of \fig{ring_diagram};
-in this kind of a plot, the f-mode is the rightmost peak at the highest $k$ values.
+in this kind of a plot, the \fff is the rightmost peak at the highest $k$ values.
 %MJK
 %Such 
 The
@@ -338,23 +338,23 @@ is justified for the
 QS
 spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. 
 %MJK Reforms, easily does not tell anything.
-%From the obtained spectra $f$-mode was
-%easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$-mode.
-To obtain the total energy contained in the f-mode, $E_f$, we
-performed another integration over the separated f-mode signal.
-In contrast to earlier studies \citet{SRB16,Waidele22}, we
-did not perform fitting to the f-mode for its extraction. 
+%From the obtained spectra \fff was
+%easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the \fff.
+To obtain the total energy contained in the \fff, $E_f$, we
+performed another integration over the separated \fff signal.
+In contrast to earlier studies \citep{SRB16,Waidele22}, we
+did not perform fitting to the \fff for its extraction. 
 Instead, we only fitted the background, and subtracted this 
 contribution.
 Then,
-an integration range in $k$ space was selected for each constant $\omega$ in a following way: first the maximum of $f$-mode $k_{\rm max}$ and the minimum between $f$-mode and first $p$-mode $k_{\rm start}$ were detected; $k_{\rm start}$ was chosen as the start of integration range and the end of the integration range $k_{\rm end}$ was set as $k_{\rm end}=k_{\rm max}+2(k_{\rm max}-k_{\rm start})$; $k_{\rm end}$ chosen in such a way guarantees that the integration range is sufficiently wide to cover significant part of the $f$-mode power in $k$-space.
+an integration range in $k$ space was selected for each constant $\omega$ in a following way: first the maximum of \fff $k_{\rm max}$ and the minimum between \fff and first $p$-mode $k_{\rm start}$ were detected; $k_{\rm start}$ was chosen as the start of integration range and the end of the integration range $k_{\rm end}$ was set as $k_{\rm end}=k_{\rm max}+2(k_{\rm max}-k_{\rm start})$; $k_{\rm end}$ chosen in such a way guarantees that the integration range is sufficiently wide to cover significant part of the \fff power in $k$-space.
 Integration range in $\omega$ space was chosen between values starting from 
 %MJK Should use some normalized numbers, and these do not match with the nu of the figure.
 14.45 and ending at 29.03, 
 %MJK
-where the significant part of the $f$-mode power resides. 
+where the significant part of the \fff power resides. 
 %MJK 
-As the end result, we have computed the f-mode energy
+As the end result, we have computed the \fff energy
 %MJK Must be beautified
 \begin{equation}
 E_f=
@@ -362,7 +362,7 @@ E_f=
 \sum_{\mbox{$\omega_{\rm min}$}}^{\mbox{$\omega_{\rm max}$}} P(\omega,k)
 \end{equation}
 After completing the described steps in the CSC supercomputing
-environment, we had collected a total of \todo{18327 number to be updated for final version!} $f$-mode 
+environment, we had collected a total of \todo{18327 number to be updated for final version!} \fff 
 %powers 
 energies
 for patches close to central meridian over all latitudes covering 
@@ -375,22 +375,22 @@ most of Cycle 24 and the ascending phase of Cycle 25.
 \begin{figure}\centering
 	\includegraphics[width=1.0\linewidth,trim={0cm 0.4cm 0cm 0.3cm},clip=TRUE]{ring_diagram}\\
 	\includegraphics[width=1.0\linewidth,trim={0cm 0cm 0cm 1cm},clip=TRUE]{az_avg_spec}
-	\caption{Top: example of quiet-sun ring diagram at $\nu=3.56$. Bottom: spectrum obtained by azimuthally averaging the ring diagram. The red vertical line marks the position of the maximum of the $f$-mode and the black vertical lines the range of integration.}
+	\caption{Top: example of quiet-sun ring diagram at $\nu=3.56$. Bottom: spectrum obtained by azimuthally averaging the ring diagram. The red vertical line marks the position of the maximum of the \fff and the black vertical lines the range of integration.}
 	\label{ring_diagram}
 \end{figure}
 
-\subsubsection*{Orbital correction of the $f$-mode power}
+\subsubsection*{Orbital correction of the \fff power}
 
-%AL We have to be consistent. Do we call it f-mode power, strength or area?
+%AL We have to be consistent. Do we call it \fff power, strength or area?
 %NS: strength is perhaps better; we could mention somewhere the strength and power
 %NS: are being used interchangeably, if needed
-Since the $f$-mode power is computed from the \los{} dopplergrams, its value depends strongly on the viewing geometry. This dependence,  roughly following the cosine of the solar latitude for data taken at the central meridian, is additionally modulated by the orbital motion of the Earth around the Sun, which changes the viewing angle at any given solar latitude by $\approx\pm7^\circ$ during one year. We compensated for this periodic variation by fitting the parameters ($x_0(\lambda), ..., x_3(\lambda)$) of the following function to all observations of a given latitude $\lambda$:
+Since the \fff power is computed from the \los{} dopplergrams, its value depends strongly on the viewing geometry. This dependence,  roughly following the cosine of the solar latitude for data taken at the central meridian, is additionally modulated by the orbital motion of the Earth around the Sun, which changes the viewing angle at any given solar latitude by $\approx\pm7^\circ$ during one year. We compensated for this periodic variation by fitting the parameters ($x_0(\lambda), ..., x_3(\lambda)$) of the following function to all observations of a given latitude $\lambda$:
 \begin{equation}
 \label{eq:orbitcorr}
 A_{\mbox{corr}}(\lambda) = x_0(\lambda) (  2 ( (1+\cos(\alpha+x_1(\lambda)))/2)^{x_3(\lambda)}-1   )+ x_2(\lambda),
 \end{equation}
 with $\alpha$ being the phase angle of the Earth defined as the cotangens computed from the $x,y$ barycentric position of the Earth.
-This correction $A_{\mbox{corr}}(\lambda)$ is then subtracted from the computed $f$-mode power, which efficiently removes any yearly variation. 
+This correction $A_{\mbox{corr}}(\lambda)$ is then subtracted from the computed \fff power, which efficiently removes any yearly variation. 
 
 
 
@@ -415,7 +415,7 @@ The average \brms{} value in the \IN{} is in $\approx6$\,G. Using the area of on
 
 
 %\subsection{Butterfly}
-\subsection{Quiet Sun f-mode butterfly diagram}\label{qsf}
+\subsection{Quiet Sun \fff butterfly diagram}\label{qsf}
 
 
 
@@ -424,20 +424,20 @@ $\lambda$ = latitude, $t$=time, \\
 $N_t$ = number of bins in time \\
 $N_\lambda$ = number of bins in latitude, \\
 $n_t$ = total number of time points at a certain latitude, \\
-$N_P$ = number of $f$-mode measurements in a patch, \\
+$N_P$ = number of \fff measurements in a patch, \\
 $\overline{X}$ indicates average over full time span, \\
 $\left< X \right>$ indicates an average in a selected bin, \\
 %AL: The <> would remove the necessity for the subscript _P, 
 % which meant exactly the same
 % I removed all the _P and replaced it by <>
-$f(\lambda,t)$ = $f$-mode strength \\
+$f(\lambda,t)$ = \fff strength \\
 %AL removed _P
-%$\left<f_P\right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean $f$-mode strength 
-$\left< f \right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean $f$-mode strength calculated in patches of $N_t$ and $N_\lambda$ \\
-$\overline{f}(\lambda) = 1/n_t \sum_t f(\lambda,t)$ = temporal mean of the $f$-mode strength, \\
+%$\left<f_P\right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean \fff strength 
+$\left< f \right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean \fff strength calculated in patches of $N_t$ and $N_\lambda$ \\
+$\overline{f}(\lambda) = 1/n_t \sum_t f(\lambda,t)$ = temporal mean of the \fff strength, \\
 %MJK This is what is plotted in the butterfly, and should appear in title/caption.
 %MJK It is further binned for plotting, the explanation of which is still missing, but this should not be here, but in the figure caption.
-$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the $f$-mode.\\
+$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the \fff.\\
 %AL: In the butterfly we plot the binned f'. It is computed like this:
 $\left< f' \right> = \left< f - \overline{f} \right> $ is the same as $f'$, but computed in $N_\lambda \times N_P$ bins. This is the quantity we show in the left panel of \fig{butterfly_lat}.
 %MJK Added
@@ -449,7 +449,7 @@ The average over the bin is necessary to remove the noise from the estimate.
 %AL added
 This quantity $f'_{\rm A} (\lambda)$ is plotted as the orange shaded area in the right panel of \fig{butterfly_lat}.
 
-One measure of the noise contained in the $f$-mode strength is the standard deviation of the fluctuations
+One measure of the noise contained in the \fff strength is the standard deviation of the fluctuations
 around the signal. This is calculated in each bin as
 \begin{equation}
 \sigma= \sqrt{\frac{1}{N_P}\sum_{\mbox{patch}} ( f(\lambda,t)
@@ -460,12 +460,12 @@ From this we form the average error at each latitude by taking an average over t
 This quantity is plotted as the error bar in the right panel of \fig{butterfly_lat}.
 
 %NO Adding some words how we verified significance
-As the average error described above does not necessarily prove that the patterns seen in the left panel of \fig{butterfly_lat} are statistically significant, we did more detailed analysis and estimated the significance of $\left< f' \right>$ for each patch separately. The following test was made: For all quiet-sun patches we computed the power of noise in the azimuthally averaged spectra similarly as for $f$-modes. We assumed that noise level is independent of $k$ and selected the region towards higher $k$ values, where the $f$-mode is already decayed. Then we calculated fluctuations in the noise power $\left< f'_{\rm noise} \right>$ in an identical manner as for $\left< f' \right>$.
+As the average error described above does not necessarily prove that the patterns seen in the left panel of \fig{butterfly_lat} are statistically significant, we did more detailed analysis and estimated the significance of $\left< f' \right>$ for each patch separately. The following test was made: For all quiet-sun patches we computed the power of noise in the azimuthally averaged spectra similarly as for \fff. We assumed that noise level is independent of $k$ and selected the region towards higher $k$ values, where the \fff is already decayed. Then we calculated fluctuations in the noise power $\left< f'_{\rm noise} \right>$ in an identical manner as for $\left< f' \right>$.
 The analysis showed that for all patches $\left< f'_{\rm noise} \right>$ was an order of magnitude weaker than the corresponding $\left< f' \right>$.
 
 
 
-\colfigtwocol{butterfly_lat}{Butterfly diagram of $f$-mode strength computed from azimuthal average of the ring diagram (left panel). The latitudinal average over time, displayed in the right panel, was removed for better visibility of the variation. The error bar, plotted on the latitudinal average of the $f$-mode strength, represents the time averaged standard deviation of the fluctuations of the $f$-mode strength around the signal for every bin ($\overline{\sigma (\lambda)}$). The orange shaded area shows the amplitude of the solar cycle variation ($f'_A(\lambda)$). }
+\colfigtwocol{butterfly_lat}{Butterfly diagram of \fff strength computed from azimuthal average of the ring diagram (left panel). The latitudinal average over time, displayed in the right panel, was removed for better visibility of the variation. The error bar, plotted on the latitudinal average of the \fff strength, represents the time averaged standard deviation of the fluctuations of the \fff strength around the signal for every bin ($\overline{\sigma (\lambda)}$). The orange shaded area shows the amplitude of the solar cycle variation ($f'_A(\lambda)$). }
 %The horizontal lines in the colorbar indicate $\pm \overline{\sigma_P}(\lambda)$.
 
 \colfigtwocol{butterfly_lat_FFOV_KX0}{Same as \fig{butterfly_lat}, computed from a wedge of $\pm10^\circ$ around the $k_y$ axis, representing the poloidal component.\label{butkx0}}
@@ -477,19 +477,19 @@ The analysis showed that for all patches $\left< f'_{\rm noise} \right>$ was an 
 %MJK
 %quiet-Sun 
 QS
-$f$-mode power determined
+\fff power determined
 from $15\degree \times 15\degree$ patches that showed only weak, small-scale magnetic structures.
 %MJK
-To compute the f-mode power, we have used the whole ring diagram data.
+To compute the \fff power, we have used the whole ring diagram data.
 %MJK
 Temporally averaged profile in latitude is removed for highlighting the variation in the
-$f$-mode power. The period covered is somewhat larger than the 11 year solar cycle~24, which
+\fff power. The period covered is somewhat larger than the 11 year solar cycle~24, which
 began to show some magnetic activity from early 2010; this cycle ended by around 2020.
-Broadly, we find an anti-correlation of the $f$-mode strength with the activity cycle of the
-Sun --- during the solar minimum and early rising phase ($\sim 2010-12$), the $f$-mode strengths
+Broadly, we find an anti-correlation of the \fff strength with the activity cycle of the
+Sun --- during the solar minimum and early rising phase ($\sim 2010-12$), the \fff strengths
 are larger, and around cycle maximum\footnote{the Sun reached its peak magnetic activity
 in terms of number of sunspots during the cycle~24 in April 2014.} to the declining phase,
-the $f$-mode power is suppressed.
+the \fff power is suppressed.
 %AL 
 %This correlation is strongest at the solar equator, and decreases with higher latitudes.
 %NS: modified a bit so that it is easier to relate with magnetic field which are
@@ -497,8 +497,8 @@ the $f$-mode power is suppressed.
 This correlation is strongest near the solar equator, within about $\pm 20\degree$ in
 latitude, and it decreases with higher latitudes.
 %AL
-Interestingly, we observe a temporal shift in the $f$-mode butterfly diagram with respect to the
-solar cycle, such that the minimum of the $f$-mode occurs later, i.e., in the declining phase of
+Interestingly, we observe a temporal shift in the \fff butterfly diagram with respect to the
+solar cycle, such that the minimum of the \fff occurs later, i.e., in the declining phase of
 %MJK
 %the cycle.
 Cycle 24, roughly around the end of the year 2016.
@@ -506,16 +506,16 @@ Cycle 24, roughly around the end of the year 2016.
 
 
 %MJK New para; describing the rest of our observations.
-During mid-2017, we see weak strengthening of the f-mode strength to commence. During the minimum (2018-2019) between the Cycles 24 and 25, the strengthening appears stronger in the higher latitudes. It also continues after the minimum, when Cycle 25 has already started its ascending phase. What is also noteworthy is that the f-mode strength never rises as high as the values observed during the ascending phase of Cycle 24 (2011-2012).
+During mid-2017, we see weak strengthening of the \fff strength to commence. During the minimum (2018-2019) between the Cycles 24 and 25, the strengthening appears stronger in the higher latitudes. It also continues after the minimum, when Cycle 25 has already started its ascending phase. What is also noteworthy is that the \fff strength never rises as high as the values observed during the ascending phase of Cycle 24 (2011-2012).
 %MJK
 
-%MJK We also need to show the scatterplot of Brms vs. f-mode per year.
+%MJK We also need to show the scatterplot of Brms vs. \fff per year.
 
 %MJK
-Next we investigate whether constructing the f-mode power near
+Next we investigate whether constructing the \fff power near
 the ring axes will affect the results. Such a difference could be caused by the underlying magnetic field running in a preferred direction. 
 %MJK
-\Fig{butkx0} shows the butterfly near the $k_x$=0 axis, $f_{k_{y}}$, tracing f-mode sensitivity on the poloidal component of the
+\Fig{butkx0} shows the butterfly near the $k_x$=0 axis, $f_{k_{y}}$, tracing \fff sensitivity on the poloidal component of the
 magnetic field, and \Fig{butky0} the same near the $k_y$=0 axis,
 $f_{k_{x}}$, tracing the sensitivity to the toroidal field. Interestingly,
 differences can be observed. First of all, the variability in
@@ -536,28 +536,28 @@ seen around the the solar maximum. This is followed by weak signs
 of quenching during the descending and minimum phase. Enhancement
 is again observed during the ascending phase of Cycle 25, especially
 in the North. The Southern hemisphere shows generally weaker
-patterns than the North in all f-mode components.
+patterns than the North in all \fff components.
 
 %AL removed this figure
 %\colfig{butterfly_lat_old}{Old version of the diagram, showing the attempts to define the error, and matching the color description from equations (1)-(4).}
 
-\subsection{AR f-mode with QS calibration}\label{arf}
+\subsection{AR \fff with QS calibration}\label{arf}
 
 %MJK Added
-In this section we compare the f-mode time evolution in 
+In this section we compare the \fff time evolution in 
 two ARs (11130 in \Fig{AR11130_track} and AR11105 in \Fig{AR11105_track}), that were reported to show an enhancement both in \cite{SRB16} and \cite{Waidele22} w.r.t. a QS control patch
 in the opposite hemisphere. The main difference in our analysis
-is that the f-mode strength is now normalized to the QS level
+is that the \fff strength is now normalized to the QS level
 at the specific averaged time bin and the averaged latitudinal
 value of the tracked cubes. 
-f-mode strength of 1 is hence
+\fff strength of 1 is hence
 equivalent to that QS level, and values stronger/weaker 
-indicate enhancement/quenching of the f-mode w.r.t. QS.
+indicate enhancement/quenching of the \fff w.r.t. QS.
 Another difference is that we use the
-full ring diagram when computing the f-mode strength, while the
+full ring diagram when computing the \fff strength, while the
 other papers used only $k_x=0$ cuts. We have, however, performed
 analysis with $k_x=0$ and $k_y=0$ cuts, and see no significant
-difference between the two, unlike in the QS f-mode. 
+difference between the two, unlike in the QS \fff. 
 %MJK Should somewhere discuss why this is.
 
 As per the longitudinal normalization, we use two different
@@ -570,7 +570,7 @@ The gray shaded areas indicate the QS (some) $\sigma$ level
 QS variability, and hence give an indication of the significance
 of the AR signal w.r.t the QS one.
 The difference between these two calibrations is evident from the
-rightmost panels of the f-mode butterflies. The cosine calibration
+rightmost panels of the \fff butterflies. The cosine calibration
 curve (green) does not fit the data well at larger longitudes,
 but is decreasing there less strongly than the data. 
 The Gaussian fit to the QS
@@ -579,7 +579,7 @@ employed calibration curve (black) decreases steeper toward the
 limb. 
 
 As can be seen
-from the AR f-mode plots, the effect of the Gaussian calibration is
+from the AR \fff plots, the effect of the Gaussian calibration is
 to flatten the region of postulated enhancement, in the case of AR11130
 removing any signs of it. This analysis shows that the transient
 and weak enhancement signal is very sensitive to the calibration
@@ -591,7 +591,7 @@ detecting the enhancement.
 %MJK
 
 %AL adding two AR plots as placeholders. Needs to be discussed what should be shown
-\colfig{AR11130_track}{$f$-mode strength (top) and $B_{\mbox{rms}}$ (bottom) for AR11130. Orange: quiet-Sun calibration, blue: cosine calibration.}
+\colfig{AR11130_track}{\fff strength (top) and $B_{\mbox{rms}}$ (bottom) for AR11130. Orange: quiet-Sun calibration, blue: cosine calibration.}
 \colfig{AR11105_track}{Same as \fig{AR11130_track}, but for AR11105.}
 %AL
 
@@ -599,19 +599,19 @@ detecting the enhancement.
 
 %NS: added for anticorrelation; could be speculative, so please check and change as needed
 %NS: a bit rushed writing as well, but it can be polished later
-Anticorrelation of the $f$-mode strength with the solar cycle as seen in \fig{butterfly_lat}
+Anticorrelation of the \fff strength with the solar cycle as seen in \fig{butterfly_lat}
 is expected, as the magnetic fields of ARs tend to absorb the modes resulting in the
-$f$-mode damping which has been reported in a number of earlier works
+\fff damping which has been reported in a number of earlier works
 \citep{Cally+94,CB97,SRB16}. Transient effects, such as the strengthening of the mode
 prior to emergence of ARs as found in \citet{SRB16}, are washed out in such a study aimed
-at global behavior of $f$-mode over the whole cycle. Relevant effect here is the damping
+at global behavior of \fff over the whole cycle. Relevant effect here is the damping
 caused by the presence of ARs. This is a nonlocal effect where quiet patches in the
-vicinity of ARs too display the damping of the $f$-mode. This hypothesis was tested
+vicinity of ARs too display the damping of the \fff. This hypothesis was tested
 by a detailed analysis of a magnetically quiet patch next to AR~12529; figures 11 and 12
 in \citet{SRB16}. This is further established in the present work, where, though only the
 quiet patches are selected in the analysis, damping around the time of solar maximum is
 nevertheless observed, as there are a large number of ARs present on the surface during this
-phase, thus nonlocally affecting the strengths of the $f$-mode.
+phase, thus nonlocally affecting the strengths of the \fff.
 %NS.
 
 %NS: adding for now as a subsection, but can be changed later
@@ -619,7 +619,7 @@ phase, thus nonlocally affecting the strengths of the $f$-mode.
 %NS: see if you agree, feel free to remove if you don't
 %MJK I do agree with the importance of the toroidal subsurface 
 %MJK (horizontal) field. In the patches that are used to compute
-%MJK the f-mode from, there are no AR vertical fields, but 
+%MJK the \fff from, there are no AR vertical fields, but 
 %MJK magnetic fluctuations from SSD and tangling from the large-scale
 %MJK horizontal field. If the latter is stronger, then one might
 %MJK expect what you describe as the delayed damping due to the
@@ -630,12 +630,12 @@ phase, thus nonlocally affecting the strengths of the $f$-mode.
 %MJK degradation could easily produce something similar, hence
 %MJK I think we cannot make too strong statements.
 %AL The new KXY0 butterflies show exactly this: The toroidal field seems to be
-%AL stronger in cycle 25 (reduced f-mode around 2021 compared to 2010).
+%AL stronger in cycle 25 (reduced \fff around 2021 compared to 2010).
 
-\subsection{Dynamo origin of the shift in the $f$-mode butterfly diagram}
-We speculate here on the origin of shift observed in the $f$-mode butterfly diagram
+\subsection{Dynamo origin of the shift in the \fff butterfly diagram}
+We speculate here on the origin of shift observed in the \fff butterfly diagram
 with respect to the solar cycle; see \fig{butterfly_lat}.
-Series of earlier numerical and observational works have established that the $f$-mode can be
+Series of earlier numerical and observational works have established that the \fff can be
 significantly perturbed in the presence of magnetic fields \citep{S+14,S+15,SRB16,S+20}.
 %NS: appears too much of self-citation above; will select only most relevant ones later
 In turbulent dynamo theory, the magnetic fields grow under the constraint of magnetic helicity
@@ -649,14 +649,14 @@ It is thus expected in this scenario that the diffuse large-scale component of t
 becomes stronger \emph{after} the maximum of the magnetic cycle, as the cycle-maximum corresponds
 only to the largest number of ARs during that cycle, and not necessarily to the strongest field
 strengths. Such diffuse fields will suppress the vertical motions as has been seen in \citet{S+15}
-based on idealized simulations, and will therefore further damp the $f$-mode.
+based on idealized simulations, and will therefore further damp the \fff.
 To argue more simply, let us consider ARs as sites of vertical fields which maximize during the
 solar maximum. On the other hand, diffused fields, that are rejuvenated after the cycle-maximum due
 to AR-driven shedding of small-scale magnetic helicity, may be modelled in terms of horizontal
 magnetic fields. Whereas both vertical as well horizontal fields lead to the damping of the
-$f$-mode, the mechanisms involved are different: AR or the vertical fields couple different layers
+\fff, the mechanisms involved are different: AR or the vertical fields couple different layers
 of the Sun and act as absorbers of the surface mode power, the horizontal fields simply suppress the
-vertical motions leading to lesser amplitudes for the $f$-mode.
+vertical motions leading to lesser amplitudes for the \fff.
 %NS.
 
 \begin{acknowledgements}
@@ -676,14 +676,14 @@ Error definitions:\\
 $\lambda$ = latitude, $t$=time, \\
 $N_t$ = number of bins (time), \\
 $N_\lambda$ = number of bins (latitude), \\
-$N_P$ = number of $f$-mode measurements in a patch, \\
+$N_P$ = number of \fff measurements in a patch, \\
 $\overline{X}$ indicates average over time, \\
-$f(\lambda,t)$ = $f$-mode strength (unbinned)\\
-$f_P(\lambda,t)$ = $f$-mode strength in latitude / time bins (patches)\\
-$\overline{f}(\lambda) = 1/N_t \sum_t f(\lambda,t)$ = temporal mean of the $f$-mode strength (unbinned)\\ 
-$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the $f$-mode (unbinned)\\
+$f(\lambda,t)$ = \fff strength (unbinned)\\
+$f_P(\lambda,t)$ = \fff strength in latitude / time bins (patches)\\
+$\overline{f}(\lambda) = 1/N_t \sum_t f(\lambda,t)$ = temporal mean of the \fff strength (unbinned)\\ 
+$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the \fff (unbinned)\\
 $\overline{f_P}(\lambda) = 1/N_t \sum_t f_P(\lambda,t)$ = temporal mean of 
-$f$-mode strength (in lat / time bins), \\
+\fff strength (in lat / time bins), \\
 $f'_P=f_P-\overline{f_P}$ is, correspondingly, the binned fluctuation\\
 
 %AL added this
@@ -693,7 +693,7 @@ The following 4 definitions represent what is plotted in \fig{butterfly_lat_old}
 %AL added the subsript cyc to indicate that this sigma is computed  over the whole cycle, and to distinguish it from \sigma_P
 %$\sigma(\lambda)$ 
 $\sigma_{\mbox{cyc}}(\lambda)$ 
-(red shaded area): this quantity displays the variation of the $f$-mode over the solar cycle.
+(red shaded area): this quantity displays the variation of the \fff over the solar cycle.
 %AL added
 the subscript 'cyc' should indicate that this variation includes also the solar cycle variation. This distinguishes it from $\sigma_P$ defined below, which does not contain the solar cycle variation.
 \begin{equation}
@@ -720,7 +720,7 @@ hence equalling to the rms value of $f'_P$ (without taking the square root).
 \overline{\sigma}_{\mbox{mm}}(\lambda) = [ \overline{ \min_t (f(\lambda,t)) }, \overline{ \max_t (f(\lambda,t)) }] -\overline{f}(\lambda)
 \end{equation}
 
-\item mean(sdev(patch)) $\overline{\sigma_P}$ (error bars): the standard deviation of the $f$-mode strength
+\item mean(sdev(patch)) $\overline{\sigma_P}$ (error bars): the standard deviation of the \fff strength
 %AL added this
 ($f(\lambda,t)$)
 %AL
@@ -731,13 +731,13 @@ hence equalling to the rms value of $f'_P$ (without taking the square root).
 - f_P(\lambda,t) )^2,
 \end{eqnarray} 
 %AL added this
-where $\sum_{\mbox{patch}}$ indicates the summation over all $f$-mode strengths within a patch, and $f_P(\lambda,t)$ being the mean $f$-mode strength in this patch. The patch size must be chosen small enough to not contain a significant variation in latitude or solar cycle. 
+where $\sum_{\mbox{patch}}$ indicates the summation over all \fff strengths within a patch, and $f_P(\lambda,t)$ being the mean \fff strength in this patch. The patch size must be chosen small enough to not contain a significant variation in latitude or solar cycle. 
 This quantity $\overline{\sigma_P}(\lambda)$ is displayed as the orange shaded area in \fig{butterfly_lat}.\\
 %MJK Added this
 This quantity is, therefore, a mean of the $f'_{P, {\rm rms}}$ (so this time also taking the square root) values in individual bins. The problem is that the quantity we are interested in inspecting, and defining the significance of, is now defining the error bar of the measurement. 
 %MJK
 %AL comment:
-%My definition is maybe poor. Yes, I think it should be simply called the 'average rms fluctuation of the f-mode strength over 2 months' (in the above plot the patch size in time is 2 months).
+%My definition is maybe poor. Yes, I think it should be simply called the 'average rms fluctuation of the \fff strength over 2 months' (in the above plot the patch size in time is 2 months).
 \end{itemize}
 \subsection*{All the stuff above this line not needed !!!}
 \color{black}
