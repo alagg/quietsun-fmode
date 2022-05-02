@@ -433,7 +433,12 @@ The average \brms{} value in the \IN{} is in $\approx6$\,G. Using the area of on
 \colfig{Brms-lat00-percentile}{\brms{} determined from the most quiet patches from 2010 to 
 %2021 
 2022
-at disk center. The patches of 15$^\circ$ size in longitude and latitude contain network and \IN{} fields. The solid red lines display the 97\% percentile level, the dashed, gray line the mode of a log-normal fit to yearly-binned data moved in a sliding window of 100 days length.}
+at disk center. The patches of 15$^\circ$ size in longitude and latitude contain network and \IN{} fields. The solid red lines display the 97\% percentile level, the dashed, gray line the mode of a log-normal fit to yearly-binned data moved in a sliding window of 100 days length.
+%MJK
+For all values of $\omega$ the magnitude of $P$ is always an order of magnitude higher than
+the noise level outside the considered location of the ring.
+%MJK
+}
 
 
 %MJK Axis labels
@@ -457,38 +462,43 @@ $\left< X \right>$ indicates an average in a selected bin, \\
 %AL: The <> would remove the necessity for the subscript _P, 
 % which meant exactly the same
 % I removed all the _P and replaced it by <>
-$f(\lambda,t)$ = \fff energy, \ef, as function of latitude and time \\
+%MJK This is not needed; f==E_f
+%\%$f(\lambda,t)$ = \fff energy, \ef, as function of latitude and time \\
 %AL removed _P
 %$\left<f_P\right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean \fff strength 
-$\left< f \right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean \fff strength calculated in patches of $N_t$ and $N_\lambda$ \\
-$\overline{f}(\lambda) = 1/n_t \sum_t f(\lambda,t)$ = temporal mean of the \fff strength, \\
+%$\left< f \right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean \fff strength calculated in patches of $N_t$ and $N_\lambda$ \\
+$\left<\mef \right>=1/N_P \sum_{N_P} \mef (\lambda,t)$ = mean \fff strength calculated in patches of $N_t$ and $N_\lambda$ \\
+%$\overline{f}(\lambda) = 1/n_t \sum_t f(\lambda,t)$ = temporal mean of the \fff strength, \\
+$\overline{\mef}(\lambda) = 1/n_t \sum_t \mef(\lambda,t)$ = temporal mean of the \fff strength, \\
 %MJK This is what is plotted in the butterfly, and should appear in title/caption.
 %MJK It is further binned for plotting, the explanation of which is still missing, but this should not be here, but in the figure caption.
-$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the \fff.\\
+%$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the \fff.\\\
+$\mef'=\mef-\overline{\mef}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the \fff.\\
 %AL: In the butterfly we plot the binned f'. It is computed like this:
-$\left< f' \right> = \left< f - \overline{f} \right> $ is the same as $f'$, but computed in $N_\lambda \times N_P$ bins. This is the quantity we show in the left panel of \fig{butterfly_lat}.
+$\left< \mef' \right> = \left< \mef - \overline{\mef} \right> $ is the same as $\mef'$, but computed in $N_\lambda \times N_P$ bins. This is the quantity we show in the left panel of \fig{butterfly_lat}.
 %MJK Added
-We assume that the solar cycle variation is a sinusoidal function, the amplitude of which can be approximated as 
+%We assume that the solar cycle variation is a sinusoidal function, the amplitude of which can be approximated as 
 %AL Would it be more correct if we also use <> around the quantity f'_A?
-$f'_{\rm A} (\lambda) = 
-\sqrt{2} \sqrt{\left<{f'^2}\right>}$. 
-The average over the bin is necessary to remove the noise from the estimate.
+%${\mef'}_{\rm A} (\lambda) = 
+%\sqrt{2} \sqrt{\left<{\mef'^2}\right>}$. 
+%The average over the bin is necessary to remove the noise from the estimate.
 %AL added
-This quantity $f'_{\rm A} (\lambda)$ is plotted as the orange shaded area in the right panel of \fig{butterfly_lat}.
+%This quantity ${\mef'}_{\rm A} (\lambda)$ is plotted as the orange shaded area in the right panel of \fig{butterfly_lat}.
 
 One measure of the noise contained in the \fff strength is the standard deviation of the fluctuations
 around the signal. This is calculated in each bin as
 \begin{equation}
-\sigma= \sqrt{\frac{1}{N_P}\sum_{\mbox{patch}} ( f(\lambda,t)
-- \left<f_P\right>)^2}.
+\sigma= \sqrt{\frac{1}{N_P}\sum_{\mbox{patch}} ( \mef(\lambda,t)
+- \left<{\mef} \right>)^2}.
 \end{equation}
 From this we form the average error at each latitude by taking an average over time and denote as $\overline{\sigma}$. 
 %AL added
 This quantity is plotted as the error bar in the right panel of \fig{butterfly_lat}.
 
 %NO Adding some words how we verified significance
-As the average error described above does not necessarily prove that the patterns seen in the left panel of \fig{butterfly_lat} are statistically significant, we did more detailed analysis and estimated the significance of $\left< f' \right>$ for each patch separately. The following test was made: For all quiet-sun patches we computed the power of noise in the azimuthally averaged spectra similarly as for \fff. We assumed that noise level is independent of $k$ and selected the region towards higher $k$ values, where the \fff is already decayed. Then we calculated fluctuations in the noise power $\left< f'_{\rm noise} \right>$ in an identical manner as for $\left< f' \right>$.
-The analysis showed that for all patches $\left< f'_{\rm noise} \right>$ was an order of magnitude weaker than the corresponding $\left< f' \right>$.
+%MJK Maybe we do not need this anymore
+%As the average error described above does not necessarily prove that the patterns seen in the left panel of \fig{butterfly_lat} are statistically significant, we did more detailed analysis and estimated the significance of $\left< f' \right>$ for each patch separately. The following test was made: For all quiet-sun patches we computed the power of noise in the azimuthally averaged spectra similarly as for \fff. We assumed that noise level is independent of $k$ and selected the region towards higher $k$ values, where the \fff is already decayed. Then we calculated fluctuations in the noise power $\left< f'_{\rm noise} \right>$ in an identical manner as for $\left< f' \right>$.
+%The analysis showed that for all patches $\left< f'_{\rm noise} \right>$ was an order of magnitude weaker than the corresponding $\left< f' \right>$.
 
 
 
