@@ -298,12 +298,80 @@ The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a 
 
 %AL: TODO details of the tracking: Central coordinate from quiet region selection, Harsha's parameters. $300\times 300$ pixels, 8 hrs ... 
 
+%MJK To be decided how we refer to the final number obtained.
+%MJK Nishant16 called that f-mode energy, and used E_f for it.
+%MJK As we are practically computing the same number, then 
+%MJK we should possibly stick to using the same notation.
+%MJK Main data product is the normalized E_f, for which
+%MJK we could continue using the tilded quantity.
+%
+%MJK The lower panel should have P(omega,k) on the y-axis
+%MJK Here the background is already subtracted? 
+%MJK Explanation of its removal was not yet included, now
+%MJK added something preliminary. Should we also show the
+%MJK non-subtracted spectrum? 
 \subsection{Computation of the $f$-mode power}
 
-In the CSC environment, subsequent processing involved calculating the 3d power spectra for each dopplergram cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$ (see \fig{ring_diagram}). Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra. Such averaging is justified for the quiet-sun spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. From the obtained spectra $f$-mode was easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$-mode. 
-Integration range in $k$ space was selected for each constant $\omega$ in a following way: first the maximum of $f$-mode $k_{\rm max}$ and the minimum between $f$-mode and first $p$-mode $k_{\rm start}$ were detected; $k_{\rm start}$ was chosen as the start of integration range and the end of the integration range $k_{\rm end}$ was set as $k_{\rm end}=k_{\rm max}+2(k_{\rm max}-k_{\rm start})$; $k_{\rm end}$ chosen in such a way guarantees that the integration range is sufficiently wide to cover significant part of the $f$-mode power in $k$-space.
-Integration range in $\omega$ space was chosen between values starting from 14.45 and ending at 29.03, where the significant part of the $f$-mode power resides. After completing described steps we had collected total of \todo{18327 number to be updated for final version!} $f$-mode powers for patches close to central meridian over all latitudes covering the full solar cycle.
+%In the CSC environment, 
+%MJK
+Subsequent processing involved calculating the 3d power spectra for each dopplergram cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$,
+%MJK
+to obtain $P_{\omega,k}$. An illustrative case for a frequency
+value at which f-mode is strong, is shown in 
+%(see 
+\fig{ring_diagram},
+%MJK
+upper panel.
+%MJK
+Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra,
+%. 
+%MJK
+an example being shown in the lower panel of \fig{ring_diagram};
+in this kind of a plot, the f-mode is the rightmost peak at the highest $k$ values.
+%MJK
+%Such 
+The
+averaging 
+performed
+is justified for the 
+%quiet-sun 
+QS
+spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. 
+%MJK Reforms, easily does not tell anything.
+%From the obtained spectra $f$-mode was
+%easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the $f$-mode.
+To obtain the total energy contained in the f-mode, $E_f$, we
+performed another integration over the separated f-mode signal.
+In contrast to earlier studies \citet{SRB16,Waidele22}, we
+did not perform fitting to the f-mode for its extraction. 
+Instead, we only fitted the background, and subtracted this 
+contribution.
+Then,
+an integration range in $k$ space was selected for each constant $\omega$ in a following way: first the maximum of $f$-mode $k_{\rm max}$ and the minimum between $f$-mode and first $p$-mode $k_{\rm start}$ were detected; $k_{\rm start}$ was chosen as the start of integration range and the end of the integration range $k_{\rm end}$ was set as $k_{\rm end}=k_{\rm max}+2(k_{\rm max}-k_{\rm start})$; $k_{\rm end}$ chosen in such a way guarantees that the integration range is sufficiently wide to cover significant part of the $f$-mode power in $k$-space.
+Integration range in $\omega$ space was chosen between values starting from 
+%MJK Should use some normalized numbers, and these do not match with the nu of the figure.
+14.45 and ending at 29.03, 
+%MJK
+where the significant part of the $f$-mode power resides. 
+%MJK 
+As the end result, we have computed the f-mode energy
+%MJK Must be beautified
+\begin{equation}
+E_f=
+\sum_{\mbox{$k_{\rm start}$}}^{\mbox{$k_{\rm end}$}}
+\sum_{\mbox{$\omega_{\rm min}$}}^{\mbox{$\omega_{\rm max}$}} P(\omega,k)
+\end{equation}
+After completing the described steps in the CSC supercomputing
+environment, we had collected a total of \todo{18327 number to be updated for final version!} $f$-mode 
+%powers 
+energies
+for patches close to central meridian over all latitudes covering 
+%the full solar cycle.
+most of Cycle 24 and the ascending phase of Cycle 25.
 
+%MJK The figure and caption still say "nu" for frequency. I propose
+%MJK we revert to omega.
+%MJK Also, the resolution of the upper panel is poor.
 \begin{figure}\centering
 	\includegraphics[width=1.0\linewidth,trim={0cm 0.4cm 0cm 0.3cm},clip=TRUE]{ring_diagram}\\
 	\includegraphics[width=1.0\linewidth,trim={0cm 0cm 0cm 1cm},clip=TRUE]{az_avg_spec}
