@@ -529,12 +529,41 @@ the noise level outside the considered location of the ring.
 %Definitions:\\
 %$\lambda$ = latitude, $t$=time, \\
 %MJK
-$N_t$ = number of bins in time \\
-$N_\lambda$ = number of bins in latitude, \\
-$n_t$ = total number of time points at a certain latitude, \\
-$N_P$ = number of \ef measurements in a patch, \\
-$\overline{X}$ indicates average over full time span, \\
-$\left< X \right>$ indicates an average in a selected bin, \\
+%MJK
+To investigate whether the \fff energy has any significant solar cycle dependence, we construct butterfly-diagram-like plots by computing and removing the temporal mean, and plotting the so-obtained data in a binned latitude-time diagram. 
+We compute the temporal mean over the whole time series as 
+\begin{equation}
+    \overline{\mef}(\lambda) = 1/n_t \sum_t \mef(\lambda,t),
+\end{equation}
+where $n_t$ is the total number of time points at a certain $\lambda$, and denote it with an overbar. Next, we compute the variation of the \fff energy around this level, defined as
+\begin{equation}
+    \mef'(\lambda,t)=\mef(\lambda,t)-\overline{\mef}(\lambda),
+\end{equation}
+and plot this quantity as function of latitude and time as in \Fig{butterfly_lat}, with a 3-month binning in time and roughly 6 degrees in latitude. 
+
+To estimate whether this variation is significant w.r.t. noise, we will use the standard deviation of the data in a patch.
+We take $N_t$ bins in time, $N_\lambda$ in latitude, and denote the number of \ef measurements contained in such a patch by $N_P$. We compute the average \fff energy in a patch as
+\begin{equation}
+\langle \mef \rangle=1/N_P \sum_{N_P} \mef (\lambda,t).
+\end{equation}
+Then we can straightforwardly calculate the standard deviation as
+\begin{equation}
+\sigma= \sqrt{\frac{1}{N_P}\sum_{\mbox{patch}} ( \mef(\lambda,t)
+- \left<{\mef} \right>)^2}.
+\end{equation}
+From this we form the average error at each latitude by taking an average over time and denote as $\overline{\sigma}$. 
+%AL added
+This quantity is plotted as the error bar in the right panel of \fig{butterfly_lat} and similar plots.
+%MJK This still holds
+By inspecting the level of variability around the temporal mean and the mean error we must conclude that the signal is above the noise level, but not by a great amount. Hence, the signal is very weak, but it is still meaningful to proceed with the analysis.
+%MJK
+
+%$N_t$ = number of bins in time \\
+%$N_\lambda$ = number of bins in latitude, \\
+%$n_t$ = total number of time points at a certain latitude, \\
+%$N_P$ = number of \ef measurements in a patch, \\
+%$\overline{X}$ indicates average over full time span, \\
+%$\left< X \right>$ indicates an average in a selected bin, \\
 %AL: The <> would remove the necessity for the subscript _P, 
 % which meant exactly the same
 % I removed all the _P and replaced it by <>
@@ -543,15 +572,15 @@ $\left< X \right>$ indicates an average in a selected bin, \\
 %AL removed _P
 %$\left<f_P\right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean \fff strength 
 %$\left< f \right>=1/N_P \sum_{N_P} f (\lambda,t)$ = mean \fff strength calculated in patches of $N_t$ and $N_\lambda$ \\
-$\left<\mef \right>=1/N_P \sum_{N_P} \mef (\lambda,t)$ = mean \fff strength calculated in patches of $N_t$ and $N_\lambda$ \\
+%$\left<\mef \right>=1/N_P \sum_{N_P} \mef (\lambda,t)$ = mean \fff strength calculated in patches of $N_t$ and $N_\lambda$ \\
 %$\overline{f}(\lambda) = 1/n_t \sum_t f(\lambda,t)$ = temporal mean of the \fff strength, \\
-$\overline{\mef}(\lambda) = 1/n_t \sum_t \mef(\lambda,t)$ = temporal mean of the \fff strength, \\
+%$\overline{\mef}(\lambda) = 1/n_t \sum_t \mef(\lambda,t)$ = temporal mean of the \fff strength, \\
 %MJK This is what is plotted in the butterfly, and should appear in title/caption.
 %MJK It is further binned for plotting, the explanation of which is still missing, but this should not be here, but in the figure caption.
 %$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the \fff.\\\
-$\mef'=\mef-\overline{\mef}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the \fff.\\
+%$\mef'=\mef-\overline{\mef}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the \fff.\\
 %AL: In the butterfly we plot the binned f'. It is computed like this:
-$\left< \mef' \right> = \left< \mef - \overline{\mef} \right> $ is the same as $\mef'$, but computed in $N_\lambda \times N_P$ bins. This is the quantity we show in the left panel of \fig{butterfly_lat}.
+%$\left< \mef' \right> = \left< \mef - \overline{\mef} \right> $ is the same as $\mef'$, but computed in $N_\lambda \times N_P$ bins. This is the quantity we show in the left panel of \fig{butterfly_lat}.
 %MJK Added
 %We assume that the solar cycle variation is a sinusoidal function, the amplitude of which can be approximated as 
 %AL Would it be more correct if we also use <> around the quantity f'_A?
@@ -561,15 +590,16 @@ $\left< \mef' \right> = \left< \mef - \overline{\mef} \right> $ is the same as $
 %AL added
 %This quantity ${\mef'}_{\rm A} (\lambda)$ is plotted as the orange shaded area in the right panel of \fig{butterfly_lat}.
 
-One measure of the noise contained in the \fff strength is the standard deviation of the fluctuations
-around the signal. This is calculated in each bin as
-\begin{equation}
-\sigma= \sqrt{\frac{1}{N_P}\sum_{\mbox{patch}} ( \mef(\lambda,t)
-- \left<{\mef} \right>)^2}.
-\end{equation}
-From this we form the average error at each latitude by taking an average over time and denote as $\overline{\sigma}$. 
+%One measure of the 
+%noise contained in the \fff strength is the standard deviation of the fluctuations
+%around the signal. This is calculated in each bin as
+%\begin{equation}
+%\sigma= \sqrt{\frac{1}{N_P}\sum_{\mbox{patch}} ( %\mef(\lambda,t)
+%- \left<{\mef} \right>)^2}.
+%\end{equation}
+%From this we form the average error at each latitude by taking an average over time and denote as $\overline{\sigma}$. 
 %AL added
-This quantity is plotted as the error bar in the right panel of \fig{butterfly_lat}.
+%This quantity is plotted as the error bar in the right %panel of \fig{butterfly_lat}.
 
 %NO Adding some words how we verified significance
 %MJK Maybe we do not need this anymore
