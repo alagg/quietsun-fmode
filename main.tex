@@ -269,9 +269,18 @@ longitude for network and \IN{}. We refer to these maps as the \nw{} and the \in
 
 \subsection{Quiet region selection\label{quietregion}}
 
-From the parameters computed from the cubes the root mean square of the magnetic field strength (\brms{}) turned out to be the best tracer for determining the magnetic activity level. It could clearly distinguish between $15\degree$ patches containing active regions, plage, enhanced network and quiet network. Also, it depicted very well the low-field \IN{} regions.
+From the 
+%parameters 
+statistics computed from the cubes, 
+%the root mean square of the magnetic field strength (
+\brms{}
+%) 
+turned out to be the best tracer for determining the magnetic activity level. It could clearly distinguish between $15\degree$ patches containing active regions, plage, enhanced network and quiet network. Also, it depicted very well the low-field \IN{} regions.
 
-The analysis of the solar-cycle variation of the quiet-sun magnetism required a careful selection of the most quiet regions, defined as being free of enhanced solar activity. We therefore searched for the minimum value of \brms{} in both, the \nw{} and the \inw{} statistical maps, on a latitudinal grid with a $10\degree$ spacing fulfilling the following additional criteria:
+The analysis of the solar-cycle variation of the 
+%quiet-sun 
+QS
+magnetism required a careful selection of the most quiet regions, defined as being free of enhanced solar activity. We therefore searched for the minimum value of \brms{} in both, the \nw{} and the \inw{} statistical maps, on a latitudinal grid with a $10\degree$ spacing fulfilling the following additional criteria:
 \begin{enumerate}[(i)]
 	\item\label{c1} the most quiet pixel must be within $\pm10\degree$ around the central meridian,
 	\item\label{c2}  this pixel must belong to the 50\% most quiet pixels of the month,
@@ -282,9 +291,9 @@ Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along
 
 \subsection{Correction for HMI sensitivity change\label{sensicorr}}
 
-The 11-year temporal evolution of \inw{} time series{the \brms{}} value revealed clearly a change in the HMI observing mode, performed on 13-Apr-2016. On this day, HMI switched to a more efficient observing mode \cite[see][]{2018SoPh..293...45H,2014SoPh..289.3483H,2016SoPh..291.1887C}. By combining both HMI cameras to determine the vector-field observables the cadence for full-disk magnetograms could be reduced from 135\,s (observational mode MOD-C) to 90\,s (MOD-L). This reduced the noise level for Stokes $V$ measurements by 17\%, resulting in a decrease of the noise level in the \los{} magnetograms by 5\%.
+The 11-year temporal evolution of \inw{} time series {the \brms{}} value revealed clearly a change in the HMI observing mode, performed on 13-Apr-2016. On this day, HMI switched to a more efficient observing mode \cite[see][]{2018SoPh..293...45H,2014SoPh..289.3483H,2016SoPh..291.1887C}. By combining both HMI cameras to determine the vector-field observables the cadence for full-disk magnetograms could be reduced from 135\,s (observational mode MOD-C) to 90\,s (MOD-L). This reduced the noise level for Stokes $V$ measurements by 17\%, resulting in a decrease of the noise level in the \los{} magnetograms by 5\%.
 
-For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \inw{} time series: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \inw{} time series plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion \cite[BIC,][]{Stoica2004} to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependent on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of degree 4. The so determined amplitude of the Heaviside step function is added to the data points after 13-Apr-2016 for all data presented in this paper.
+For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \inw{} time series: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \inw{} time series plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion \cite[BIC,][]{Stoica2004} to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependent on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of degree 4. The so-determined amplitude of the Heaviside step function is added to the data points after 13-Apr-2016 for all data presented in this paper.
 
 
 
@@ -323,9 +332,26 @@ For the long-term study presented in this paper, we need to correct for this sen
 
 \subsection{Dopplergrams}
 
-The second data product used in this paper are the \los{} velocity maps. The goal is to compute the power of the surface gravity mode, the so-called \fff power, as an independent measure to quantify the solar cycle variation.
+The second HMI data product used in this paper are the \los{} velocity maps. The goal is to compute the 
+%power 
+energy contained in the
+%of the 
+surface gravity mode, the so-called \fff,
+%power, 
+%MJK This strikes me as odd.
+%as an independent measure to quantify the solar cycle variation.
+and investigate whether variability during the solar cycle is present. Such variations could be caused by the presence of non-emerging sub-surface magnetic fields, as the \fff is known
+to be strongly affected by the presence of magnetic fields (REFS). A previous study of
+(Harsha's QS ref) has, however,
+preliminarily shown that such
+variability should not exist. 
+It is, in any case, very important to study this question in more detail, as otherwise no reliable calibration method to detect the claimed 
+\fff enhancement prior to AR emergence can be established.
 
-The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a server at the Max Planck Institute for Solar System Research (MPS Göttingen, Germany) whereas the analysis is executed in the CSC supercomputing environment (Aalto, Finland). We have utilized  a function-as-a-service client based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We have developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage the mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to prepare the dopplergram cubes within the GDC-SDO environment and subsequently transfer them to the CSC environment. The coordinates of the selected quiet-sun regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
+The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a server at the Max Planck Institute for Solar System Research (MPS Göttingen, Germany) whereas the analysis is executed in the CSC supercomputing environment (Aalto, Finland). We have utilized  a function-as-a-service client based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We have developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage the mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to prepare the dopplergram cubes within the GDC-SDO environment and subsequently transfer them to the CSC environment. The coordinates of the selected 
+%quiet-sun 
+QS
+regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
 %{the using remote function call service funcX \cite{chard20funcx} to MPS server where the dopplergram database is located. Next, using mtrack command the tracked dopplergram cubes were retrieved and sent back to CSC supercomputing environment.}
 
 %AL: TODO details of the tracking: Central coordinate from quiet region selection, Harsha's parameters. $300\times 300$ pixels, 8 hrs ... 
@@ -342,29 +368,42 @@ The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a 
 %MJK Explanation of its removal was not yet included, now
 %MJK added something preliminary. Should we also show the
 %MJK non-subtracted spectrum? 
-\subsection{Computation of the \fff power}
+\subsection{Computation of the \fff 
+%power}
+energy}
 
 %In the CSC environment, 
 %MJK
-Subsequent processing involved calculating the 3d power spectra for each dopplergram cube and averaging the spectra azimuthally in $k_x, k_y$ plane for each constant $\omega$,
+Subsequent processing involved calculating the 
+%3d 
+three-dimensional
+power spectra for each dopplergram cube and 
+%MJK Not averaging, but integrating, right?
+%averaging 
+integrating
+the spectra azimuthally in $k_x, k_y$ plane for each constant frequency $\omega$,
 %MJK
-to obtain $P(\omega,k)$. An illustrative case for a frequency
+to obtain a collapsed power spectrum, $P(\omega,k)$. An illustrative case for a frequency
 value at which \fff is strong, is shown in 
 %(see 
 \fig{ring_diagram},
 %MJK
 upper panel.
 %MJK
-Such averaging significantly reduced the noise level leading to smooth one dimensional $k-\omega$ spectra,
+Such 
+%averaging 
+a procedure
+significantly reduced the noise level leading to smooth one-dimensional $k-\omega$ spectra,
 %. 
 %MJK
 an example being shown in the lower panel of \fig{ring_diagram};
 in this kind of a plot, the \fff is the rightmost peak at the highest $k$ values.
 %MJK
 %Such 
-The
-averaging 
-performed
+%The
+%averaging 
+%performed
+The adopted procedure
 is justified for the 
 %quiet-sun 
 QS
@@ -379,7 +418,9 @@ did not perform fitting to the \fff for its extraction.
 Instead, we only fitted the background, and subtracted this 
 contribution.
 Then,
-an integration range in $k$ space was selected for each constant $\omega$ in a following way: first the maximum of \fff $k_{\rm max}$ and the minimum between \fff and first $p$-mode $k_{\rm start}$ were detected; $k_{\rm start}$ was chosen as the start of integration range and the end of the integration range $k_{\rm end}$ was set as $k_{\rm end}=k_{\rm max}+2(k_{\rm max}-k_{\rm start})$; $k_{\rm end}$ chosen in such a way guarantees that the integration range is sufficiently wide to cover significant part of the \fff power in $k$-space.
+an integration range in $k$ space was selected for each constant $\omega$ in a following way: first the maximum of \fff $k_{\rm max}$ and the minimum between \fff and first $p$-mode $k_{\rm start}$ were detected; $k_{\rm start}$ was chosen as the start of integration range and the end of the integration range $k_{\rm end}$ was set as $k_{\rm end}=k_{\rm max}+2(k_{\rm max}-k_{\rm start})$; $k_{\rm end}$ chosen in such a way guarantees that the integration range is sufficiently wide to cover significant part of the \fff 
+%power 
+signal in $k$-space.
 Integration range in $\omega$ space was chosen between values starting from 
 %MJK Should use some normalized numbers, and these do not match with the nu of the figure.
 14.45 and ending at 29.03, 
