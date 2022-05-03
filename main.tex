@@ -212,7 +212,10 @@ In the following we use the following notation and definitions.
 We denote the solar latitude (which variants? Should other variants be denoted differently?) with 
 $\lambda$, longitude with $\phi$, and time with $t$. 
 
-\colfig{pipeline}{Data pipeline}
+%MJK Pipeline figure should be also modified to correctly reflect the changes in the text:
+%MJK f-mode energy
+%MJK For processing the ARs, we should have an additional box "AR sample coordinates" or something like that.
+\colfig{pipeline}{Data pipeline. The leftmost path illustrates pipeline to collect the magnetograms in the most quiet patches, while the rightmost one the pipeline to track data from the quiet patches from the HMI database, and compute the \fff energy. The central path of AR processing is otherwise equivalent to the QS pipeline, but there AR coordinates are sent for tracking in the German datacentre, and an additional step, namely QS calibration, is performed in the end. Rectangular boxes represent analysis functions, and ellipsoids the derived data products. The rectangles with yellow frames stand for the corrective functions applied to the data. }
 
 \subsection{Magnetograms}
 
