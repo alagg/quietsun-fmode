@@ -541,7 +541,11 @@ where $n_t$ is the total number of time points at a certain $\lambda$, and denot
 \end{equation}
 and plot this quantity as function of latitude and time as in \Fig{butterfly_lat}, with a 3-month binning in time and roughly 6 degrees in latitude. 
 
-To estimate whether this variation is significant w.r.t. noise, we will use the standard deviation of the data in a patch.
+To estimate 
+%MJK Now removing the noise concept at least from here.
+%whether this variation is significant w.r.t. noise, 
+the overall variability level of the QS, and compare it to the cycle variation level defined above,
+we will use the standard deviation of the data in a patch.
 We take $N_t$ bins in time, $N_\lambda$ in latitude, and denote the number of \ef measurements contained in such a patch by $N_P$. We compute the average \fff energy in a patch as
 \begin{equation}
 \langle \mef \rangle=1/N_P \sum_{N_P} \mef (\lambda,t).
@@ -555,8 +559,14 @@ From this we form the average error at each latitude by taking an average over t
 %AL added
 This quantity is plotted as the error bar in the right panel of \fig{butterfly_lat} and similar plots.
 %MJK This still holds
-By inspecting the level of variability around the temporal mean and the mean error we must conclude that the signal is above the noise level, but not by a great amount. Hence, the signal is very weak, but it is still meaningful to proceed with the analysis.
+By inspecting the level of variability around the temporal mean and the 
+%mean error we must conclude that the signal is above the noise level, 
+overall variability of the QS, we must conclude that these signals are of the same order of magnitude. 
+In this respect, the solar cycle dependent signal is very weak, but if we compare that to the noise level in the data, both the QS variability level and cycle-dependent signal exceed that by an order of magnitude, hence this is not an issue with the instrument sensitivity.
+%Hence, the signal is very weak, but it is still meaningful to proceed with the analysis.
 %MJK This part is not very convincing yet.
+
+What could be the cause of the strong QS variability level is most likely related to the strongly varying sub-surface magnetic fields that affect the \fff that cannot be removed by using the surface \brms{} as the selection creterion for really quiet patches. This is illustrated in \Fig{fmode_vs_brms}, where we show the measured \fff energy versus the \brms{} in the patches. The \fff energy is not correlated with the \brms{} seen at the surface, and strong, nearly constant, variability is seen at different epochs of the solar cycle. This poses clear limitations of the calibration method proposed here to detect weak transient signals in the \fff evolution.
 
 %$N_t$ = number of bins in time \\
 %$N_\lambda$ = number of bins in latitude, \\
@@ -764,13 +774,16 @@ limb.
 
 As can be seen
 from \Fig{AR11130_track} and \Fig{AR11105_track}, the effect of the new QS calibration with Gaussian smoothing is
-to flatten the \fff signal close to the eastern limb, when the AR has not yet emerged, and previously an enhancement was seen. For the AR11130 the \fff signal becomes more or less flat, the energy is close to the QS level, and the QS variance is large in comparison to the observed change in the AR \fff signal. With the earlier cosine calibration method, a stronger enhancement is seen, as expected, as the calibration curve is shallower near the limb. Even in this case, the enhancement is barely discernible from the QS variation level.
+to flatten the \fff signal close to the eastern limb, when the AR has not yet emerged, and previously an enhancement was reported. For the AR11130, the \fff signal becomes more or less flat, the \fff energy is close to the QS level, and the QS variance is large in comparison to the observed change in the AR \fff signal. With the earlier cosine calibration method, a stronger enhancement is seen, as expected, as the calibration curve is shallower near the limb. 
+%MJK This I do not understand at all. If you calibrate with the same QS level, how do you get such a strong bump with Nishant cos curve? The longitudinal offset? This should be mentioned.
+The enhancement is stronger, exceeding the QS variance, reaching levels of 1.1, and occurs roughly at the same time as was reported in \cite{SRB16}. For both methods, the quenching of the \fff energy starts roughly at the same time, although the shape of the curve is somewhat different. Again, on the western limb the \fff signals deviate strongly, but there any small difference in calibration causes such effects, and uncertainties are large. 
 %MJK Cannot remember enough of the AR 11105 to write something about it now.
+For the AR11105, the QS calibration method with Gaussian smoothing, again, gives a relatively flat signal around the QS signal level. The slight enhancement-like bump is clearly within the grey-shaded area, indicating that it would not be statistically significant. The cosine calibration method shows a similar shape as for AR11130, but for it, the enhancement is barely exceeding the QS level. Again, large differences are seen near the limbs, and regions where $|\phi|>60$ cannot be regarded significant in general. 
 
 %MJK Summarizing
 Our analysis shows that the transient
 and weak enhancement signal is very sensitive to the calibration
-method used. Moreover, the enhancement level, only visible
+method used. The new method for the QS calibration developed here tends to show more flat signal and no significant enhancement in comparison to the earlier calibration method of \cite{SRB16}. Moreover, the enhancement level, only visible
 when the cosine calibration is used, is of the same order 
 in magnitude than
 the QS variance, which poses an even more severe difficulty in
@@ -779,7 +792,10 @@ detecting the enhancement.
 
 %AL added quiet sun f-mode variation plot:
 %AL The shaded area in the AR plots at disk center is: 87/2650
-\colfig{fmode_vs_brms}{\fff strength as a function of \brms{} for the most quiet patches at disk center. The colors indicate the grouping according to the years. The standard deviation for the \fff variation is 87.}
+\colfig{fmode_vs_brms}{\fff 
+%strength 
+energy
+as a function of \brms{} for the most quiet patches at disk center. The colors indicate the grouping according to the years. The standard deviation for the \fff variation is 87.}
 
 
 %AL adding two AR plots as placeholders. Needs to be discussed what should be shown
