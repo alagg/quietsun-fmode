@@ -21,7 +21,7 @@
 \abstract{The origin of the quiet Sun magnetism is under debate. Investigating the solar cycle variation observationally in more detail can give us clues about how to resolve the controversies.}
 {We investigate the solar cycle variation of the most magnetically quiet regions and
 their surface gravity oscillation ($f$-) mode integrated power as function of latitude.}
-{We use 11 years of HMI data and apply a stringent selection criteria, based on
+{We use 12 years of HMI data and apply a stringent selection criteria, based on
 spatial and temporal quietness, to avoid any influence of active regions (ARs).
 We develop an automated high throughput pipeline to go through all available magnetogram data
 and to compute the surface gravity mode power for the selected quiet regions.}
@@ -34,7 +34,10 @@ is not constant over time.
 %completely in phase with the cycle.
 %MJK Trying anew
 During the late ascending phase of Cycle 24 (2011-2012), the \fff strength is roughly constant, but starts diminishing in 2013, as the maximum of Cycle 24 is approached. This trend continues
-until 2017, in the middle of which year we see hints of strengthening.
+until 2017, in the middle of which year we see hints of strengthening,
+%AL
+predominantly in the toroidal component of the \fff.
+%AL
 Slow strengthening continues, stronger at higher latitudes than at the equatorial regions, but the \fff strength never returns back to the values seen in 2011-2012. Also, the strengthening trend continues past the solar minimum, to the years when Cycle 25 is already clearly ascending. Hence the \fff behavior is not in phase with the solar cycle. 
 %MJK
 }
@@ -562,11 +565,11 @@ This quantity is plotted as the error bar in the right panel of \fig{butterfly_l
 By inspecting the level of variability around the temporal mean and the 
 %mean error we must conclude that the signal is above the noise level, 
 overall variability of the QS, we must conclude that these signals are of the same order of magnitude. 
-In this respect, the solar cycle dependent signal is very weak, but if we compare that to the noise level in the data, both the QS variability level and cycle-dependent signal exceed that by an order of magnitude, hence this is not an issue with the instrument sensitivity.
+In this respect, the solar cycle dependent signal is very weak, but if we compare that to the noise level in the data, both the QS variability level and cycle-dependent signal exceed the noise level by an order of magnitude, hence this is not an issue concerned with the instrument sensitivity.
 %Hence, the signal is very weak, but it is still meaningful to proceed with the analysis.
 %MJK This part is not very convincing yet.
 
-What could be the cause of the strong QS variability level is most likely related to the strongly varying sub-surface magnetic fields that affect the \fff that cannot be removed by using the surface \brms{} as the selection creterion for really quiet patches. This is illustrated in \Fig{fmode_vs_brms}, where we show the measured \fff energy versus the \brms{} in the patches. The \fff energy is not correlated with the \brms{} seen at the surface, and strong, nearly constant, variability is seen at different epochs of the solar cycle. This poses clear limitations of the calibration method proposed here to detect weak transient signals in the \fff evolution.
+What could be the cause of the strong QS variability level is most likely related to the strongly varying sub-surface magnetic fields that affect the \fff that cannot be removed by using the surface \brms{} as the selection criterion for really quiet patches. This is illustrated in \Fig{fmode_vs_brms}, where we show the measured \fff energy versus the \brms{} in the patches. The \fff energy is not correlated with the \brms{} seen at the surface, and strong, nearly constant, variability is seen at different epochs of the solar cycle. This poses clear limitations of the calibration method proposed here to detect weak transient signals in the \fff evolution.
 
 %$N_t$ = number of bins in time \\
 %$N_\lambda$ = number of bins in latitude, \\
@@ -778,15 +781,16 @@ to flatten the \fff signal close to the eastern limb, when the AR has not yet em
 %MJK This I do not understand at all. If you calibrate with the same QS level, how do you get such a strong bump with Nishant cos curve? The longitudinal offset? This should be mentioned.
 The enhancement is stronger, exceeding the QS variance, reaching levels of 1.1, and occurs roughly at the same time as was reported in \cite{SRB16}. For both methods, the quenching of the \fff energy starts roughly at the same time, although the shape of the curve is somewhat different. Again, on the western limb the \fff signals deviate strongly, but there any small difference in calibration causes such effects, and uncertainties are large. 
 %MJK Cannot remember enough of the AR 11105 to write something about it now.
-For the AR11105, the QS calibration method with Gaussian smoothing, again, gives a relatively flat signal around the QS signal level. The slight enhancement-like bump is clearly within the grey-shaded area, indicating that it would not be statistically significant. The cosine calibration method shows a similar shape as for AR11130, but for it, the enhancement is barely exceeding the QS level. Again, large differences are seen near the limbs, and regions where $|\phi|>60$ cannot be regarded significant in general. 
+%MJK New text with the new figure
+For the AR11105, the QS calibration method with Gaussian smoothing, again, gives a relatively flat signal around the QS signal level. The slight enhancement-like bump is clearly within the shaded area, indicating that it would drown to the QS variations. The cosine calibration method shows a similar shape as for AR11130, but for it, the enhancement is barely exceeding the QS level. Again, large differences are seen near the limbs, and regions where $|\phi|>60$ cannot be regarded trustworthy in general. 
 
 %MJK Summarizing
 Our analysis shows that the transient
 and weak enhancement signal is very sensitive to the calibration
 method used. The new method for the QS calibration developed here tends to show more flat signal and no significant enhancement in comparison to the earlier calibration method of \cite{SRB16}. Moreover, the enhancement level, only visible
-when the cosine calibration is used, is of the same order 
+when the cosine calibration of \cite{SRB16} is used, is of the same order 
 in magnitude than
-the QS variance, which poses an even more severe difficulty in
+the QS variability level, which poses an even more severe difficulty in
 detecting the enhancement.
 %MJK
 
@@ -873,7 +877,14 @@ vertical motions leading to lesser amplitudes for the \fff.
 
 \begin{acknowledgements}
 All SDO data used are publicly available from the Joint Science Operations Center (JSOC) at Stanford University supported by NASA Contract NAS5- 02139 (HMI), see http://jsoc.stanford.edu/. 
+The data analysis has been carried out on supercomputers in the facilities hosted by the CSC---IT
+Center for Science in Espoo, Finland, which are financed by the
+Finnish ministry of education, and in BLAA BLAA in Germany.
 \todo{German DataCenter?}
+This project has received funding from the European Research Council (ERC)
+under the European Union's Horizon 2020 research and innovation
+program (Project UniSDyn, grant agreement n:o 818665).
+
 \end{acknowledgements}
 
 \bibliography{main}{}
