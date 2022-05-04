@@ -635,7 +635,8 @@ What could be the cause of the strong QS variability level is most likely relate
 %The analysis showed that for all patches $\left< f'_{\rm noise} \right>$ was an order of magnitude weaker than the corresponding $\left< f' \right>$.
 
 
-
+%AL create this plot with:
+% %run plot_fmode_butterfly.py -i ../qs_cubes --reread=False --fov 'FFOV' --show_cos=False --show_cycle=False
 \colfigtwocol{butterfly_lat}{Butterfly diagram of \fff %strength 
 energy variations, $E'_f(\lambda,t)$, computed from azimuthally integrated 
 %average of the 
@@ -654,6 +655,8 @@ around the signal for every bin ($\overline{\sigma (\lambda)}$).
 }
 %The horizontal lines in the colorbar indicate $\pm \overline{\sigma_P}(\lambda)$.
 %
+%AL create this plot with:
+% %run plot_fmode_butterfly.py -i ../qs_cubes --reread=False --fov 'FFOV_KX0' --show_cos=False --show_cycle=False
 \colfigtwocol{butterfly_lat_FFOV_KX0}{Same as \fig{butterfly_lat}, but computed from a wedge of $\pm10^\circ$ around the $k_y$ axis.
 %MJK I would not know what is a poloidal component of the f-mode.
 %, representing the poloidal component.
@@ -825,7 +828,7 @@ as a function of \brms{} for the most quiet patches at disk center. The colors i
 %AL I cannot believe that this is what Nishant got. I searched for the
 %AL error in the cosine calibration but did not find any. What shall we do?
 %AL: command to create this plot:
-% fmodetools.plot_AR(arcode='11130',quadrant_index=[0,0],fit=['COS','GAUSSIAN'],order=0,magmode='fits',thumbnails=None,calib=True,tbin=365.25*2,yearly_remove=True)
+%fmodetools.plot_AR(arcode='11130',quadrant_index=[0,0,0],fit=['COS','COS','GAUSSIAN'],order=[0,1,1],magmode='fits',thumbnails=None,calib=True,tbin=365.25*2,yearly_remove=True,lonrg=[-65,65,plot_label=[r"$\cos$-fit ($q=0.5$)",r"$\cos$-fit ($q=-0.045$)","Gaussian kernel"])
 \colfig{AR11130_track}{\fff strength (top) and $B_{\mbox{rms}}$ (bottom) for AR11130. Orange: quiet-Sun calibration, blue: cosine calibration (Nishant value $q=0.5$).}
 \colfig{AR11105_track}{Same as \fig{AR11130_track}, but for AR11105.}
 %AL
