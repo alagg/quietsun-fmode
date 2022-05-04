@@ -729,49 +729,51 @@ variants.
 \subsection{AR \fff with QS calibration}\label{arf}
 
 %MJK Added
-In this section we compare the \fff time evolution in 
+In this section we compare the \fff time evolution before and after the emergence of 
 two ARs (11130 in \Fig{AR11130_track} and AR11105 in \Fig{AR11105_track}), that were reported to show an enhancement both in \cite{SRB16} and \cite{Waidele22} w.r.t. a QS control patch
-in the opposite hemisphere. The main difference in our analysis
-is that the \fff strength is now normalized to the QS level
-at the specific averaged time bin and the averaged latitudinal
-value of the tracked cubes. 
-\fff strength of 1 is hence
-equivalent to that QS level, and values stronger/weaker 
+in the opposite hemisphere several days before their emergence. The main difference in our analysis
+is that the \fff energy is now normalized to the actually measured average QS level
+around the specific time and latitude. To minimize
+the QS fluctuations, Gaussian smoothing to the QS
+data is applied, but the smoothing kernel width used is kept at YYYY so that the fit to the data can be considered very accurate.
+%MJK Have no idea whether this is true, but just writing this as a placeholder.
+\fff energy of 1 is hence
+equivalent to that of the QS, and values stronger/weaker 
 indicate enhancement/quenching of the \fff w.r.t. QS.
 Another difference is that we use the
-full ring diagram when computing the \fff strength, while the
+full ring diagram when computing the \fff energy, while the
 other papers used only $k_x=0$ cuts. We have, however, performed
 analysis with $k_x=0$ and $k_y=0$ cuts, and see no significant
 difference between the two, unlike in the QS \fff. 
 %MJK Should somewhere discuss why this is.
+As the measurement is done exactly in the same
+manner for the QS and ARs, we anyway anticipate
+that this difference should not influence the results significantly. Also, as more integration is performed, the less noisy is the signal, hence improving the data quality. 
 
-As per the longitudinal normalization, we use two different
-variants. The blue lines and dots indicate data that are
-calibrated with the exact same cosine function than in the
-aforementioned papers, and the orange lines and dots show
-data with our Gaussian fit to the QS data. 
-%MJK Needs to be added
-The gray shaded areas indicate the QS (some) $\sigma$ level
-QS variability, and hence give an indication of the significance
-of the AR signal w.r.t the QS one.
-The difference between these two calibrations is evident from the
-rightmost panels of the \fff butterflies. The cosine calibration
-curve (green) does not fit the data well at larger longitudes,
+The results from our analysis are shown with orange symbols and lines in \Fig{AR11130_track} and \Fig{AR11105_track}: each orange point shows the normalized \fff energy, \tef, with four-hour cadence, smoothed with XXXX over one day to remove a daily fluctuation otherwise prominently present in the data. The grey-shaded areas show the QS variance, $E'_f$, which is roughly constant, around 4--5 percent, at all latitudes and longitudes. When it is used as normalization of the \fff, then the uncertainty at large longitudes becomes very high, as is indicated by the rapidly expanding grey-shaded areas toward the limb.
+
+As a comparison, we also show the previously used longitudinal calibration curve of \cite{1996A&AS..117..393B} based on more simple cosinus dependence (blue symbols and lines in the aforementioned figures).
+The difference between these two calibration methods is evident already from the
+rightmost panels of the \fff butterflies: The cosine calibration
+curve (green line in the butterfly plots) does not fit the data well at larger longitudes,
 but is decreasing there less strongly than the data. 
 The Gaussian fit to the QS
 data represents it better, with the consequence that the
-employed calibration curve (black) decreases steeper toward the
+employed calibration curve (black in the butterfly plots) decreases steeper toward the
 limb. 
 
 As can be seen
-from the AR \fff plots, the effect of the Gaussian calibration is
-to flatten the region of postulated enhancement, in the case of AR11130
-removing any signs of it. This analysis shows that the transient
+from \Fig{AR11130_track} and \Fig{AR11105_track}, the effect of the new QS calibration with Gaussian smoothing is
+to flatten the \fff signal close to the eastern limb, when the AR has not yet emerged, and previously an enhancement was seen. For the AR11130 the \fff signal becomes more or less flat, the energy is close to the QS level, and the QS variance is large in comparison to the observed change in the AR \fff signal. With the earlier cosine calibration method, a stronger enhancement is seen, as expected, as the calibration curve is shallower near the limb. Even in this case, the enhancement is barely discernible from the QS variation level.
+%MJK Cannot remember enough of the AR 11105 to write something about it now.
+
+%MJK Summarizing
+Our analysis shows that the transient
 and weak enhancement signal is very sensitive to the calibration
 method used. Moreover, the enhancement level, only visible
 when the cosine calibration is used, is of the same order 
 in magnitude than
-the QS variation, which poses an even more severe difficulty in
+the QS variance, which poses an even more severe difficulty in
 detecting the enhancement.
 %MJK
 
