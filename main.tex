@@ -20,10 +20,13 @@
 
 \abstract{The origin of the quiet Sun magnetism is under debate. Investigating the solar cycle variation observationally in more detail can give us clues about how to resolve the controversies.}
 {We investigate the solar cycle variation of the most magnetically quiet regions and
-their surface gravity oscillation ($f$-) mode integrated power as function of latitude.}
+their surface gravity oscillation ($f$-) mode integrated 
+%power 
+energy
+as function of latitude.}
 {We use 12 years of HMI data and apply a stringent selection criteria, based on
 spatial and temporal quietness, to avoid any influence of active regions (ARs).
-We develop an automated high throughput pipeline to go through all available magnetogram data
+We develop an automated high-throughput pipeline to go through all available magnetogram data
 and to compute the surface gravity mode power for the selected quiet regions.}
 {We observe a clear solar cycle dependence of the magnetic field strength in the most
 quiet regions containing several supergranular cells. For patch sizes smaller than a supergranular
@@ -36,7 +39,11 @@ is not constant over time.
 During the late ascending phase of Cycle 24 (2011-2012), the \fff strength is roughly constant, but starts diminishing in 2013, as the maximum of Cycle 24 is approached. This trend continues
 until 2017, in the middle of which year we see hints of strengthening,
 %AL
-predominantly in the toroidal component of the \fff.
+%predominantly in the
+%MJK I would not know what that means
+%toroidal component of the \fff.
+%MJK 
+more pronounced if \fff energy near the $k_y=0$ axis is used. 
 %AL
 Slow strengthening continues, stronger at higher latitudes than at the equatorial regions, but the \fff strength never returns back to the values seen in 2011-2012. Also, the strengthening trend continues past the solar minimum, to the years when Cycle 25 is already clearly ascending. Hence the \fff behavior is not in phase with the solar cycle. 
 %MJK
@@ -50,17 +57,11 @@ limited spatial resolution and magnetic sensitivity of HMI.
 %Similar conclusion applies
 %to the variation of the surface gravity mode power, although the reason %for the phase lag
 %is not yet understood. 
-An anticorrelation of the \fff strength w.r.t. the solar cycle is expected, as active regions efficiently damp it. The \fff behavior, although showing such behavior in gross terms, is much more complex than this - in addition we see a phase shift, and different damping behavior of the ascending phases of Cycles 24 and 25. We speculate that the latter two could be related to the magnetic helicity-constrained subsurface toroidal field rather than instrumental effects. 
+An anticorrelation of the \fff strength w.r.t. the solar cycle is expected, as active regions efficiently damp it. The \fff behavior, although showing such behavior in gross terms, is much more complex than this - in addition we see a phase shift, and different damping behavior of the ascending phases of Cycles 24 and 25. We speculate that the latter two could be related to the magnetic helicity-constrained sub-surface toroidal field rather than instrumental effects. 
 }
-%\end{abstract}
 
-%% Keywords should appear after the \end{abstract} command. 
-%% The AAS Journals now uses Unified Astronomy Thesaurus concepts:
-%% https://astrothesaurus.org
-%% You will be asked to selected these concepts during the submission process
-%% but this old "keyword" functionality is maintained in case authors want
-%% to include these concepts in their preprints.
-\keywords{Sun}
+%MJK Added keywords
+\keywords{Solar physics -- helioseismology, solar cycle; Solar activity --- solar active regions; Solar magnetic fields --- Solar dynamo}
 
 \maketitle
 
@@ -73,7 +74,8 @@ Localized regions of intense bipolar magnetic structures, called active regions
 butterfly diagrams which exhibit a cyclic magnetic activity of the Sun in a latitude--time
 domain. Such diagrams have proven to be useful and reveal some properties of solar
 magnetism, the origin of which is not yet fully understood.
-%Due to a number of reasons, it would be %extremely useful to identify those localized regions
+%Due to a number of reasons, it would be 
+%extremely useful to identify those localized regions
 %in advance where ARs are going to emerge later. 
 In an observational study involving
 HMI data, \cite{SRB16} reported strengthening of solar surface or the fundamental \fff
@@ -105,7 +107,7 @@ limits the number of ARs that can be included in the hindcasting procedure. It i
 also prone to be affected by the probable fluctuations in the QS
 \fff level. Although the results look promising, proper calibration with
 statistically sound QS level, not just a comparison of a random QS patch on the
-other hemisphere, is necessary to prove these findings robust. Also,
+other hemisphere, is necessary to prove the robustness of these findings. Also,
 such a calibration procedure is necessary for increasing the sample size. 
 Building such a QS calibration data product is one of the main aims of this
 study: we carefully identify the quietest regions on the solar surface based on the level of magnetic activity observed in
@@ -148,7 +150,9 @@ convective cell boundaries would accumulate magnetic field from both the
 
 %MJK
 The paper is organized as follows: in Sect.\ref{pipeline} we describe
-the data, the necessary steps to prune it, and the automated pipeline we built for harvesting the data and compiling the end products, namely the QS magnetism data products, and the QS \fff and AR data. In
+the data, the necessary steps to 
+%prune 
+clean it, and the automated pipeline we built for harvesting the data and compiling the end products, namely the QS magnetism data products, and the QS and AR \fff data. In
 Sect.\ref{results} we discuss our findings for the QS magnetism, \fff, and the lastly present some AR data with the QS calibration
 applied. 
 %MJK
@@ -214,18 +218,21 @@ applied.
 
 \section{Observations}\label{pipeline}
 
-Our analysis is based on data from the Helioseismic Magnetograph and Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by comining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). We processed the two data sets in a semi-automatic pipeline (see \fig{pipeline}), optimized for obtaining reliable information %abount 
-about
-the magnetic field in the quiet Sun regions and for a robust computation of the \fff power from the dopplergrams. The left tree in \fig{pipeline} describes the pipeline used for the magnetograms, the right tree for the dopplergrams.
+Our analysis is based on data from the Helioseismic Magnetograph and Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by combining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). We processed the two data sets in a semi-automatic pipeline (see \fig{pipeline}), optimized for obtaining reliable information about the magnetic field in the quiet Sun regions and for a robust computation of the \fff power from the dopplergrams. The left tree in \fig{pipeline} describes the pipeline used for the magnetograms, the right tree for the dopplergrams.
 %MJK
 In the following we use the following notation and definitions. 
-We denote the solar latitude (which variants? Should other variants be denoted differently?) with 
-$\lambda$, longitude with $\phi$, and time with $t$. 
+We denote the solar latitude 
+%MJK: (which variants? Should other variants be denoted differently?) 
+%AL: We use throughout the whole paper only Stonyhurst
+with $\lambda$, longitude with $\phi$, 
+%AL
+both in the Stonyhurst coordinate system \cite[]{Thomson06}, 
+and time with $t$. 
 
 %MJK Pipeline figure should be also modified to correctly reflect the changes in the text:
 %MJK f-mode energy
 %MJK For processing the ARs, we should have an additional box "AR sample coordinates" or something like that.
-\colfig{figures/Pipeline2}{Data pipeline. The leftmost path illustrates pipeline to collect the magnetograms in the most quiet patches, while the rightmost one the pipeline to track data from the quiet patches from the HMI database, and compute the \fff energy. The central path of AR processing is otherwise equivalent to the QS pipeline, but there AR coordinates are sent for tracking in the German cluster environment, and an additional step, namely QS calibration, is performed in the end. Rectangular boxes represent analysis functions, and ellipsoids the derived data products. The rectangles with yellow frames stand for the corrective functions applied to the data. }
+\colfig{figures/Pipeline2}{Data pipeline. The leftmost path illustrates the pipeline to collect the magnetograms in the most quiet patches, while the rightmost one the pipeline to track data from the quiet patches from the HMI database, and compute the \fff energy. The central path of AR processing is otherwise equivalent to the QS pipeline, but there AR coordinates are sent for tracking in the German cluster environment, and an additional step, namely QS calibration, is performed in the end. Rectangular boxes represent analysis functions, and ellipsoids the derived data products. The rectangles with yellow frames stand for the corrective functions applied to the data. }
 
 \subsection{Magnetograms}
 
