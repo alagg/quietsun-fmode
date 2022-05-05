@@ -222,7 +222,7 @@ The first data product, full-disk line-of-sight (LOS) magnetograms, provides a d
 QS
 magnetism during a solar cycle. To enhance the signal-to-noise ratio in the LOS magnetograms we performed a newly developed algorithm for spatial and temporal averaging: The full-disk HMI magnetograms starting from 27-Apr-2010 and ending at 
 %MJK complete todo item.
-\todo{01-Oct-2021} 
+\todo{03-May-2022} 
 were downloaded from the Joint Science Operation Center (JSOC) hosted at Stanford University (http://jsoc.stanford.edu) to a temporary storage (see \fig{pipeline}, 'mahti storage') and tracked at full spatial resolution for 8 hours to compensate for the solar rotation ('full disk tracking').
 %AL @Nigul: Can you explain the differential rotation model used?
 %NO As much as I remember we omitted taking into account diff. rot. as it was marginal during 8hrs
@@ -231,12 +231,15 @@ We neglected differential rotation due to
 the short tracking time.
 The step between tracked sequences was 4 hours, so that a total of 6 tracked sequences were gathered per one day, resulting in more than 
 %MJK Check.
-$24\,000$ tracked sequences.
+\todo{$31\,000$} tracked sequences.
 
 %MJK Latitude and longitude have now been defined, should use them.
 From each tracked sequence, we extracted two data products by dividing the visible solar disk  between latitudes and longitudes from $-80\degree$ to +$80\degree$ into (i) $64\times 64$  overlapping patches of $15\degree$ (in solar latitude and longitude)  and (ii) $180\times 180$ patches of $1\degree$.
 Every of these patches therefore contains a space-time cube of LOS magnetograms at full spatial resolution at a 12-minute cadence, %allowing 
-from which we have chosen to compute the following statistics:
+from which we 
+%AL
+compute the 
+%have chosen to compute the following statistics:
 %to compute the statistical properties (
 %mean, standard deviation, skewness, and kurtosis.
 %) 
@@ -244,8 +247,10 @@ from which we have chosen to compute the following statistics:
 %The following parameters: 
 %MJK Definition of the mean clashes with the butterflies, as this is now spatial and temporal mean, while later it is used for averages over bins.
 %MJK B LOS is basically a vector, hence should we rather introduce a boldfaced quantity?
-$\langle B\rangle$ -- mean of the magnetic field strength, $\langle|B|\rangle$ -- mean of the absolute value of the magnetic field strength, and %$\sqrt{<B^2>}$
-\brms{}=$\sqrt{\langle B^2\rangle}$ -- root-mean-square of the magnetic field strength.
+%AL not needed:
+%$\langle B\rangle$ -- mean of the magnetic field strength, $\langle|B|\rangle$ -- mean of the absolute value of the magnetic field strength, and %$\sqrt{<B^2>}$
+%AL 
+root-mean-square of the magnetic field strength, averaged over the full field-of-view of the tracked cube (\brms{}=$\sqrt{\langle B^2\rangle_{\rm LOS}}$).
 %(\brms{}). 
 The $15\degree$ patches (i) are large enough to cover several supergranulation cells containing network and \IN{} fields \cite[]{2010LRSP....7....2R} with a typical size of 30--35\,Mm (we refer to them as \nw{} cubes), and the $1\degree$ patches (ii) are small enough that some of them lie completely in the \IN{} (\inw{} cubes). 
 The statistics for each patch were stored as data products (see also \fig{pipeline}) including the information about 
