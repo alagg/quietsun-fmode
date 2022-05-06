@@ -133,44 +133,14 @@ The step between tracked sequences was 4 hours, so that a total of 6 tracked seq
 
 %MJK Latitude and longitude have now been defined, should use them.
 From each tracked sequence, we extracted two data products by dividing the visible solar disk  between latitudes and longitudes from $-80\degree$ to +$80\degree$ into (i) $64\times 64$  overlapping patches of $15\degree$ (in solar latitude and longitude)  and (ii) $180\times 180$ patches of $1\degree$.
-Every of these patches therefore contains a space-time cube of LOS magnetograms at full spatial resolution at a 12-minute cadence, %allowing 
+Every of these patches therefore contains a space-time cube of LOS magnetograms at full spatial resolution at a 12-minute cadence,
 from which we 
-%AL
 compute the 
-%have chosen to compute the following statistics:
-%to compute the statistical properties (
-%mean, standard deviation, skewness, and kurtosis.
-%) 
-%of the 
-%The following parameters: 
-%MJK Definition of the mean clashes with the butterflies, as this is now spatial and temporal mean, while later it is used for averages over bins.
-%MJK B LOS is basically a vector, hence should we rather introduce a boldfaced quantity?
-%AL not needed:
-%$\langle B\rangle$ -- mean of the magnetic field strength, $\langle|B|\rangle$ -- mean of the absolute value of the magnetic field strength, and %$\sqrt{<B^2>}$
-%AL 
 root-mean-square of the magnetic field strength, averaged over the full field-of-view of the tracked cube (\brms{}=$\sqrt{\langle B^2\rangle_{\rm LOS}}$).
-%(\brms{}). 
 The $15\degree$ patches (i) are large enough to cover several supergranulation cells containing network and \IN{} fields \cite[]{2010LRSP....7....2R} with a typical size of 30--35\,Mm (we refer to them as \nw{} cubes), and the $1\degree$ patches (ii) are small enough that some of them lie completely in the \IN{} (\inw{} cubes). 
 The statistics for each patch were stored as data products (see also \fig{pipeline}) including the information about 
-%MJK Different coordinate systems may be confusing.
 latitudinal and longitudinal position as well as the Carrington %MJK Starting point, central point,...?
 longitude for network and \IN{}. We refer to these maps as the \nw{} and the \inw{} statistical maps.
-
- 
-% \begin{itemize}
-% 	\item $\mu_B$ -- Mean of the magnetic field strength
-% 	\item $\sigma_B$ -- Standard deviation of the magnetic field strength
-% 	\item ${\rm skew}_B$ -- Skewness of the magnetic field strength
-% 	\item ${\rm kurt}_B$ -- Kurtosis of the magnetic field strength
-% 	\item $\mu_{|B|}$ -- Mean of the absolute value of the magnetic field strength
-%     \item $\sigma_{|B|}$ --Standard deviation of the absolute value of the magnetic field strength
-%     \item ${\rm skew}_{|B|}$ -- Skewness of the absolute value of the magnetic field strength
-%     \item ${\rm kurt}_{|B|}$ --Kurtosis of the absolute value of the magnetic field strength
-% 	\item \brms{} -- Root mean square of the magnetic field strength
-%     \item $\sqrt{\sigma:{B^2}}$ -- Root mean square of the standard deviation of the magnetic field strength
-%     \item $\sqrt{{\rm skew}_{B^2}}$ -- Root mean square of the skewness of the magnetic field strength
-%     \item $\sqrt{{\rm kurt}_{B^2}}$ -- Root mean square of the kurtosis of the magnetic field strength
-% \end{itemize}
 
 \subsection{Quiet region selection\label{quietregion}}
 
@@ -196,58 +166,19 @@ The 11-year temporal evolution of \inw{} time series {the \brms{}} value reveale
 
 For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \inw{} time series: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \inw{} time series plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion \cite[BIC,][]{Stoica2004} to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependent on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of degree 4. The so-determined amplitude of the Heaviside step function is added to the data points after 13-Apr-2016 for all data presented in this paper.
 
-
-
-%MJK Remove the title; typeset y-axis in latex format; insert x-axis label
-%MJK RMS we usually write with lower case, hence unify RMS -> rms
-%MJK throughout
 \colfig{fit-offset}{Determination of the correction for the HMI sensitivity change: the observing mode change on April 13 2016 causes a discontinuity in the level of \brms{} values of the \IN{} data. The original data are displayed in with the dark red and black dots, the corrected data with the light red dots. The dashed line indicates the polynomial fit of degree 4 used to obtain the offset.}
-
-
-
-
-% \cmt{
-% Key issue: 
-% How to obtain the most reliable HMI data product telling us about the variability of the quiet Sun magnetism during a solar cycle? Idea: combine spatial and temporal averaging, and analyze the statistics in space-time cubes to determine the level of quietness as a function of latitude. This requires the magnetic field information coming from specro-polarimetry. 
-
-% But first the boring stuff: How to obtain a clean, 11-year long data set:
-
-% About the long term trend: The jump in the data happened on 13 April 2016 (search for this date in \cite{2018SoPh..293...45H}). There it states:
-% \begin{itemize}
-% \item Standard HMI observations were initially obtained with a framelist called Mod-C that
-% repeated every 135 seconds. Mod-L, a 90-second FTS, replaced Mod-C on 13 April 2016.
-% The two versions of Mod-C have FTS ID 1001 or 1021; the Mod-L HFTSACID is 1022.
-% Some calibration framelists changed when the standard sequences changed.
-% \item Since 13 April
-% 2016, filtergrams from the two cameras have been combined to compute the vector magnetic
-% field \cite[]{2014SoPh..289.3483H,2016SoPh..291.1887C}
-% \item On 13 April 2016, after the prime mission ended, HMI switched to
-% a faster sequence, FTS ID 1022, also known as Mod-L. The Mod-L sequence requires that
-% images from both cameras be combined to determine the vector-field observables. 
-% \end{itemize}
-% Mod-L description here: http://hmi.stanford.edu/hminuggets/?p=1596: \textsl{
-% Mod-L provides all of the filtergrams necessary to compute the Stokes parameters [I, Q, U, V] in 90 seconds, instead of the 135 seconds required for Mod-C. Thus Mod-L increases the maximum temporal resolution for measuring full Stokes parameters. At the same time, it decreases the noise because twice as many filtergrams are available. The 45s data products from the front camera are also improved; since there is no longer a 135s period in the instrument configuration, the corresponding peak in the Doppler power spectrum is now gone. The new 90s period is at the Nyquist frequency of the 45s-cadence Doppler data. The Stokes measurement is normally averaged over time (nominally 720 seconds) to derive [I, Q, U, V], and we now combine three times as many CP and 1.5 times as many LP measurements. Table 1 compares the Mod-C and Mod-L observations.}
-% }
-
-
 
 \subsection{Dopplergrams}
 
 The second HMI data product used in this paper are the \los{} velocity maps. The goal is to compute the 
-%power 
 energy contained in the
-%of the 
 surface gravity mode, the so-called \fff,
-%power, 
-%MJK This strikes me as odd.
-%as an independent measure to quantify the solar cycle variation.
 and investigate whether variability during the solar cycle is present. Such variations could be caused by the presence of non-emerging sub-surface magnetic fields, as the \fff is known
 to be strongly affected by the presence of magnetic fields (REFS). 
 It is also very important to study this question in more detail, for establishing a reliable calibration method to study the claimed 
 \fff enhancement prior to AR emergence \cite{SRB16,Waidele22}. 
 
 The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a server at the Max Planck Institute for Solar System Research (MPS Göttingen, Germany) whereas the analysis is executed in the CSC supercomputing environment (Aalto, Finland). We have utilized  a function-as-a-service client based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We have developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage the mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to prepare the dopplergram cubes within the GDC-SDO environment and subsequently transfer them to the CSC environment. The coordinates of the selected 
-%quiet-sun 
 QS
 regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
 %{the using remote function call service funcX \cite{chard20funcx} to MPS server where the dopplergram database is located. Next, using mtrack command the tracked dopplergram cubes were retrieved and sent back to CSC supercomputing environment.}
@@ -270,45 +201,24 @@ regions were sent to the funcX service, which invokes suitable functions to auto
 %power}
 energy}
 
-%In the CSC environment, 
-%MJK
 Subsequent processing involved calculating the 
-%3d 
 three-dimensional
 power spectra for each dopplergram cube and 
-%MJK Not averaging, but integrating, right?
-%averaging 
 integrating
+%MJK azimuthally might be confusing
 the spectra azimuthally in $k_x, k_y$ plane for each constant frequency $\omega$,
-%MJK
 to obtain a collapsed power spectrum, $P(\omega,k)$. An illustrative case for a frequency
 value at which \fff is strong, is shown in 
-%(see 
 \fig{ring_diagram},
-%MJK
 upper panel.
-%MJK
-Such 
-%averaging 
-a procedure
+Such a procedure
 significantly reduced the noise level leading to smooth one-dimensional $k-\omega$ spectra,
-%. 
-%MJK
 an example being shown in the lower panel of \fig{ring_diagram};
 in this kind of a plot, the \fff is the rightmost peak at the highest $k$ values.
-%MJK
-%Such 
-%The
-%averaging 
-%performed
 The adopted procedure
 is justified for the 
-%quiet-sun 
 QS
 spectra, as the ring diagrams are radially symmetrical w.r.t. $\omega$ axis. 
-%MJK Reforms, easily does not tell anything.
-%From the obtained spectra \fff was
-%easily separable from the rest of the modes and integration done over $k$ and $\omega$, to obtain full power of the \fff.
 To obtain the total energy contained in the \fff, $E_f$, we
 performed another integration over the separated \fff signal.
 In contrast to earlier studies \citep{SRB16,Waidele22}, we
@@ -317,7 +227,6 @@ Instead, we only fitted the background, and subtracted this
 contribution.
 Then,
 an integration range in $k$ space was selected for each constant $\omega$ in a following way: first the maximum of \fff $k_{\rm max}$ and the minimum between \fff and first $p$-mode $k_{\rm start}$ were detected; $k_{\rm start}$ was chosen as the start of integration range and the end of the integration range $k_{\rm end}$ was set as $k_{\rm end}=k_{\rm max}+2(k_{\rm max}-k_{\rm start})$; $k_{\rm end}$ chosen in such a way guarantees that the integration range is sufficiently wide to cover significant part of the \fff 
-%power 
 signal in $k$-space.
 Integration range in $\omega$ space was chosen between values starting from 
 %MJK Should use some normalized numbers, and these do not match with the nu of the figure.
@@ -334,11 +243,9 @@ E_f=
 \end{equation}
 After completing the described steps in the CSC supercomputing
 environment, we have collected a total of \todo{18327 number to be updated for final version!} \fff 
-%powers 
 energies
 for patches close to central meridian over all latitudes covering 
-%the full solar cycle.
-most of Cycle 24 and the ascending phase of Cycle 25.
+most of SC24 and the ascending phase of SC25.
 
 %MJK The figure and caption still say "nu" for frequency. I propose
 %MJK we revert to omega.
@@ -351,7 +258,6 @@ most of Cycle 24 and the ascending phase of Cycle 25.
 \end{figure}
 
 \subsubsection*{Orbital correction of the \fff 
-%power
 energy}
 
 %AL We have to be consistent. Do we call it \fff power, strength or area?
@@ -370,9 +276,6 @@ with $\alpha$ being the phase angle of the Earth defined as the cotangens comput
 This correction $A_{\mbox{corr}}(\lambda)$ is then subtracted from the computed 
 %\fff power
 $E_f$ values, which efficiently removes any yearly variation. 
-
-
-%AL Mention also the focus change in 2018-10-16, leading to a change in the \los{} maps.
 
 \section{Results}\label{results}
 
@@ -421,19 +324,11 @@ the noise level outside the considered location of the ring.
 }
 
 
-%MJK Axis labels
 \colfig{Brms-lat00-percentile-IN}{Same as \fig{Brms-lat00-percentile}, but for \brms{} determined from patch size of only of 1$^\circ$ in longitude and latitude, corresponding to \IN{} patches. }
 
 
-%\subsection{Butterfly}
 \subsection{Quiet Sun \fff butterfly diagram}\label{qsf}
 
-
-%MJK Basic stuff to be moved upwards and used throughout.
-%Definitions:\\
-%$\lambda$ = latitude, $t$=time, \\
-%MJK
-%MJK
 To investigate whether the \fff energy has any significant solar cycle dependence, we construct butterfly-diagram-like plots by computing and removing the temporal mean, and plotting the so-obtained data in a binned latitude-time diagram. 
 We compute the temporal mean over the whole time series as 
 \begin{equation}
@@ -669,7 +564,7 @@ vertical motions leading to lesser amplitudes for the \fff.
 %NS.
 
 \begin{acknowledgements}
-We acknowledge Dr. Nigul Olspert for the great amount of work and input he dedicated to this study.
+We acknowledge Dr. Nigul Olspert for the great amount of work and input he dedicated to this study. We are also indebted to Dr. Harsha Raichur, the devloper of the original f-mode analysis pipeline,  wherefrom this work stems.
 All SDO data used are publicly available from the Joint Science Operations Center (JSOC) at Stanford University supported by NASA Contract NAS5- 02139 (HMI), see http://jsoc.stanford.edu/. 
 The data analysis has been carried out on supercomputers in the facilities hosted by the CSC---IT
 Center for Science in Espoo, Finland, which are financed by the
