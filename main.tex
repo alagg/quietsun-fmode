@@ -70,8 +70,8 @@ that the QS magnetic field is
 independent of the solar cycle 
 \cite[]{Kleint+10,Buehler+13,Faurobert+15,Jin+15a,Jin+15b}. On the other hand, some other studies have proposed
 that some dependence should exist \cite[]{Lites+14,Faurobert+21}. 
-Taken the theoretical and observational controversies, further studies of QS magnetism are required, and are now enabled by instruments like
-Helioseismic and Magnetic Imager (HMI) onboard the Solar Dynamic Observatory, that provides high sensitivity, high spatial
+Taken the theoretical and observational controversies, further studies of QS magnetism are required, and long-term investigations are now enabled by instruments like
+Helioseismic and Magnetic Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}, that provides high sensitivity, high spatial
 resolution, long-term stability, and constant conditions. Currently, the data covers nearly 12 years of observations, enabling solar-cycle-scale studies.
 
 Another motivation to study the QS comes from recent observational investigations that have reported 
@@ -104,7 +104,7 @@ applied.
 
 \section{Observations}\label{pipeline}
 
-Our analysis is based on data from the Helioseismic Magnetograph and Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by combining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). We processed the two data sets in a semi-automatic pipeline (see \fig{pipeline}), optimized for obtaining reliable information about the magnetic field in the QS regions and for a robust computation of the \fff power from the dopplergrams. The left tree in \fig{pipeline} describes the pipeline used for the magnetograms, the right tree for the dopplergrams.
+Our analysis is based on data from HMI@SDO. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by combining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). We processed the two data sets in a semi-automatic pipeline (see \fig{pipeline}), optimized for obtaining reliable information about the magnetic field in the QS regions and for a robust computation of the \fff power from the dopplergrams. The left tree in \fig{pipeline} describes the pipeline used for the magnetograms, the right tree for the dopplergrams.
 In the following we use the following notation and definitions. 
 We denote the solar 
 latitude with $\lambda$, longitude with $\phi$, 
@@ -669,6 +669,7 @@ vertical motions leading to lesser amplitudes for the \fff.
 %NS.
 
 \begin{acknowledgements}
+We acknowledge Dr. Nigul Olspert for the great amount of work and input he dedicated to this study.
 All SDO data used are publicly available from the Joint Science Operations Center (JSOC) at Stanford University supported by NASA Contract NAS5- 02139 (HMI), see http://jsoc.stanford.edu/. 
 The data analysis has been carried out on supercomputers in the facilities hosted by the CSC---IT
 Center for Science in Espoo, Finland, which are financed by the
