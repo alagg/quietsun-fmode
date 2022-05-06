@@ -48,23 +48,38 @@ limited spatial resolution and magnetic sensitivity of HMI.
 An anticorrelation of the \fff strength w.r.t. the solar cycle is expected, as active regions efficiently damp it. The \fff behavior, although showing such behavior in gross terms, is much more complex than this - in addition we see a phase shift, and different damping behavior of the ascending phases of SC24 and 25. We speculate that the latter two could be related to the magnetic helicity-constrained sub-surface toroidal field rather than instrumental effects. 
 }
 
-%MJK Added keywords
 \keywords{Solar physics -- helioseismology, solar cycle; Solar activity --- solar active regions; Solar magnetic fields --- Solar dynamo}
 
 \maketitle
 
 \section{Introduction} \label{sec:intro}
 
-%NS: adding some text which can be moved around later to a more suitable place
-%NS: please modify at wish, here and elsewhere
 Localized regions of intense bipolar magnetic structures, called active regions
-(ARs), are seen on the solar surface. Their numbers vary periodically and trace the
+(ARs), are seen on the solar surface. Their numbers vary periodically 
+in an 11-year cycle
+and trace the
 butterfly diagrams which exhibit a cyclic magnetic activity of the Sun in a latitude--time
-domain. Such diagrams have proven to be useful and reveal some properties of solar
-magnetism, the origin of which is not yet fully understood.
-%Due to a number of reasons, it would be 
-%extremely useful to identify those localized regions
-%in advance where ARs are going to emerge later. 
+domain. Such diagrams have proven to be useful and reveal some properties of 
+the solar large-scale magnetic field. The large-scale magnetic field reverses its polarity every
+second such cycle, which constitutes the solar magnetic cycle of 22 years. The origin of this
+global variability is not yet fully understood \citep[see, e.g.,][]{char10}.
+
+In addition to the global solar magnetic field, it is observationally known that there are ubiquitous small-scale magnetic fluctuations, the origin of which is equally debated - they could arise through the action of a small-scale dynamo instability or tangling of the large-scale magnetic field due to turbulence driven by convection, but it is not self-evident how the former mechanism could work in the solar plasma, where the conditions are in general unfavourable for it \citep[see, e.g.][]{BS05}. These magnetic fluctuations are usually studied by investigating the magnetically quiet regions on the solar surface (hereafter referred to as the quiet Sun, QS). Several observational
+studies of QS magnetism have been conducted, and it has been argued
+that the QS magnetic field is 
+independent of the solar cycle 
+\cite[]{Kleint+10,Buehler+13,Faurobert+15,Jin+15a,Jin+15b}. On the other hand, some other studies have proposed
+that some dependence should exist \cite[]{Lites+14,Faurobert+21}. 
+Taken the theoretical and observational controversies, further studies of QS magnetism are required, and are now enabled by instruments like
+Helioseismic and Magnetic Imager (HMI) onboard the Solar Dynamic Observatory, that provides high sensitivity, high spatial
+resolution, long-term stability, and constant conditions. Currently, the data covers nearly 12 years of observations, enabling solar-cycle-scale studies.
+
+
+
+Although QS magnetism is weak, 
+HMI provides high sensitivity, high spatial
+resolution, long-term stability, and constant conditions.
+
 In an observational study involving
 HMI data, \cite{SRB16} reported strengthening of solar surface or the fundamental \fff
 about one to two days before
@@ -72,18 +87,11 @@ the formation of AR on the same corotating patch of area $(180\, \Mm)^2$,
 %MJK
 and quenching of the mode after the formation of the AR has been postulated
 (REFS) and reported (REFS).
-%AL Is it common to refer to arxiv-only publications? We know that it was rejected.
-%MJK Yes, it is common enough.
 Very recently, another study reported similar results using a different
 helioseismic technique (Fourier-Hankel method, \cite{Waidele22}).
-%MJK
-%Detections of such localized perturbations in the solar \fff due to ARs can have
-%important applications for early forecasting of the space weather. 
-%These 
 Detection of such localized perturbations
 could also shed light
 on the physics behind the formation of ARs.
-%MJK
 Furthermore, such behavior of the \fff has been seen in compressible
 isothermal MHD simulations (REFS). 
 
@@ -112,11 +120,9 @@ Although QS magnetism is weak, HMI provides high sensitivity, high spatial
 resolution, long-term stability, and constant conditions.
 It has been argued that the QS magnetic field is 
 independent of the solar cycle 
-%AL added some references
 \cite[]{Kleint+10,Buehler+13,Faurobert+15,Jin+15a,Jin+15b} 
 and some other studies have proposed
 that some dependence should exist \cite[]{Lites+14,Faurobert+21}. 
-%AL
 There are two sources of magnetic
 fluctuations: the small-scale dynamo (SSD) instability and the action of turbulent
 convective motions on the underlying large-scale magnetic field (usually
@@ -134,16 +140,15 @@ convective cell boundaries would accumulate magnetic field from both the
   should be observed for the magnetic fields at scales that include also
   the convective cell boundaries. We also set out to investigate these
   possible scenarios with our data products. 
-%MJK
 
-%MJK
+
 The paper is organized as follows: in Sect.\ref{pipeline} we describe
 the data, the necessary steps to 
 %prune 
 clean it, and the automated pipeline we built for harvesting the data and compiling the end products, namely the QS magnetism data products, and the QS and AR \fff data. In
 Sect.\ref{results} we discuss our findings for the QS magnetism, \fff, and the lastly present some AR data with the QS calibration
 applied. 
-%MJK
+
 
 %Nature of AR induced \fff perturbations appear complex with respect to a level
 %corresponding to the quiet Sun. There is first an enhancement of
@@ -277,15 +282,11 @@ longitude for network and \IN{}. We refer to these maps as the \nw{} and the \in
 \subsection{Quiet region selection\label{quietregion}}
 
 From the 
-%parameters 
 statistics computed from the cubes, 
-%the root mean square of the magnetic field strength (
 \brms{}
-%) 
 turned out to be the best tracer for determining the magnetic activity level. It could clearly distinguish between $15\degree$ patches containing active regions, plage, enhanced network and quiet network. Also, it depicted very well the low-field \IN{} regions.
 
 The analysis of the solar-cycle variation of the 
-%quiet-sun 
 QS
 magnetism required a careful selection of the most quiet regions, defined as being free of enhanced solar activity. We therefore searched for the minimum value of \brms{} in both, the \nw{} and the \inw{} statistical maps, on a latitudinal grid with a $10\degree$ spacing fulfilling the following additional criteria:
 \begin{enumerate}[(i)]
@@ -791,123 +792,3 @@ program (Project UniSDyn, grant agreement n:o 818665).
 
 \end{document}
 
-%AL BEGIN unnecessary stuff
-\color{cyan}
-\subsection*{All the stuff below this line not needed !!!}
-Error definitions:\\
-$\lambda$ = latitude, $t$=time, \\
-$N_t$ = number of bins (time), \\
-$N_\lambda$ = number of bins (latitude), \\
-$N_P$ = number of \fff measurements in a patch, \\
-$\overline{X}$ indicates average over time, \\
-$f(\lambda,t)$ = \fff strength (unbinned)\\
-$f_P(\lambda,t)$ = \fff strength in latitude / time bins (patches)\\
-$\overline{f}(\lambda) = 1/N_t \sum_t f(\lambda,t)$ = temporal mean of the \fff strength (unbinned)\\ 
-$f'=f-\overline{f}$ is the fluctuation around the temporal mean, i.e. the solar cycle dependence of the \fff (unbinned)\\
-$\overline{f_P}(\lambda) = 1/N_t \sum_t f_P(\lambda,t)$ = temporal mean of 
-\fff strength (in lat / time bins), \\
-$f'_P=f_P-\overline{f_P}$ is, correspondingly, the binned fluctuation\\
-
-%AL added this
-The following 4 definitions represent what is plotted in \fig{butterfly_lat_old}:
-\begin{itemize}
-\item sdev(cycle) 
-%AL added the subsript cyc to indicate that this sigma is computed  over the whole cycle, and to distinguish it from \sigma_P
-%$\sigma(\lambda)$ 
-$\sigma_{\mbox{cyc}}(\lambda)$ 
-(red shaded area): this quantity displays the variation of the \fff over the solar cycle.
-%AL added
-the subscript 'cyc' should indicate that this variation includes also the solar cycle variation. This distinguishes it from $\sigma_P$ defined below, which does not contain the solar cycle variation.
-\begin{equation}
-%MJK I think subscript P is missing from here, and the need for 'cyc' I cannot understand.
-%AL correct. The P was missing. I tried to explain the 'cyc'
-%\sigma^2_{\mbox{cyc}}(\lambda) 
-%AL commented out this:
-%\sigma_P^2(\lambda)  = 
-%AL and changed it to:
-\sigma^2_{\mbox{cyc}}(\lambda) =
-\frac{1}{N_t} \sum_{t} \left( f_P(\lambda,t) -\overline{f_P}(\lambda)\right)^2,
-\end{equation}
-%MJK added this
-hence equalling to the rms value of $f'_P$ (without taking the square root). 
-%MJK
-
-\item min/max $\sigma_{\mbox{mm}}$: (blue shaded area): this shows the minimum and the maximum  of $f(\lambda,t) - \overline{f}(\lambda)$:
-\begin{equation}
-\sigma_{\mbox{mm}}(\lambda) = [ \min_t (f(\lambda,t)),  \max_t (f(\lambda,t)) ] -\overline{f}(\lambda)
-\end{equation}
-
-\item min/max (mean) $\overline{\sigma}_{\mbox{mm}}$: (green shaded area): this shows the mean minimum and maximum  of $f(\lambda,t) - \overline{f}(\lambda)$:
-\begin{equation}
-\overline{\sigma}_{\mbox{mm}}(\lambda) = [ \overline{ \min_t (f(\lambda,t)) }, \overline{ \max_t (f(\lambda,t)) }] -\overline{f}(\lambda)
-\end{equation}
-
-\item mean(sdev(patch)) $\overline{\sigma_P}$ (error bars): the standard deviation of the \fff strength
-%AL added this
-($f(\lambda,t)$)
-%AL
- is computed individually for all lat / time bins. This quantity  ($=\sigma_P(\lambda,t)$) is then averaged over time:
-\begin{eqnarray}
-\overline{\sigma_P}(\lambda) &=&  \frac{1}{N_t} \sum_{t}  \sigma_P(\lambda,t) \mbox{, with} \\
-\sigma_P^2(\lambda,t) &=& \frac{1}{N_P}\sum_{\mbox{patch}} ( f(\lambda,t)
-- f_P(\lambda,t) )^2,
-\end{eqnarray} 
-%AL added this
-where $\sum_{\mbox{patch}}$ indicates the summation over all \fff strengths within a patch, and $f_P(\lambda,t)$ being the mean \fff strength in this patch. The patch size must be chosen small enough to not contain a significant variation in latitude or solar cycle. 
-This quantity $\overline{\sigma_P}(\lambda)$ is displayed as the orange shaded area in \fig{butterfly_lat}.\\
-%MJK Added this
-This quantity is, therefore, a mean of the $f'_{P, {\rm rms}}$ (so this time also taking the square root) values in individual bins. The problem is that the quantity we are interested in inspecting, and defining the significance of, is now defining the error bar of the measurement. 
-%MJK
-%AL comment:
-%My definition is maybe poor. Yes, I think it should be simply called the 'average rms fluctuation of the \fff strength over 2 months' (in the above plot the patch size in time is 2 months).
-\end{itemize}
-\subsection*{All the stuff above this line not needed !!!}
-\color{black}
-%AL END unnecessary stuff
-
-%MJK Cutting this out following the decision from yesterday
-%
-%AL create this plot with:
-% %run plot_fmode_butterfly.py -i ../qs_cubes --reread=False --fov 'FFOV_KX0' --show_cos=False --show_cycle=False
-\colfigtwocol{butterfly_lat_FFOV_KX0}{Same as \fig{butterfly_lat}, but computed from a wedge of $\pm10^\circ$ around the $k_y$ axis.
-%MJK I would not know what is a poloidal component of the f-mode.
-%, representing the poloidal component.
-\label{butkx0}}
-
-\colfigtwocol{butterfly_lat_FFOV_KY0}{Same as \fig{butterfly_lat}, but computed from a wedge of $\pm10^\circ$ around the $k_x$ axis.
-%, representing the toroidal component. 
-\label{butky0}}
-
-%MJK
-Next we investigate whether constructing the \fff 
-%power 
-energy
-near
-the ring axes will affect the results. Such a difference could be caused by the underlying magnetic field running in a preferred direction. 
-%MJK
-\Fig{butkx0} shows the butterfly near the $k_x$=0 axis, $f_{k_{y}}$, tracing \fff sensitivity on the poloidal component of the
-magnetic field, and \Fig{butky0} the same near the $k_y$=0 axis,
-$f_{k_{x}}$, tracing the sensitivity to the toroidal field. Interestingly,
-differences can be observed. First of all, the variability in
-$f_{k_{x}}$ is somewhat stronger then in $f_{k_{y}}$, that
-could indicate that the subsurface toroidal field is stronger
-than the preferentially poloidal one. Secondly, $f_{k_{x}}$ is
-better in phase with the solar cycle, although some phase shift,
-but smaller, is observed. The signal is the most pronounced
-at the equator. It does not increase during the 24-to-25
-minimum except at higher latitudes, and no signs of quenching
-are yet clearly discernible during the ascending phase of Cycle 25. 
-
-$f_{k_{x}}$ has a clear and larger phase shift w.r.t. the solar 
-cycle, especially pronounced at high latitudes. In the beginning
-of the HMI data series, clear signs of quenching are still
-visible at high latitudes on both hemispheres. Then enhancement is 
-seen around the the solar maximum. This is followed by weak signs
-of quenching during the descending and minimum phase. Enhancement
-is again observed during the ascending phase of Cycle 25, especially
-in the North. The Southern hemisphere shows generally weaker
-patterns than the North in all 
-computed
-\fff 
-%components.
-variants.
