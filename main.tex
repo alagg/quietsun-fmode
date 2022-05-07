@@ -68,11 +68,11 @@ In addition to the global solar magnetic field, it is observationally known that
 studies of QS magnetism have been conducted, and it has been argued
 that the QS magnetic field is 
 independent of the solar cycle 
-\cite[]{Kleint+10,Buehler+13,Faurobert+15,Jin+15a,Jin+15b}. On the other hand, some other studies have proposed
-that some dependence should exist \cite[]{Lites+14,Faurobert+21}. 
+\cite[see, e.g.,][]{Kleint+10,Buehler+13,Faurobert+15,Jin+15a,Jin+15b}. On the other hand, some other studies have proposed
+that some dependence should exist \cite[e.g.][]{Lites+14,Faurobert+21}. 
 Taken the theoretical and observational controversies, further studies of QS magnetism are required, and long-term investigations are now enabled by instruments like
 Helioseismic and Magnetic Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}, that provides high sensitivity, high spatial
-resolution, long-term stability, and constant conditions. Currently, the data covers nearly 12 years of observations, enabling solar-cycle-scale studies.
+resolution, long-term stability, and constant conditions. Currently, the data covers 12 years of observations, enabling solar-cycle-scale studies.
 
 Another motivation to study the QS comes from recent observational investigations that have reported 
 \cite{SRB16, Waidele22} strengthening of solar surface or the fundamental \fff
@@ -94,10 +94,10 @@ and time with suitable averaging. Building such a data product for the \fff, req
 inactive regions on the solar surface, allows us to extract statistics
 of the QS magnetism as well, which is the second main aim of this study.
 
-The paper is organized as follows: in Sect.\ref{pipeline} we describe
+The paper is organized as follows: in Sect.~\ref{pipeline} we describe
 the data, the necessary steps to 
 clean it, and the automated pipeline we built for harvesting the data and compiling the end products, namely the QS magnetism data products, and the QS and AR \fff data. In
-Sect.\ref{results} we discuss our findings for the QS magnetism, \fff, and the lastly present some AR data with the QS calibration
+Sect.~\ref{results} we discuss our findings for the QS magnetism, \fff, and the lastly present some AR data with the QS calibration
 applied. 
 
 
@@ -120,7 +120,8 @@ The first data product, full-disk line-of-sight (LOS) magnetograms, provides a d
 QS
 magnetism during a solar cycle. To enhance the signal-to-noise ratio in the LOS magnetograms we performed a newly developed algorithm for spatial and temporal averaging: The full-disk HMI magnetograms starting from 27-Apr-2010 and ending at 
 %MJK complete todo item.
-\todo{03-May-2022} 
+%AL All plots are update to 04-May-2022
+04-May-2022
 were downloaded from the Joint Science Operation Center (JSOC) hosted at Stanford University (http://jsoc.stanford.edu) to a temporary storage (see \fig{pipeline}, 'mahti storage') and tracked at full spatial resolution for 8 hours to compensate for the solar rotation ('full disk tracking').
 %AL @Nigul: Can you explain the differential rotation model used?
 %NO As much as I remember we omitted taking into account diff. rot. as it was marginal during 8hrs
@@ -129,14 +130,18 @@ We neglected differential rotation due to
 the short tracking time.
 The step between tracked sequences was 4 hours, so that a total of 6 tracked sequences were gathered per one day, resulting in more than 
 %MJK Check.
-\todo{$31\,000$} tracked sequences.
+%AL recounted and checked: 25765 on May 6 2022
+$25765$ tracked sequences (as of 04-May-2022).
 
 %MJK Latitude and longitude have now been defined, should use them.
 From each tracked sequence, we extracted two data products by dividing the visible solar disk  between latitudes and longitudes from $-80\degree$ to +$80\degree$ into (i) $64\times 64$  overlapping patches of $15\degree$ (in solar latitude and longitude)  and (ii) $180\times 180$ patches of $1\degree$.
 Every of these patches therefore contains a space-time cube of LOS magnetograms at full spatial resolution at a 12-minute cadence,
 from which we 
 compute the 
-root-mean-square of the magnetic field strength, averaged over the full field-of-view of the tracked cube (\brms{}=$\sqrt{\langle B^2\rangle_{\rm LOS}}$).
+root-mean-square of the magnetic field strength, averaged over the full field-of-view of the tracked cube 
+%AL
+and over the full 8 hour period
+(\brms{}=$\sqrt{\langle B^2\rangle_{\rm LOS}}$).
 The $15\degree$ patches (i) are large enough to cover several supergranulation cells containing network and \IN{} fields \cite[]{2010LRSP....7....2R} with a typical size of 30--35\,Mm (we refer to them as \nw{} cubes), and the $1\degree$ patches (ii) are small enough that some of them lie completely in the \IN{} (\inw{} cubes). 
 The statistics for each patch were stored as data products (see also \fig{pipeline}) including the information about 
 latitudinal and longitudinal position as well as the Carrington 
@@ -159,7 +164,9 @@ magnetism required a careful selection of the most quiet regions, defined as bei
 	\item\label{c3}  this pixel must be the most quiet pixel within a 4-day interval.
 \end{enumerate}
 
-Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along the central meridian. (\ref{c2}) guarantees an equal distribution of quiet pixels over the 11-year period of available HMI measurements, and (\ref{c3}) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}. The result of this selection were two time series of the \brms{} for the most quiet patches in the network and the \IN{} regions. Note that the this selection also efficiently removes the 24\,h modulation present in the HMI magnetograms.
+Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along the central meridian. (\ref{c2}) guarantees an equal distribution of quiet pixels over the 12-year period of available HMI measurements, and (\ref{c3}) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}. The result of this selection were two time series of the \brms{} for the most quiet patches in the network and the \IN{} regions. 
+%AL
+Note that this selection also efficiently removes the 24\,h modulation present in the HMI magnetograms.
 
 \subsection{Correction for HMI sensitivity change\label{sensicorr}}
 
@@ -410,8 +417,10 @@ from $15\degree \times 15\degree$ patches that showed only weak, small-scale mag
 To compute the \fff 
 energy, we have used the whole ring diagram data.
 Temporally averaged profile in latitude is removed for highlighting the variation in the
-\fff power. The period covered is somewhat larger than the 11 year solar cycle~24, which
-began to show some magnetic activity from early 2010; this cycle ended by around 2020.
+\fff power. The period covered is somewhat larger than the 11 year %solar cycle~24, 
+SC24,
+which
+began to show some magnetic activity from early 2010; this cycle ended by around 2020, see also \Fig{butterfly_lat_cut}, lower panel showing the sunspot number of SC24 and SC25 up to the writing of this manuscript.
 Broadly, we find an anti-correlation of the \fff 
 energy with the activity cycle of the
 Sun --- during the solar minimum and early rising phase ($\sim 2010-12$), the \fff 
@@ -429,11 +438,14 @@ SC24, roughly around the end of the year 2016.
 
 
 %MJK New para; describing the rest of our observations.
-During mid-2017, we see weak strengthening of the \fff strength to commence. During the minimum (2018-2019) between the Cycles 24 and 25, the strengthening appears stronger in the higher latitudes. It also continues after the minimum, when Cycle 25 has already started its ascending phase. What is also noteworthy is that the \fff 
-%strength 
+During mid-2017, we see weak strengthening of the \fff strength to commence, first occurring at higher Southern latitudes. During the minimum (2018-2019) between the SC24 and 25, the strengthening appears stronger in the higher latitudes. It also continues after the minimum, when Cycle 25 has already started its ascending phase. What is also noteworthy is that the \fff 
 energy
 never rises as high as the values observed during the ascending phase of Cycle 24 (2011-2012).
-%MJK
+
+%MJK New para; we need to describe Fig 8 a bit more.
+In \Fig{butterfly_lat_cut} we present cuts through the butterfly
+diagram at three different latitudes, equator, and $\pm 29\degree$, and sinusoidal fits to the data points. The variability is the strongest at the equator, but also contains the largest scatter. The minimum \fff energy is obtained there the latest, around the beginning of the year 2018. There, the difference in magnitude during SC24 and 25 is the largest. Southern higher latitude shows very weak variation in contrast to the equator, while the northern an intermediate one. The shift w.r.t. the solar cycle is somewhat latitude dependent. At the higher northern latitude, the \fff minimum occurs roughly a year earlier than at the equator. The shift in the \fff mode phase w.r.t. the sunspot cycle is of the order of three to four years, hence it is more in phase with the 
+poloidal phase of the magnetic field than the toroidal one.
 
 \subsection{AR \fff with QS calibration}\label{arf}
 
@@ -492,7 +504,6 @@ method used. The new method for the QS calibration developed here tends to show 
 %AL: command to create this plot:
 %fmodetools.fmode_vs_brms(delta=5,clat=0,notitle=True,show_sigma=False)
 \colfig{fmode_vs_brms}{\fff 
-%strength 
 energy
 as a function of \brms{} for the most quiet patches at disk center. The colors indicate the grouping according to the years. The standard deviation for the \fff variation is 87.}
 
@@ -509,7 +520,13 @@ as a function of \brms{} for the most quiet patches at disk center. The colors i
 \colfig{AR11105_track}{Same as \fig{AR11130_track}, but for AR11105.}
 %AL
 
-\section{Discussion}
+\section{Discussion and conclusions}
+
+%MJK Starting the re-write
+%MJK First about the QS magnetism.
+The first part of the paper presented an analysis of QS magnetism, where the main findings were the solar cycle independence of the intranetwork magnetic fluctuations studied by using $1\degree$ patches, while network in internetwork fields, studied by using $15 \degree$ patches, were found to show a statistically significant solar cycle dependence. The maximum of the magnetic fluctuations were detected at the disk center with a phase shift of roughly a half a year w.r.t. to the sunspot-number-defined cycle. We interpret these findings as follows. The independence of the intranetwork magnetic fields is either reflecting the fact that these fields, clearly on smaller scales as the supergranular cells, ad generated by the fluctuation dynamo alone, or then the sensitivity of the HMI instrument prevents one to see any variation. The solar cycle dependence of the network and internetwork fields reflects the fact that two separate processes are responsible for generating these fields. Turbulence is tangling the solar-cycle dependent large-scale sub-surface field resulting in magnetic fluctuations, that are then expelled to the edges of the supergranular cells. The fluctuation dynamo gives another contribution through flux expulsion, but this component is not depending on the solar cycle.
+%MJK 
+
 
 %NS: added for anticorrelation; could be speculative, so please check and change as needed
 %NS: a bit rushed writing as well, but it can be polished later
