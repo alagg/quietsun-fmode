@@ -363,8 +363,7 @@ By inspecting the level of variability around the temporal mean and the
 %mean error we must conclude that the signal is above the noise level, 
 overall variability of the QS, we must conclude that these signals are of the same order of magnitude. 
 In this respect, the solar cycle dependent signal is very weak, but if we compare that to the noise level in the data, both the QS variability level and cycle-dependent signal exceed the noise level by an order of magnitude, hence this is not an issue concerned with the instrument sensitivity.
-%Hence, the signal is very weak, but it is still meaningful to proceed with the analysis.
-%MJK This part is not very convincing yet.
+%MJK Is this convincing enough now?
 
 What could be the cause of the strong QS variability level is most likely related to the strongly varying sub-surface magnetic fields that affect the \fff that cannot be removed by using the surface \brms{} as the selection criterion for really quiet patches. This is illustrated in \Fig{fmode_vs_brms}, where we show the measured \fff energy versus the \brms{} in the patches. The \fff energy is not correlated with the \brms{} seen at the surface, and strong, nearly constant, variability is seen at different epochs of the solar cycle. This poses clear limitations of the calibration method proposed here to detect weak transient signals in the \fff evolution.
 
@@ -373,20 +372,30 @@ What could be the cause of the strong QS variability level is most likely relate
 
 %AL create this plot with:
 % %run plot_fmode_butterfly.py -i ../qs_cubes --reread=False --fov 'FFOV' --show_cos=False --show_cycle=False
-\colfigtwocol{butterfly_lat}{Butterfly diagram of \fff %strength 
-energy variations, $E'_f(\lambda,t)$, computed from azimuthally integrated 
+\colfigtwocol{butterfly_lat}{Butterfly diagram of \fff  
+energy variations, $E'_f(\lambda,t)$, \todo{we should still describe the binning}.
+%MJK This has now been properly introduced, and azimuthal is confusing. Can we just leave it out here?
+%, computed from azimuthally integrated 
 %average of the 
-ring diagrams, are shown in the left panel. 
+%ring diagrams, are shown in the left panel. 
 %The 
 %latitudinal average over time, 
 %displayed in the right panel, was removed for better %visibility of the variation. 
-The temporal average, $\overline{\mef}(\lambda)$, that was subtracted from the data, is shown as the black line in the right panel. 
+The temporal average, $\overline{\mef}(\lambda)$, 
+%MJK Reform
+%that was 
+has been
+subtracted from the data, 
+%MJK
+and
+is shown as the black line in the right panel. 
 Its error bars
 %, plotted on the latitudinal average of the \fff strength, 
-represent the time averaged standard deviation of the fluctuations of the \fff 
+represent the time-averaged standard deviation of the fluctuations of the \fff 
 %strength 
 energy
-around the signal for every bin ($\overline{\sigma (\lambda)}$). 
+%MJK Correcting the overline.
+around the signal for every bin ($\overline{\sigma} (\lambda)$). 
 %The orange shaded area shows the amplitude of the solar cycle variation ($f'_A(\lambda)$). 
 }
 
