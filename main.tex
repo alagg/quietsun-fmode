@@ -247,11 +247,13 @@ In contrast to earlier studies \citep{SRB16,Waidele22}, we
 did not perform fitting to the \fff for its extraction. 
 Instead, we only fitted the background, and subtracted this 
 contribution.
+%AL are some details for the BG subtraction needed?
 Then,
 an integration range in $k$ space was selected for each constant $\omega$ in a following way: first the maximum of \fff $k_{\rm max}$ and the minimum between \fff and first $p$-mode $k_{\rm start}$ were detected; $k_{\rm start}$ was chosen as the start of integration range and the end of the integration range $k_{\rm end}$ was set as $k_{\rm end}=k_{\rm max}+2(k_{\rm max}-k_{\rm start})$; $k_{\rm end}$ chosen in such a way guarantees that the integration range is sufficiently wide to cover significant part of the \fff 
 signal in $k$-space.
 Integration range in $\omega$ space was chosen between values starting from 
 %MJK Should use some normalized numbers, and these do not match with the nu of the figure.
+%AL should be resolved with the new figure 3
 14.45 and ending at 29.03, 
 %MJK
 where the significant part of the \fff power resides. 
@@ -264,7 +266,11 @@ E_f=
 \sum_{\mbox{$\omega_{\rm min}$}}^{\mbox{$\omega_{\rm max}$}} P(\omega,k)
 \end{equation}
 After completing the described steps in the CSC supercomputing
-environment, we have collected a total of \todo{18327 number to be updated for final version!} \fff
+environment, we have collected a total of 
+%AL number updated on May 07 2022
+22680
+%\todo{18327 number to be updated for final version!} 
+\fff
 energies
 for patches close to central meridian over all latitudes covering 
 most of SC24 and the ascending phase of SC25.
@@ -272,14 +278,18 @@ most of SC24 and the ascending phase of SC25.
 %MJK The figure and caption still say "nu" for frequency. I propose
 %MJK we revert to omega.
 %MJK Also, the resolution of the upper panel is poor.
+%AL create new plot with:
+%fmodetools.create_spectra_cube(code='-',cubedir='../qs_cubes/2010/2010-07-21_00:00_lon256_lat-01.fits')
+%fmodetools.analyze_spectra_cube('2010-07-21_00:00_lon256_lat-01_spectra.fits')
 \begin{figure}\centering
 %	\includegraphics[width=1.0\linewidth,trim={0cm 0.4cm 0cm 0.3cm},clip=TRUE]{ring_diagram}\\
 %	\includegraphics[width=1.0\linewidth,trim={0cm 0cm 0cm 1cm},clip=TRUE]{az_avg_spec}
 	\includegraphics[width=1.0\linewidth]{ring_diagram_spectrum}
 	\caption{Top: example of quiet-sun ring diagram at $\omega=22.40$ 
 	%AL quadrant
-	for one quadrant of the full ring. 
-	Bottom: spectrum obtained by azimuthally averaging the ring diagram. The red vertical line marks the position of the maximum of the \fff and the black vertical lines the range of integration.\todo{DRAFT figure only. To be improved! BG does not match}}
+	for one quadrant of the full ring (logarithmic color scale), computed from the data cube presented in \fig{2010-07-21_2014-11-09} (left panel). 
+	%AL add collapsed
+	Bottom: collapsed spectrum obtained by azimuthally averaging the ring diagram. The red vertical line marks the position of the maximum of the \fff and the black vertical lines the range of integration.}
 	\label{ring_diagram}
 \end{figure}
 
@@ -309,7 +319,11 @@ After applying the selection criteria described in \sect{quietregion} and the su
 %MJK
 %HMIS 
 HMI's
-sensitivity change (\sect{sensicorr}) we obtain the dependency of the \brms{} values of the most quiet region at the central longitude as a function of heliographic latitude and time. \fig{Brms-lat00-percentile} presents the \brms{} values from May 2010 until October 2021 for the heliographic latitude $\lambda = 0\degree$. The individual data points (red dots) are computed over an area of 15$^\circ$ in latitude and longitude and over a time of 8 hours. At disk center, this corresponds to an area of $\approx 180 \times 180$\,Mm$^2$, and therefore contains 30--40 supergranular cells. The \brms{} value 
+sensitivity change (\sect{sensicorr}) we obtain the dependency of the \brms{} values of the most quiet region at the central longitude as a function of heliographic latitude and time. \fig{Brms-lat00-percentile} presents the \brms{} values from May 2010 until May 2022 for the 
+%AL maybe mention both quantities
+%heliographic latitude $\lambda = 0\degree$. 
+Stonyhurst latitude and longitude $(\lambda,\varphi) = (0,0)^\circ$.
+The individual data points (red dots) are computed over an area of 15$^\circ$ in latitude and longitude and over a time of 8 hours. At disk center, this corresponds to an area of $\approx 180 \times 180$\,Mm$^2$, and therefore contains 30--40 supergranular cells. The \brms{} value 
 %therfore contans 
 therefore contains
 network and \IN{} fields.
@@ -318,16 +332,20 @@ Typical magnetograms at disk center at solar minimum (July 2010) and maximum (No
 \fig{Brms-lat00-percentile} clearly indicates the solar cycle dependence of the 
 %quiet-sun 
 QS
-magnetic fields, consisting of network and \IN{}. The \brms{} values peak in the second half of 2014, close to the declared maximum of 
+magnetic fields, consisting of network and \IN{}. The \brms{} values peak in the second half of 2014, %close to the
 %MJK The peaks appear later than that to me...
-solar cycle \#24 (April 2014, \todo{REF!}. The variation is statistically significant, as indicated by the the mode and the 97\% percentiles, computed by fitting a log-normal distribution over a 1-year sliding window.
+%AL yes. We should indicate this. Maybe:
+a few months later compared to the
+declared maximum of solar cycle \#24 (April 2014, \todo{REF!}. The variation is statistically significant, as indicated by the the mode and the 97\% percentiles, computed by fitting a log-normal distribution over a 1-year sliding window.
 
 A similar plot is presented in \fig{Brms-lat00-percentile-IN}, but now the \brms{} value was computed only for a $1\degree$ window in latitude and longitude, corresponding to an area of only $12\times 12$\,Mm$^2$ at disk center. The quiet-region selection criteria (\sect{quietregion}) guarantees, that this patch lies fully within the \IN{}, and is not `contaminated' by network fields. Clearly, there is no dependence of \brms{} with solar cycle detectable. The 
 %MJK It is not self-evident how decrease in sensitivity due to aging would lead to detection of higher mgfs.
-slight increase over the 11-year period might be an effect of the aging of the HMI instrument and the resulting decrease in the sensitivity for magnetic field measurements.
+slight increase over the 12-year period might be an effect of the aging of the HMI instrument and the resulting decrease in the sensitivity for magnetic field measurements.
 
 The average \brms{} value in the \IN{} is in $\approx6$\,G. Using the area of one HMI pixel this corresponds to a magnetic flux of $3\times 10^{16}$\,Mx. 
 %MJK To be compared with some earlier values/estimates?
+%AL maybe also mention the sensitivity change
+This value is certainly affected by the sensitivity of the HMI instrument, and is reduced to $\lesssim5$\,G after the HMI sensitivity change described in Sect.~\ref{sensicorr}.
 
 \colfigtwocol{2010-07-21_2014-11-09}{Comparison of two disk-center magnetograms at solar minimum (2010-07-21) and 
 %MJK
@@ -335,7 +353,10 @@ around the maximum seen in the disk-center \brms{} values
 %solar maximum 
 %MJK But this is not the official maximum based an sunspot number?
 %MJK Now changed the text above, but the main text should perhaps also be modified.
-(2014-11-09). The maps show the first frame of the 8\,h data cube, the animation is in the online material.}
+(2014-11-09). The maps show the first frame of the 8\,h data cube, the animation 
+%AL added
+covering the full cube
+is in the online material.}
 
 
 %MJK Axis labels
@@ -364,7 +385,10 @@ where $n_t$ is the total number of time points at a certain $\lambda$, and denot
 \begin{equation}
     \mef'(\lambda,t)=\mef(\lambda,t)-\overline{\mef}(\lambda),
 \end{equation}
-and plot this quantity as function of latitude and time as in \Fig{butterfly_lat}, with a 3-month binning in time and roughly 6 degrees in latitude. 
+and plot this quantity
+%AL added longitude
+for the central meridian
+as function of latitude and time as in \Fig{butterfly_lat}, with a 3-month binning in time and roughly 6 degrees in latitude. 
 
 To estimate 
 %MJK Now removing the noise concept at least from here.
@@ -382,24 +406,27 @@ Then we can straightforwardly calculate the standard deviation as
 \end{equation}
 From this we form the average error at each latitude by taking an average over time and denote as $\overline{\sigma}$. 
 %AL added
-This quantity is plotted as the error bar in the right panel of \fig{butterfly_lat} and similar plots.
+This quantity is plotted as the error bar in the right panel of 
+%AL remove the 'and similar plots'
+%\fig{butterfly_lat} and similar plots.
+\fig{butterfly_lat}.
 %MJK This still holds
 By inspecting the level of variability around the temporal mean and the 
 %mean error we must conclude that the signal is above the noise level, 
 overall variability of the QS, we must conclude that these signals are of the same order of magnitude. 
 In this respect, the solar cycle dependent signal is very weak, but if we compare that to the noise level in the data, both the QS variability level and cycle-dependent signal exceed the noise level by an order of magnitude, hence this is not an issue concerned with the instrument sensitivity.
 %MJK Is this convincing enough now?
+%AL Yes, very good.
 
-What could be the cause of the strong QS variability level is most likely related to the strongly varying sub-surface magnetic fields that affect the \fff that cannot be removed by using the surface \brms{} as the selection criterion for really quiet patches. This is illustrated in \Fig{fmode_vs_brms}, where we show the measured \fff energy versus the \brms{} in the patches. The \fff energy is not correlated with the \brms{} seen at the surface, and strong, nearly constant, variability is seen at different epochs of the solar cycle. This poses clear limitations of the calibration method proposed here to detect weak transient signals in the \fff evolution.
-
-
-
+What could be the cause of the strong QS variability level is most likely related to the strongly varying sub-surface magnetic fields that affect the \fff that cannot be removed by using the surface \brms{} as the selection criterion for really quiet patches. This is illustrated in \fig{fmode_vs_brms}, where we show the measured \fff energy versus the \brms{} in the patches. The \fff energy is not correlated with the \brms{} seen at the surface, and strong, nearly constant, variability is seen at different epochs of the solar cycle. This poses clear limitations of the calibration method proposed here to detect weak transient signals in the \fff evolution.
 
 %AL create this plot with:
 % %run plot_fmode_butterfly.py -i ../qs_cubes --reread=False --fov 'FFOV' --show_cos=False --show_cycle=False
 \colfigtwocol{butterfly_lat}{Butterfly diagram of \fff  
 energy variations, $E'_f(\lambda,t)$, \todo{we should still describe the binning}.
 %MJK This has now been properly introduced, and azimuthal is confusing. Can we just leave it out here?
+%AL shall we used the term "collapsed spectrum" as in Fig 3?
+computef from the collapsed ring diagrams (see bottom panel of \fig{ring_diagram})
 %, computed from azimuthally integrated 
 %average of the 
 %ring diagrams, are shown in the left panel. 
@@ -456,13 +483,20 @@ SC24, roughly around the end of the year 2016.
 
 
 %MJK New para; describing the rest of our observations.
-During mid-2017, we see weak strengthening of the \fff strength to commence, first occurring at higher Southern latitudes. During the minimum (2018-2019) between the SC24 and 25, the strengthening appears stronger in the higher latitudes. It also continues after the minimum, when Cycle 25 has already started its ascending phase. What is also noteworthy is that the \fff
+During mid-2017, we see weak strengthening of the \fff strength to commence, first occurring at higher Southern latitudes. During the minimum (2018-2019) between the SC24 and 25, the strengthening appears stronger in the higher latitudes. It also continues after the minimum, when 
+%AL 
+%Cycle 25 
+SC25
+has already started its ascending phase. What is also noteworthy is that the \fff
 energy
-never rises as high as the values observed during the ascending phase of Cycle 24 (2011-2012).
+never rises as high as the values observed during the ascending phase of SC24 (2011-2012).
 
 %MJK New para; we need to describe Fig 8 a bit more.
 In \Fig{butterfly_lat_cut} we present cuts through the butterfly
-diagram at three different latitudes, equator, and $\pm 29\degree$, and sinusoidal fits to the data points. The variability is the strongest at the equator, but also contains the largest scatter. The minimum \fff energy is obtained there the latest, around the beginning of the year 2018. There, the difference in magnitude during SC24 and 25 is the largest. Southern higher latitude shows very weak variation in contrast to the equator, while the northern an intermediate one. The shift w.r.t. the solar cycle is somewhat latitude dependent. At the higher northern latitude, the \fff minimum occurs roughly a year earlier than at the equator. The shift in the \fff mode phase w.r.t. the sunspot cycle is of the order of three to four years, hence it is more in phase with the 
+diagram at three different latitudes, equator, and $\pm 29\degree$, and sinusoidal fits to the data points. The variability is the strongest at the equator, but also contains the largest scatter. The minimum \fff energy is obtained there the latest, around the beginning of the year 2018. There, the difference in magnitude during SC24 and 25 is the largest. Southern higher latitudes show very a weak variation in contrast to the equator, 
+%AL is this a complete sentence? 
+while the northern an intermediate one. 
+The shift w.r.t. the solar cycle is somewhat latitude dependent. At the higher northern latitude, the \fff minimum occurs roughly a year earlier than at the equator. The shift in the \fff mode phase w.r.t. the sunspot cycle is of the order of three to four years, hence it is more in phase with the 
 poloidal phase of the magnetic field than the toroidal one.
 
 \subsection{AR \fff with QS calibration}\label{arf}
@@ -474,8 +508,10 @@ in the opposite hemisphere several days before their emergence. The main differe
 is that the \fff energy is now normalized to the actually measured average QS level
 around the specific time and latitude. To minimize
 the QS fluctuations, Gaussian smoothing to the QS \ef\,is applied, 
-\todo{but the smoothing kernel width used is kept at YYYY}
-so that the fit to the data can be considered accurate.
+\todo{but the smoothing kernel width used is kept at 
+%AL added the kernel width: rough estimate
+$5^\circ$ in longitudinal and latitudinal direction}
+so that the fit to the data can be considered accurately.
 \fff energy of 1 is hence
 equivalent to that of the QS, and values stronger/weaker 
 indicate enhancement/quenching of the \fff w.r.t. QS.
@@ -491,13 +527,22 @@ that this difference should not influence the results significantly.
 Also, as more integration is performed, the less noisy is the 
 signal, hence improving the data quality. 
 
-The results from our AR analysis are shown with green symbols and lines in \Fig{AR11130_track} and \Fig{AR11105_track}: in the top panel, each orange point shows the normalized \fff energy, \eft, with four-hour cadence, \todo{smoothed with XXXX over one day to remove a daily fluctuation} otherwise prominently present in the data. The shaded areas show the QS variance, $E'_f$, which is roughly constant, around 4--5 percent, at all latitudes and longitudes. When it is used as normalization of the \fffns, then the uncertainty at large longitudes becomes very high, as is indicated by the rapidly flaring shaded areas toward the limbs. The \brms{} measured simultaneously at the surface is shown in the lowest panels of the figures with black symbols. 
+The results from our AR analysis are shown with green symbols and lines in \Fig{AR11130_track} and \Fig{AR11105_track}: in the top panel, each orange point shows the normalized \fff energy, \eft, with four-hour cadence, 
+%AL explained the smoothing
+\todo{smoothed with a 24-hour boxcar to remove a daily fluctuation} 
+otherwise prominently present in the data. The shaded areas show the QS variance, $E'_f$,
+%AL added source
+determined from the standard deviation of the variation presented in \fig{fmode_vs_brms},
+is roughly constant (around 4--5 percent) at all latitudes and longitudes. When it is used as normalization of the \fffns, then the uncertainty at large longitudes becomes very high, as is indicated by the rapidly 
+%AL is flaring the right word? Maybe better: fanning?
+flaring 
+shaded areas toward the limbs. The \brms{} measured simultaneously at the surface is shown in the lowest panels of the figures with black symbols. 
 
 In the middle panels of \Fig{AR11130_track} and \Fig{AR11105_track}, we compare the different calibration curve candidates.
 The calibration curve used by 
 \cite{SRB16},
 based on more simple cosinus dependence of the form $\cos{\alpha} \left[q + \left(1-q \right) \cos{\alpha} \right]$ with $q=0.5$, is shown with blue symbols and lines in the aforementioned panels.
-As this specific curve does not fit the QS data very well, we also performed a fit and determined the optimal value of $q$, that turns out to be -0.045; this curve and calibration with it are plotted with orange symbols and lines in the top and middle panel of the figures.
+As this specific curve does not fit the QS data very well, we also performed a fit and determined the optimal value of $q$, that turns out to be $-0.045$; this curve and calibration with it are plotted with orange symbols and lines in the top and middle panel of the figures.
 The differences between these calibration curves are illustrated in the middle panels: The \cite{SRB16} calibration
 curve does not fit the data, overplotted with gray dots, well at larger longitudes. There, it 
 is decreasing less strongly than the data. Near the disk center the amplitude is too low to present the data well.
@@ -508,7 +553,14 @@ with the cosinus fit tends to be always below the QS level. The Gaussian fit cal
 
 As can be seen
 from \Fig{AR11130_track} and \Fig{AR11105_track} top panels, 
-applying the new QS caliration curve flattens the signal profile in comparison to the earlier calibration used. For both of the selected ARs, the \fff energy close to the limb is below the QS level to start off with, which could indicate that both of these active regions occur in an environment already non-locally affected by a magnetic field. Applying the earlier calibration curve, a clear enhancement above the QS level is visible for AR11130, while for AR11105 the profile is similar, but the enhancement amplitude remains within the level of QS variability (shaded area). The new calibration shows a more modest enhancement, reaching its peak value at similar times as with the earlier calibration for AR11130, while somewhat earlier for AR11105, but its amplitude is not exceeding QS level significantly. Unfortunately, the possible enhancement of \fff energy of the selected ARs occurs so close to the limb that it is not completely certain whether it is an artefact of the rather uncertain limb calibration data, or a true effect. Obviously, a larger sample size should be studied, including also ARs that emerge closer to the west limb to completely prove/refute this scenario.  
+applying the new QS caliration curve flattens the signal profile in comparison to the
+%AL shall we instead of using "earlier calibration" use a term like
+%AL "\SRB16 calibration" or "q=05 calibration"?
+earlier calibration used. For both of the selected ARs, the \fff energy close to the limb is below the QS level to start off with, which could indicate that both of these active regions occur in an environment 
+%AL the meaning of 'non-locally affected' is a bit vague, I think. 
+%AL I have no good idea to express it better.
+already non-locally affected by a magnetic field. 
+Applying the earlier calibration curve, a clear enhancement above the QS level is visible for AR11130, while for AR11105 the profile is similar, but the enhancement amplitude remains within the level of QS variability (shaded area). The new calibration shows a more modest enhancement, reaching its peak value at similar times as with the earlier calibration for AR11130, while somewhat earlier for AR11105, but its amplitude is not exceeding QS level significantly. Unfortunately, the possible enhancement of \fff energy of the selected ARs occurs so close to the limb that it is not completely certain whether it is an artefact of the rather uncertain limb calibration data, or a true effect. Obviously, a larger sample size should be studied, including also ARs that emerge closer to the west limb to completely prove/refute this scenario.  
 
 
 %AL added quiet sun f-mode variation plot:
