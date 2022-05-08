@@ -220,6 +220,8 @@ The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a 
 QS
 regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
 %{the using remote function call service funcX \cite{chard20funcx} to MPS server where the dopplergram database is located. Next, using mtrack command the tracked dopplergram cubes were retrieved and sent back to CSC supercomputing environment.}
+%AL we use a lot astropy and sunpy. I googled that they'd appreciate to be cited, could also go to the acknowledgemnts:
+The data processing pipeline used Astropy\footnote{\url{http://www.astropy.org}}, a community-developed core Python package for Astronomy \citep{astropy13, astropy18} and version 3.1.6 of the SunPy\footnote{\url{https://sunpy.org}} open source software package \cite[]{sunpy20}.
 
 %AL: TODO details of the tracking: Central coordinate from quiet region selection, Harsha's parameters. $300\times 300$ pixels, 8 hrs ... 
 
@@ -244,7 +246,10 @@ three-dimensional
 power spectra for each dopplergram cube and 
 integrating
 %MJK azimuthally might be confusing
-the spectra azimuthally in $k_x, k_y$ plane for each constant frequency $\omega$,
+the spectra azimuthally in $k_x, k_y$ plane for each constant
+%AL added 'angular', since it is 2*pi*\nu
+angular
+frequency $\omega$,
 to obtain a collapsed power spectrum, $P(\omega,k)$. An illustrative case for a frequency
 value at which \fff is strong, is shown in 
 \fig{ring_diagram},
@@ -301,7 +306,10 @@ most of SC24 and the ascending phase of SC25.
 %	\includegraphics[width=1.0\linewidth,trim={0cm 0.4cm 0cm 0.3cm},clip=TRUE]{ring_diagram}\\
 %	\includegraphics[width=1.0\linewidth,trim={0cm 0cm 0cm 1cm},clip=TRUE]{az_avg_spec}
 	\includegraphics[width=1.0\linewidth]{ring_diagram_spectrum}
-	\caption{Top: example of quiet-sun ring diagram at $\omega=22.40$ 
+	\caption{Top: example of quiet-sun ring diagram at
+	%AL added unit
+	the angular frequency 
+	$\omega=22.40$\,rad\,s$^{-1}$ 
 	%AL quadrant
 	for one quadrant of the full ring (logarithmic color scale), computed from the data cube presented in \fig{2010-07-21_2014-11-09} (left panel). 
 	%AL add collapsed
