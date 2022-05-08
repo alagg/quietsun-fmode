@@ -94,8 +94,8 @@ This instrument
 provides high sensitivity, high spatial
 resolution, long-term stability, and constant conditions. Currently, the data covers 12 years of observations, enabling solar-cycle-scale studies.
 
-Another motivation to study the QS comes from recent observational investigations that have reported 
-\cite{SRB16, Waidele22} strengthening of solar surface or the fundamental \fff
+Another motivation to study the QS comes from recent observational investigations \cite[]{SRB16, Waidele22} that have reported 
+ strengthening of solar surface or the fundamental \fff
 about one to two days before
 the formation of ARs using different kinds of local helioseismic techniques. Accompanied with numerical simulations that have given similar indications \cite{S+14,S+15,S+20}, this seems as a very promising avenue of studying the origin of solar sub-surface magnetism and the mechanism of active region formation. The observational studies, however, suffer from a lack of proper calibration method against the QS. \cite{SRB16}, for example, rely on QS
 regions on the opposite hemisphere to compare with the AR \fffns. This method
@@ -131,12 +131,19 @@ applied.
 Our analysis is based on data from HMI@SDO. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by combining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). We processed the two data sets in a semi-automatic pipeline (see \fig{pipeline}), optimized for obtaining reliable information about the magnetic field in the QS regions and for a robust computation of the \fff power from the dopplergrams. The left tree in \fig{pipeline} describes the pipeline used for the magnetograms, the right tree for the dopplergrams.
 In the following we use the following notation and definitions. 
 We denote the solar 
-latitude with $\lambda$, longitude with $\phi$, 
+%AL I used always \varphi in the plots, not \phi
+latitude with $\lambda$, longitude with $\varphi$, 
 both in the Stonyhurst coordinate system \cite[]{Thomson06}, 
 and time with $t$. 
 
 
-\colfig{figures/Pipeline2}{Data pipeline. The leftmost path illustrates the pipeline to collect the magnetograms in the most quiet patches, while the rightmost one the pipeline to track data from the quiet patches from the HMI database, and compute the \fff energy. The central path of AR processing is otherwise equivalent to the QS pipeline, but there AR coordinates are sent for tracking in the German cluster environment, and an additional step, namely QS calibration, is performed in the end. Rectangular boxes represent analysis functions, and ellipsoids the derived data products. The rectangles with yellow frames stand for the corrective functions applied to the data. }
+\colfig{figures/Pipeline2}{Data pipeline. The leftmost 
+%MJK For consistency
+%path 
+tree illustrates the pipeline to collect the magnetograms in the most quiet patches, while the rightmost one the pipeline to track data from the quiet patches from the HMI database, and compute the \fff energy. The central path of AR processing is otherwise equivalent to the QS pipeline, but there AR coordinates are sent for tracking in the 
+%LT
+%German 
+MPS (in Germany) cluster environment, and an additional step, namely QS calibration, is performed in the end. Rectangular boxes represent analysis functions, and ellipsoids the derived data products. The rectangles with yellow frames stand for the corrective functions applied to the data. }
 
 \subsection{Magnetograms}
 
@@ -144,7 +151,7 @@ The first data product, full-disk line-of-sight (LOS) magnetograms, provides a d
 QS
 magnetism during a solar cycle. To enhance the signal-to-noise ratio in the LOS magnetograms we performed a newly developed algorithm for spatial and temporal averaging: The full-disk HMI magnetograms starting from 27-Apr-2010 and ending at 
 04-May-2022
-were downloaded from the Joint Science Operation Center (JSOC) hosted at Stanford University (http://jsoc.stanford.edu) to a temporary storage (see \fig{pipeline}, 'mahti storage') and tracked at full spatial resolution for 8 hours to compensate for the solar rotation ('full disk tracking').
+were downloaded from the Joint Science Operation Center (JSOC) hosted at Stanford University (http://jsoc.stanford.edu) to a temporary storage (see \fig{pipeline}, 'Mahti storage') and tracked at full spatial resolution for 8 hours to compensate for the solar rotation ('Full disk tracking').
 We neglected differential rotation due to
 the short tracking time.
 The step between tracked sequences was 4 hours, so that a total of 6 tracked sequences were gathered per one day, resulting in more than 
@@ -155,7 +162,6 @@ Every of these patches therefore contains a space-time cube of LOS magnetograms 
 from which we 
 compute the 
 root-mean-square
-%introduce abbreviation since it is used in the discussion section.
 (rms) 
 of the magnetic field strength, averaged over the full field-of-view of the tracked cube 
 and over the full 8 hour period
@@ -177,26 +183,32 @@ QS
 magnetism required a careful selection of the most quiet regions, defined as being free of enhanced solar activity. We therefore searched for the minimum value of \brms{} in both, the \nw{} and the \inw{} statistical maps, on a latitudinal grid with a $10\degree$ spacing fulfilling the following additional criteria:
 \begin{enumerate}[(i)]
 	\item\label{c1} the most quiet pixel must be within $\pm10\degree$ around the central meridian,
-	\item\label{c2}  this pixel must belong to the 50\% most quiet pixels of the month,
+%AL Ooops! I spotted this late. Not 50, but 10%
+	\item\label{c2}  this pixel must belong to the	10\% most quiet pixels of the month,
 	\item\label{c3}  this pixel must be the most quiet pixel within a 4-day interval.
 \end{enumerate}
 
-Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along the central meridian. (\ref{c2}) guarantees an equal distribution of quiet pixels over the 12-year period of available HMI measurements, and (\ref{c3}) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}. The result of this selection were two time series of the \brms{} for the most quiet patches in the \NW{} and the \IN{} regions. 
+Criterion (\ref{c1}) was chosen to get the strongest magnetic field signal along the central meridian. 
+%LT
+Criterion
+(\ref{c2}) guarantees an equal distribution of quiet pixels over the 12-year period of available HMI measurements, and 
+%LT
+criterion
+(\ref{c3}) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}. 
+%LT
+%The result of this selection were 
+As a result of applying these criteria we obtained
+two time series of the \brms{} for the most quiet patches in the \NW{} and the \IN{} regions. 
 Note that this selection also efficiently removes the 24\,h modulation present in the HMI magnetograms.
 
 \subsection{Correction for HMI sensitivity change\label{sensicorr}}
 
-%AL remove the 11-year to avoid some solar cycle mixing. 
-%AL Also "temporal evolution of time series" is one temporal too much
-%The 11-year temporal evolution of \inw{} time series {the \brms{}} value 
 The temporal evolution of \inw{} \brms{} value
 revealed clearly a change in the HMI observing mode, performed on 13-Apr-2016. On this day, HMI switched to a more efficient observing mode \cite[see][]{2018SoPh..293...45H,2014SoPh..289.3483H,2016SoPh..291.1887C}. By combining both HMI cameras to determine the vector-field observables the cadence for full-disk magnetograms could be reduced from 135\,s (observational mode MOD-C) to 90\,s (MOD-L). This reduced the noise level for Stokes $V$ measurements by 17\%, resulting in a decrease of the noise level in the \los{} magnetograms by 5\%.
 
 For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \inw{} time series: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \inw{} time series plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion \cite[BIC,][]{Stoica2004} to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependent on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of 
-%AL Adding half a year of data changed the BIC so that order=3 was best (previous: 4)
 degree 3. 
 The so-determined amplitude of the Heaviside step function is added to the 
-%AL added Brems
 \brms{}
 data points after 13-Apr-2016 for all data presented in this paper.
 
@@ -208,48 +220,37 @@ The second HMI data product used in this paper are the \los{} velocity maps. The
 energy contained in the
 surface gravity mode, the so-called \fffns,
 and investigate whether variability during the solar cycle is present. Such variations could be caused by the presence of non-emerging sub-surface magnetic fields, as the \fff is known
-to be strongly affected by the presence of magnetic fields \todo{(REFS)}. 
+to be strongly affected by the presence of magnetic fields \citep[see, e.g.,][]{Cally+94,CB97,SRB16}. 
 It is also very important to study this question in more detail, for establishing a reliable calibration method 
-%AL 2x 'to study'
-%to study 
 for a measurement of
 the claimed 
 \fff enhancement prior to AR emergence \cite{SRB16,Waidele22}. 
 
-The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a server at the Max Planck Institute for Solar System Research (MPS Göttingen, Germany) whereas the analysis is executed in the CSC supercomputing environment (Aalto, Finland). We have utilized  a function-as-a-service client based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We have developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage the mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to prepare the dopplergram cubes within the GDC-SDO environment and subsequently transfer them to the CSC environment. The coordinates of the selected 
+The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a server at the Max Planck Institute for Solar System Research (MPS Göttingen, Germany) whereas the analysis is executed in the CSC supercomputing environment (Finland). We have utilized  a function-as-a-service client based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We have developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage the mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to prepare the dopplergram cubes within the GDC-SDO environment and subsequently transfer them to the CSC environment. The coordinates of the selected 
 QS
 regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
-%{the using remote function call service funcX \cite{chard20funcx} to MPS server where the dopplergram database is located. Next, using mtrack command the tracked dopplergram cubes were retrieved and sent back to CSC supercomputing environment.}
-%AL we use a lot astropy and sunpy. I googled that they'd appreciate to be cited, could also go to the acknowledgemnts:
 The data processing pipeline used Astropy\footnote{\url{http://www.astropy.org}}, a community-developed core Python package for Astronomy \citep{astropy13, astropy18} and version 3.1.6 of the SunPy\footnote{\url{https://sunpy.org}} open source software package \cite[]{sunpy20}.
 
-%AL: TODO details of the tracking: Central coordinate from quiet region selection, Harsha's parameters. $300\times 300$ pixels, 8 hrs ... 
-
-%MJK To be decided how we refer to the final number obtained.
-%MJK Nishant16 called that \fff{} energy, and used E_f for it.
-%MJK As we are practically computing the same number, then 
-%MJK we should possibly stick to using the same notation.
-%MJK Main data product is the normalized E_f, for which
-%MJK we could continue using the tilded quantity.
-%
-%MJK The lower panel should have P(omega,k) on the y-axis
-%MJK Here the background is already subtracted? 
-%MJK Explanation of its removal was not yet included, now
-%MJK added something preliminary. Should we also show the
-%MJK non-subtracted spectrum? 
 \subsection{Computation of the \fff
-%power}
 energy}
 
 Subsequent processing involved calculating the 
 three-dimensional
 power spectra for each dopplergram cube and 
+%MJK Reformed here, as azimuthal is very confusing.
 integrating
-%MJK azimuthally might be confusing
-the spectra azimuthally in $k_x, k_y$ plane for each constant
-%AL added 'angular', since it is 2*pi*\nu
+in $(k_x, k_y)$-plane, for each 
 angular
 frequency $\omega$,
+over all wavenumbers, 
+$k=\sqrt{k_x^2+k_y^2}$.
+%MJK azimuthally might be confusing
+%azimuthally 
+%in $(k_x, k_y$ plane for each 
+%constant
+%%AL added 'angular', since it is %2*pi*\nu
+%angular
+%frequency $\omega$,
 to obtain a collapsed power spectrum, $P(\omega,k)$. An illustrative case for a frequency
 value at which \fff is strong, is shown in 
 \fig{ring_diagram},
@@ -269,18 +270,14 @@ did not perform fitting to the \fff for its extraction.
 Instead, we only fitted the background, and subtracted this 
 contribution.
 %AL are some details for the BG subtraction needed?
+%MJK Sure, that would be good.
 Then,
 an integration range in $k$ space was selected for each constant $\omega$ in a following way: first the maximum of \fff $k_{\rm max}$ and the minimum between \fff and first $p$-mode $k_{\rm start}$ were detected; $k_{\rm start}$ was chosen as the start of integration range and the end of the integration range $k_{\rm end}$ was set as $k_{\rm end}=k_{\rm max}+2(k_{\rm max}-k_{\rm start})$; $k_{\rm end}$ chosen in such a way guarantees that the integration range is sufficiently wide to cover significant part of the \fff 
 signal in $k$-space.
 Integration range in $\omega$ space was chosen between values starting from 
-%MJK Should use some normalized numbers, and these do not match with the nu of the figure.
-%AL should be resolved with the new figure 3
 14.45 and ending at 29.03, 
-%MJK
 where the significant part of the \fff power resides. 
-%MJK 
 As the end result, we have computed the \fff energy
-%MJK Must be beautified
 \begin{equation}
 E_f=
 \sum_{\mbox{$k_{\rm start}$}}^{\mbox{$k_{\rm end}$}}
@@ -288,17 +285,12 @@ E_f=
 \end{equation}
 After completing the described steps in the CSC supercomputing
 environment, we have collected a total of 
-%AL number updated on May 07 2022
 22680
-%\todo{18327 number to be updated for final version!} 
 \fff
 energies
 for patches close to central meridian over all latitudes covering 
 most of SC24 and the ascending phase of SC25.
 
-%MJK The figure and caption still say "nu" for frequency. I propose
-%MJK we revert to omega.
-%MJK Also, the resolution of the upper panel is poor.
 %AL create new plot with:
 %fmodetools.create_spectra_cube(code='-',cubedir='../qs_cubes/2010/2010-07-21_00:00_lon256_lat-01.fits')
 %fmodetools.analyze_spectra_cube('2010-07-21_00:00_lon256_lat-01_spectra.fits')
@@ -313,20 +305,21 @@ most of SC24 and the ascending phase of SC25.
 	%AL quadrant
 	for one quadrant of the full ring (logarithmic color scale), computed from the data cube presented in \fig{2010-07-21_2014-11-09} (left panel). 
 	%AL add collapsed
-	Bottom: collapsed spectrum obtained by azimuthally averaging the ring diagram. The red vertical line marks the position of the maximum of the \fff and the black vertical lines the range of integration.
+	Bottom: collapsed spectrum obtained by 
+	%MJK This is not correct
+	%azimuthally averaging 
+	integrating over
+	the ring diagram. The red vertical line marks the position of the maximum of the \fff and the black vertical lines the range of integration.}
 %AL: units missing!	
-	\todo{add units for $k$ and $\omega$}}
+%MJK Inverse solar radius is used as a normalization, as the unit system appears to be the same as in SB+16.
+	\todo{add units for $k$.}
 	\label{ring_diagram}
 \end{figure}
 
 \subsubsection*{Orbital correction of the \fff{} 
 energy}
 
-%AL We have to be consistent. Do we call it \fff{} power, strength or area?
-%NS: strength is perhaps better; we could mention somewhere the strength and power
-%NS: are being used interchangeably, if needed
 Since the \fff
-%power 
 energy
 is computed from the \los{} dopplergrams, its value depends strongly on the viewing geometry. This dependence,  roughly following the cosine of the solar latitude for data taken at the central meridian, is additionally modulated by the orbital motion of the Earth around the Sun, which changes the viewing angle at any given solar latitude by $\approx\pm7^\circ$ during one year. We compensated for this periodic variation by fitting the parameters ($x_0(\lambda), ..., x_3(\lambda)$) of the following function to all observations of a given latitude $\lambda$:
 \begin{eqnarray}
@@ -529,7 +522,7 @@ poloidal phase of the magnetic field than the toroidal one.
 
 %MJK Added
 In this section we compare the \fff time evolution before and after the emergence of 
-two ARs (11130 in \Fig{AR11130_track} and AR11105 in \Fig{AR11105_track}), that were reported to show an enhancement both in \cite{SRB16} and \cite{Waidele22} w.r.t. a QS control patch
+two ARs (11130 in \Fig{AR11130_track} and 11105 in \Fig{AR11105_track}), that were reported to show an enhancement both in \cite{SRB16} and \cite{Waidele22} w.r.t. a QS control patch
 in the opposite hemisphere several days before their emergence. The main difference in our analysis
 is that the \fff energy is now normalized to the actually measured average QS level
 around the specific time and latitude. To minimize
