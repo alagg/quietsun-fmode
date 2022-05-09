@@ -1,4 +1,5 @@
 %\documentclass[twocolumn,linenumbers,trackchanges]{tex/aastex631}
+%\documentclass[referee]{aa}
 \documentclass{aa}
 \usepackage{xcolor}
 \usepackage{trackchanges}
@@ -20,35 +21,41 @@
 \abstract{The origin of the quiet Sun magnetism is under debate. Investigating the solar cycle variation observationally in more detail can give us clues about how to resolve the controversies.}
 {We investigate the solar cycle variation of the most magnetically quiet regions and
 their surface gravity oscillation ($f$-) mode integrated 
-energy.
+energy $E_f$.
 }
 {We use 12 years of HMI data and apply a stringent selection criteria, based on
 spatial and temporal quietness, to avoid any influence of active regions (ARs).
 We develop an automated high-throughput pipeline to go through all available magnetogram data
-and to compute the surface gravity mode 
-energy
+and to compute 
+%the surface gravity mode 
+%energy
+$E_f$
 for the selected quiet regions.}
 {We observe a clear solar cycle dependence of the magnetic field strength in the most
 quiet regions containing several supergranular cells. For patch sizes smaller than a supergranular
-cell, no significant cycle dependence is detected. The \fff at the supergranular scale 
+cell, no significant cycle dependence is detected. The $E_f$ at the supergranular scale 
 is not constant over time.
-During the late ascending phase of Cycle 24 (SC24, 2011-2012), the \fff strength is roughly constant, but starts diminishing in 2013, as the maximum of SC24 is approached. This trend continues
+During the late ascending phase of Cycle 24 (SC24, 2011-2012), it is roughly constant, but starts diminishing in 2013, as the maximum of SC24 is approached. This trend continues
 until 
 mid-2017,
 when
 hints of strengthening at higher southern latitudes
 are seen.
-Slow strengthening continues, stronger at higher latitudes than at the equatorial regions, but the \fff strength never returns back to the values seen in 2011-2012. Also, the strengthening trend continues past the solar minimum, to the years when SC25 is already clearly ascending. Hence the \fff behavior is not in phase with the solar cycle. 
+Slow strengthening continues, stronger at higher latitudes than at the equatorial regions, but $E_f$ never returns back to the values seen in 2011-2012. Also, the strengthening trend continues past the solar minimum, to the years when SC25 is already clearly ascending. Hence $E_f$ behavior is not in phase with the solar cycle. 
 }
 {The solar cycle dependence at the supergranular scale is indicative for the fluctuating magnetic
 field being replenished by tangling from the large-scale magnetic field, and not solely due to
 the action of a fluctuation dynamo process in the surface regions. 
 The absence of variation at smaller scales might be an effect of the
 limited spatial resolution and magnetic sensitivity of HMI.
-An anticorrelation of the \fff strength w.r.t. the solar cycle is expected, as active regions efficiently damp it. The \fff behavior, although showing such behavior in gross terms, is much more complex than this - in addition we see a phase shift, and different damping behavior of the ascending phases of SC24 and 25. We speculate that the latter two could be related to the magnetic helicity-constrained sub-surface toroidal field rather than instrumental effects. 
+%An anticorrelation of the \fff strength w.r.t. the solar cycle is expected, as active regions efficiently damp it. 
+The 
+%\fff behavior
+anticorrelation of $E_f$ with the solar cycle in gross terms is expected, but the phase shift of several years indicates a connection to the large-scale poloidal magnetic field component rather than the toroidal one. Calibrating AR signals with the QS $E_f$ does not reveal significant enhancement of the $f$-mode prior to AR emergence.
+ %, although showing such behavior in gross terms, is much more complex than this - in addition we see a phase shift, and different damping behavior of the ascending phases of SC24 and 25. We speculate that the latter two could be related to the magnetic helicity-constrained sub-surface toroidal field rather than instrumental effects. 
 }
 
-\keywords{Solar physics -- helioseismology, solar cycle; Solar activity --- solar active regions; Solar magnetic fields --- Solar dynamo}
+\keywords{the Sun: helioseismology; magnetic fields; activity}
 
 \maketitle
 
@@ -265,9 +272,7 @@ most of SC24 and the ascending phase of SC25.
 	for one quadrant of the full ring (logarithmic color scale), computed from the data cube presented in \fig{2010-07-21_2014-11-09} (left panel). 
 	Bottom: collapsed spectrum obtained by 
 	integrating over
-	the ring diagram. The red vertical line marks the position of the maximum of the \fff and the black vertical lines the range of integration.
-	%AL
-	The wavenumber $k$ is expressed in units of the cirumference of the Sun ($C_{\rm Sun}$).}
+	the ring diagram. The red vertical line marks the position of the maximum of the \fff and the black vertical lines the range of integration. The wavenumber $k$ is expressed in units of the circumference of the Sun ($C_{\rm Sun}$).}
 	\label{ring_diagram}
 \end{figure}
 
