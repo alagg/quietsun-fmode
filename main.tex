@@ -214,11 +214,16 @@ three-dimensional
 power spectra for each dopplergram cube and 
 integrating
 in $(k_x, k_y)$-plane, for each 
-angular
-frequency $\omega$,
+%angular
+{\bf frequency 
+%$\omega$
+$\nu$},
 over all wavenumbers, 
 $k=\sqrt{k_x^2+k_y^2}$,
-to obtain a collapsed power spectrum, $P(\omega,k)$. An illustrative case for a frequency
+to obtain a collapsed power spectrum, 
+%$P(\omega,k)$. 
+{\bf $P(\nu,k)$}.
+An illustrative case for a frequency
 value at which \fff is strong, is shown in 
 \fig{ring_diagram},
 upper panel.
@@ -301,7 +306,7 @@ QS
 magnetic fields, consisting of \NW{} and \IN{}. The \brms{} values peak in the second half of 2014, 
 around half a year
 later compared to the
-declared maximum of solar cycle \#24 (April 2014, source: WDC-SILSO, Royal Observatory of Belgium, Brussels). The variation is statistically significant, as indicated by the the mode and the 97\% percentiles, computed by fitting a log-normal distribution over a 1-year sliding window.
+declared maximum of solar cycle \#24 (April 2014, source: WDC-SILSO, Royal Observatory of Belgium, Brussels). The variation is statistically significant, as indicated by {\bf the} mode and the 97\% percentiles, computed by fitting a log-normal distribution over a 1-year sliding window.
 
 A similar plot is presented in \fig{Brms-lat00-percentile-IN}, but now the \brms{} value was computed only for a $1\degree$ window in latitude and longitude, corresponding to an area of only $12\times 12$\,Mm$^2$ at disk center. The quiet-region selection criteria (\sect{quietregion}) guarantees, that this patch lies fully within the \IN{}, and is not `contaminated' by \NW{} fields. Clearly, there is no dependence of \brms{} with solar cycle detectable. The 
 slight increase over the 12-year period might be an effect of the aging of the HMI instrument and the resulting decrease in the sensitivity for magnetic field measurements.
@@ -368,7 +373,8 @@ This is illustrated in \fig{fmode_vs_brms}, where we show the measured \fff ener
 %AL create this plot with:
 % %run plot_fmode_butterfly.py -i ../qs_cubes --reread=False --fov 'FFOV' --show_cos=False --show_cycle=False
 \colfigtwocol{butterfly_lat}{Butterfly diagram of \fff  
-energy variations, $E'_f(\lambda,t)$, \todo{we should still describe the binning}.
+energy variations, $E'_f(\lambda,t)$, 
+%\todo{we should still describe the binning}.
 computed from the collapsed ring diagrams (see bottom panel of \fig{ring_diagram}).
 The temporal average, $\overline{\mef}(\lambda)$, 
 has been
