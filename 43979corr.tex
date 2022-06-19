@@ -1,0 +1,616 @@
+%\documentclass[twocolumn,linenumbers,trackchanges]{tex/aastex631}
+%\documentclass[referee]{aa}
+\documentclass{aa}
+\usepackage{xcolor}
+\usepackage{gensymb}
+\usepackage[colorlinks,allcolors=blue]{hyperref}
+\usepackage{comment}
+%\input{journal} 
+
+\input{macros}
+\graphicspath{{./figures/}}
+
+\begin{document}
+
+\title{Solar-cycle variation of quiet-Sun magnetism and surface gravity oscillation mode}
+\titlerunning{Quiet-Sun Solar Variability}
+
+%\input{authors}
+
+\abstract{The origins of quiet Sun magnetism 
+(QS) 
+is still under debate and investigating the solar cycle variation observationally in greater detail can provide clues on how to resolve the ensuing controversies.}
+{We investigate the solar cycle variation of the most magnetically quiet regions and
+their surface gravity oscillation ($f$-) mode-integrated 
+energy, $E_f$.
+}
+{We used 12 years of Helioseismic and Magnetic Imager (HMI) data and applied a stringent selection criteria based on
+spatial and temporal quietness to avoid any influence from active regions (ARs).
+We developed an automated high-throughput pipeline to go through all available magnetogram data
+and to compute the value of 
+$E_f$
+for the selected quiet regions.}
+{We observed a clear solar cycle dependence of the magnetic field strength in the most
+quiet regions containing several supergranular cells. For patch sizes smaller than a supergranular
+cell, no significant cycle dependence was detected. The $E_f$ at the supergranular scale 
+is not constant over time.
+During the late ascending phase of Cycle 24 (SC24, 2011-2012), it is roughly constant, but starts diminishing in 2013, as the maximum of SC24 is approached. This trend continues
+until 
+mid-2017,
+when
+hints of strengthening at higher southern latitudes
+are seen.
+Slow strengthening continues, stronger at higher latitudes than at the equatorial regions, but $E_f$ never returns to the values seen in 2011-2012. In addition, the strengthening trend continues past the solar minimum, to the years when SC25 is already clearly ascending. Hence, the $E_f$ behavior is not in phase with the solar cycle.
+}
+{
+%MJK Here the sentence has changed its meaning.
+%The solar cycle dependence on the supergranular scale
+The dependence of $E_f$ on the solar cycles at supergranular scale
+is indicative of the fluctuating magnetic
+field being replenished by tangling from the large-scale magnetic field -- and not solely due to
+the action of a fluctuation dynamo process in the surface regions. 
+The absence of variations on smaller scales might be an effect of the
+limited spatial resolution and magnetic sensitivity of HMI.
+The 
+anticorrelation of $E_f$ with the solar cycle in gross terms is expected, but the phase shift of several years indicates a connection to the large-scale poloidal magnetic field component rather than the toroidal one. Calibrating AR signals with the QS $E_f$ does not reveal significant enhancement of the $f$-mode prior to AR emergence.
+}
+
+\keywords{the Sun: helioseismology; magnetic fields; activity}
+
+\maketitle
+
+\section{Introduction} \label{sec:intro}
+
+Localized regions of intense bipolar magnetic structures, known as active regions
+(ARs), are seen on the solar surface. Their numbers vary periodically 
+in an 11-year cycle
+and trace the
+butterfly 
+diagram,
+which 
+reveals 
+a cyclic magnetic activity of the Sun in a latitude--time
+domain. Such diagrams have proven to be useful and reveal some properties of 
+the solar large-scale magnetic field. The large-scale magnetic field reverses its polarity every
+second such cycle, which constitutes the solar magnetic cycle of 22 years. The origin of this
+global variability is not yet fully understood \citep[see, e.g.,][]{char10}.
+
+In addition to the global solar magnetic field, it is observationally known that there are ubiquitous small-scale magnetic fluctuations, the origin of which is equally debated - they could arise through the action of a small-scale dynamo instability or tangling of the large-scale magnetic field due to turbulence driven by convection, but it is not self-evident how the former mechanism could work in the solar plasma, where the conditions are in general unfavourable for it \citep[see, e.g.][]{BS05}. These magnetic fluctuations are usually studied by investigating the magnetically quiet regions on the solar surface (hereafter referred to as the quiet Sun, QS). Several observational
+studies of QS magnetism have been conducted and it has been argued
+that the QS magnetic field is 
+independent of the solar cycle 
+\cite[see, e.g.,][]{Kleint+10,Buehler+13,Faurobert+15,Jin+15b,Jin+15a}. On the other hand, some other studies have proposed
+that some dependence should exist \cite[e.g.,][]{Lites+14,Meunier06,Faurobert+21}. 
+Given the theoretical and observational controversies, further studies of QS magnetism are required and long-term investigations are now enabled by instruments like
+Helioseismic and Magnetic Imager \cite[HMI,][]{2012SoPh..275..207S,2012SoPh..275..229S} on board the Solar Dynamics Observatory \cite[SDO,][]{2012SoPh..275....3P}
+This instrument
+provides high sensitivity, high spatial
+resolution, long-term stability, and constant conditions. Currently, the data covers 12 years of observations, enabling solar-cycle-scale studies.
+
+Another motivation to study the QS comes from recent observational investigations \cite[]{SRB16, Waidele22} that have reported 
+ a strengthening of the solar surface or the fundamental \fff
+about one to two days before
+the formation of ARs using different kinds of local helioseismic techniques. Accompanied with numerical simulations that have given similar indications \cite{S+14,S+15,S+20}, this appears a very promising avenue for studying the origin of solar sub-surface magnetism and the mechanism of active region formation. The observational studies, however, suffer from a lack of proper calibration method against the QS. \cite{SRB16}, for example, rely on QS
+regions on the opposite hemisphere to compare with the AR \fffns. This method
+requires that a quiet patch exists on the other hemisphere, and hence 
+limits the number of ARs that can be included in the hindcasting procedure. It is
+also prone to be affected by the probable fluctuations in the QS
+\fff level. Although the results look promising, a proper calibration with
+a statistically sound QS level (not just a comparison of a random QS patch on the
+other hemisphere) is necessary to prove the robustness of these findings. Also,
+such a calibration procedure is required for increasing the sample size. 
+Building such a QS calibration data product is one of the main aims of this
+study: we carefully identified the quietest regions on the solar surface based on the level of magnetic activity observed in
+line-of-sight (LOS) magnetograms that are readily available from HMI and
+computed the \fff 
+energy
+at the central meridian as function of latitude
+and time with suitable averaging. Building such a data product for the \fffns, requiring us to identify the most
+inactive regions on the solar surface, allowed us to extract statistics
+of the QS magnetism as well, which is the second main aim of this study.
+
+The paper is organized as follows. In Sect.~\ref{pipeline} we describe
+the data, the necessary steps to 
+clean it, and the automated pipeline we built for harvesting the data and compiling the end products; namely, the QS magnetism data products, as well as the QS and AR \fff data. In
+Sect.~\ref{results}, we discuss our findings for the QS magnetism and \fffns, and  lastly, we present a set of the AR data with the QS calibration
+applied. 
+
+\section{Observations}\label{pipeline}
+
+Our analysis is based on data from HMI@SDO. We used two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by combining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}) and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). We processed the two data sets in a semi-automatic pipeline (see \fig{pipeline}), optimized for obtaining reliable information about the magnetic field in the QS regions and for a robust computation of the \fff power from the dopplergrams. The left tree in \fig{pipeline} describes the pipeline used for the magnetograms, the right tree for the dopplergrams.
+In the following we use the following notation and definitions. 
+We denote the solar 
+latitude with $\lambda$, longitude with $\varphi$, 
+both in the Stonyhurst coordinate system \cite[]{Thomson06}, 
+and time with $t$. 
+
+
+\colfig{figures/Pipeline2}{Data pipeline deployed in the CSC HPC environment. The leftmost 
+tree illustrates the pipeline to collect the magnetograms in the most quiet patches, while the rightmost one the pipeline to track data from the quiet patches from the HMI database, and compute the \fff energy. The central path of AR processing is otherwise equivalent to the QS pipeline, but their AR coordinates are sent for tracking in the 
+MPS (in Germany) cluster environment, followed by an additional step, namely, QS calibration, at the end. Rectangular boxes represent analysis functions and ellipsoids are the derived data products. The rectangles with yellow frames stand for the corrective functions applied to the data. }
+
+\subsection{Magnetograms}
+
+The first data product, namely, the full-disk line-of-sight (LOS) magnetograms, provides a direct measurement of the variability of the QS
+magnetism during a solar cycle. To enhance the signal-to-noise ratio (S/N) in the LOS magnetograms we performed a newly developed algorithm for spatial and temporal averaging: The full-disk HMI magnetograms starting from 27-Apr-2010 and ending on 
+04-May-2022
+were downloaded from the Joint Science Operation Center (JSOC) hosted at Stanford University\footnote{\url{http://jsoc.stanford.edu}}
+%\LEt{ Please set link as a footnote.}
+to a temporary storage (see \fig{pipeline}, 'Mahti storage') and tracked at full spatial resolution for 8 hours to compensate for the solar rotation ('Full disk tracking').
+We neglected differential rotation due to
+the short tracking time.
+The step between tracked sequences was 4 hours, so that a total of 6 tracked sequences were gathered per one day, resulting in more than 
+$25700$ tracked sequences (as of 04-May-2022).
+
+From each tracked sequence, we extracted two data products by dividing the visible solar disk  between latitudes and longitudes from $-80\degree$ to +$80\degree$ into (i) $64\times 64$  overlapping patches of $15\degree$ (in solar latitude and longitude)  and (ii) $180\times 180$ patches of $1\degree$.
+Every of these patches therefore contains a space-time cube of LOS magnetograms at full spatial resolution at a 12-minute cadence,
+from which we 
+computed the 
+root-mean-square
+(rms) 
+of the magnetic field strength, averaged over the full field of view (FoV) of the tracked cube 
+and over the full 8 hour period
+(\brms{}=$\sqrt{\langle B^2\rangle_{\rm LOS}}$).
+The $15\degree$ patches (i) are large enough to cover several supergranulation cells containing \NW{} and \IN{} fields \cite[]{2010LRSP....7....2R} with a typical size of 30--35\,Mm (we refer to them as \nw{} cubes), and the $1\degree$ patches (ii) are small enough that some of them lie completely in the \IN{} (\inw{} cubes). 
+The statistics for each patch were stored as data products (see also \fig{pipeline}) including the information about 
+latitudinal and longitudinal position as well as the Carrington 
+longitude for \NW{} and \IN{}. We refer to these maps as the \nw{} and the \inw{} statistical maps.
+
+\subsection{Quiet region selection\label{quietregion}}
+
+From the 
+statistics computed from the cubes, 
+\brms{}
+turned out to be the best tracer for determining the magnetic activity level. It could clearly distinguish between $15\degree$ patches containing active regions, plage, enhanced network and quiet network. Also, it
+%MJK Why change tense here? I would revert back
+%depicts 
+depicted
+the low-field \IN{} regions very well.
+
+The analysis of the solar-cycle variation of the 
+QS
+magnetism requires a careful selection of the most quiet regions, defined as being free of enhanced solar activity. We therefore searched for the minimum value of \brms{} in both, the \nw{} and the \inw{} statistical maps, on a latitudinal grid with a $10\degree$ spacing fulfilling the following additional criteria:
+%\LEt{ AA avoids bullets in the main text. Please integrate these points back into the body of the paragraph.}\begin{enumerate}[(i)]
+%\item\label{c1} 
+(i) the most quiet pixel must be within $\pm10\degree$ around the central meridian,
+%\item\label{c2}  
+(ii) this pixel must belong to the 10\% most quiet pixels of the month, and
+%\item\label{c3}  
+(iii) this pixel must be the most quiet pixel within a 4-day interval.
+%\end{enumerate}
+
+Criterion 
+%(\ref{c1}) 
+(i) was chosen 
+%to get the strongest magnetic field signal along the central meridian; 
+because the central meridian offers the highest sensitivity for magnetic field measurements,
+criterion
+%(\ref{c2}) 
+(ii) guarantees an equal distribution of quiet pixels over the 12-year period of available HMI measurements; and 
+criterion
+%(\ref{c3}) 
+(iii) ensures that the quiet pixels for the 1-month period do not originate from the same supergranular structure, since the dynamical evolution time of the supergranulation lies between 24 and 48\,h \cite[]{2010LRSP....7....2R}. 
+As a result of applying these criteria we obtained
+two time series of the \brms{} for the most quiet patches in the \NW{} and the \IN{} regions. 
+We note that this selection also efficiently removes the 24\,h modulation present in the HMI magnetograms.
+
+\subsection{Correction for HMI sensitivity change\label{sensicorr}}
+
+The temporal evolution of \inw{} \brms{} value
+clearly revealed  a change in the HMI observing mode, performed on 13-Apr-2016. On this day, HMI switched to a more efficient observing mode \cite[see][]{2018SoPh..293...45H,2014SoPh..289.3483H,2016SoPh..291.1887C}. By combining both HMI cameras to determine the vector-field observables the cadence for full-disk magnetograms could be reduced from 135\,s (observational mode MOD-C) to 90\,s (MOD-L). This reduced the noise level for Stokes $V$ measurements by 17\%, resulting in a decrease of the noise level in the \los{} magnetograms by 5\%.
+
+For the long-term study presented in this paper, we need to correct for this sensitivity change. A very accurate correction method can be derived from the \inw{} time series: since it contains only the most quiet pixels over a certain latitude region and time, the sensitivity change results in a step function. The value of the step was determined by fitting a polynomial to the \brms{} values determined from the \inw{} time series plus a Heaviside step function, centered at the date of the mode change. We used the Bayesian information criterion \cite[BIC,][]{Stoica2004} to determine the degree of the polynomial, which lies between 1 and 6 for the various latitudes. We want to note that the retrieved amplitude of the Heaviside step function is only weakly dependent on the degree of the polynomial. This fitting is exemplified in \fig{fit-offset} for the solar latitude 0$^\circ$, where the minimum value for the BIC was reached for a fit with a polynomial of 
+degree of 3. 
+The thus-determined amplitude of the Heaviside step function is added to the 
+\brms{}
+data points after 13-Apr-2016 for all data presented in this paper. No other correction, such as de-trending, was applied to the data.
+
+\colfig{fit-offset}{Determination of the correction for the HMI sensitivity change: Observing mode change on April 13 2016 causes a discontinuity in the level of \brms{} values of the \IN{} data. The original data are displayed with the dark red and black dots, the corrected data with the light red dots. The dashed line indicates the polynomial fit of a degree of 3 used to obtain the offset.}
+
+\subsection{Dopplergrams}
+
+The second HMI data product used in this paper is the \los{} velocity maps. The goal is to compute the 
+energy contained in the
+surface gravity mode, the so-called \fffns,
+and investigate whether variability during the solar cycle is present. Such variations could be caused by the presence of non-emerging sub-surface magnetic fields, as the \fff is known
+to be strongly affected by the presence of magnetic fields \citep[see, e.g.,][]{Cally+94,CB97,SRB16}. 
+It is also very important to study this question in more detail for the purpose of establishing a reliable calibration method 
+for a measurement of
+the claimed 
+\fff enhancement prior to AR emergence \cite{SRB16,Waidele22}. 
+
+The dopplergram data is hosted in the German Data Center for SDO (GDC-SDO) on a server at the Max Planck Institute for Solar System Research (MPS Göttingen, Germany), whereas the analysis is executed in the CSC supercomputing environment (Finland). We utilized  a function-as-a-service client based on funcX \cite[]{chard20funcx} for accessing the required data in the database server. We developed functions based on funcX API and deployed the functions in the MPS environment. These functions leverage the mtrack\footnote{\url{http://hmi.stanford.edu/teams/rings/modules/mtrack/v25.html}} command to prepare the dopplergram cubes within the GDC-SDO environment and subsequently transfer them to the CSC environment. The coordinates of the selected 
+QS
+regions were sent to the funcX service, which invokes suitable functions to automate the data retrieval and movement.
+The data processing pipeline used Astropy\footnote{\url{http://www.astropy.org}}, a community-developed core Python package for astronomy \citep{astropy13, astropy18} and version 3.1.6 of the SunPy\footnote{\url{https://sunpy.org}} open source software package \cite[]{sunpy20}.
+
+\subsection{Computation of the \fff
+energy}
+
+Subsequent processing involved calculating the 
+three-dimensional
+power spectra for each dopplergram cube and 
+integrating
+in the $(k_x, k_y)$-plane, for each 
+angular
+frequency 
+$\omega$,
+over all wavenumbers, 
+$k=\sqrt{k_x^2+k_y^2}$,
+to obtain a collapsed power spectrum, 
+$P(\omega,k)$. 
+An illustrative case for a frequency, $\nu=\omega/2 \pi$,
+at which the \fff is strong, is shown in 
+\fig{ring_diagram} (upper panel).
+Such a procedure
+significantly reduced the noise level, 
+%leading to a smoothing of the one-dimensional (1D) $k-\omega$ spectra
+leading to smooth one-dimensional (1D) $k-\omega$ spectra
+(as, e.g., shown in the lower panel of \fig{ring_diagram};
+in this kind of a plot, the \fff is the rightmost peak at the highest $k$ values).
+The adopted procedure
+is justified for the 
+QS
+spectra, as the ring diagrams are radially symmetrical with regard to 
+the frequency axis. 
+To obtain the total energy contained in the \fffns, $E_f$, we
+performed another integration over the separated \fff signal.
+In contrast to earlier studies \citep{SRB16,Waidele22}, we
+did not perform fitting to the \fff for its extraction. 
+Instead, we only determined the background signal, and subtracted this contribution.
+The background determination made use of the fact that the position of the \fff peak for low values for 
+the frequency ($\nu$ between 1.0 and 2.0\,mHz)
+lies outside the $k$ range used for the computation of the \fff power. Since the background level does not change significantly with 
+the frequency, the average spectrum over this range provided a good estimate for the background signal.
+Then,
+an integration range in $k$ space was selected for each constant 
+frequency
+in a following way: first the maximum of \fff $k_{\rm max}$ and the minimum between \fff and first $p$-mode $k_{\rm start}$ were detected; $k_{\rm start}$ was chosen as the start of integration range and the end of the integration range $k_{\rm end}$ was set as $k_{\rm end}=k_{\rm max}+2(k_{\rm max}-k_{\rm start})$; $k_{\rm end}$ chosen in such a way guarantees that the integration range is sufficiently wide to cover significant part of the \fff 
+signal in the $k$-space.
+The integration range in the 
+%$\omega$ space was chosen between values starting from 
+%14.45 and ending at 29.03, 
+frequency space was chosen between $\nu$ values starting from 2.3\,mHz and ending at 4.6\,mHz,
+where the significant part of the \fff power resides. 
+As the end result, we computed the \fff energy:
+\begin{equation}
+E_f=
+\sum_{\mbox{$k_{\rm start}$}}^{\mbox{$k_{\rm end}$}}
+\sum_{\mbox{$\nu_{\rm min}$}}^{\mbox{$\nu_{\rm max}$}} P(\nu,k)
+.\end{equation}
+After completing the described steps in the CSC supercomputing
+environment, we collected a total of 
+22680
+\fff
+energies
+for patches close to central meridian over all latitudes, covering 
+most of SC24 and the ascending phase of SC25.
+
+%AL create new plot with:
+%fmodetools.create_spectra_cube(code='-',cubedir='../qs_cubes/2010/2010-07-21_00:00_lon256_lat-01.fits')
+%fmodetools.analyze_spectra_cube('2010-07-21_00:00_lon256_lat-01_spectra.fits')
+\begin{figure}\centering
+        \includegraphics[width=1.0\linewidth]{ring_diagram_spectrum}
+        \caption{
+        %\LEt{ Please add a general intro before describing the panels.}
+        Examples of a typical QS \fff spectra.
+        Top: Example of QS ring diagram at
+        the angular frequency 
+        $\nu=3.57$\,mHz 
+        for one quadrant of the full ring (logarithmic color scale), computed from the data cube presented in \fig{2010-07-21_2014-11-09} (left panel). 
+        Bottom: Collapsed spectrum obtained by 
+        integrating over
+        the ring diagram. The red vertical line marks the position of the maximum of the \fff and the black vertical lines the range of integration. The wavenumber $k$ is expressed in units of the circumference of the Sun ($C_{\rm Sun}$).}
+        \label{ring_diagram}
+\end{figure}
+
+\subsubsection*{Orbital correction of the \fff{} 
+energy}
+
+Since the \fff
+energy
+is computed from the \los{} dopplergrams, its value depends strongly on the viewing geometry. This dependence,  roughly following the cosine of the solar latitude for data taken at the central meridian, is additionally modulated by the orbital motion of the Earth around the Sun, which changes the viewing angle at any given solar latitude by $\approx\pm7^\circ$ during a single year. We compensated for this periodic variation by fitting the parameters ($x_0(\lambda), ..., x_3(\lambda)$) of the following function to all observations of a given latitude $\lambda$:
+\begin{eqnarray}
+\label{eq:orbitcorr}
+A_{\mbox{corr}}(\lambda) &=& x_0(\lambda) (  2 ( (1+\cos(\Phi+x_1(\lambda)))/2)^{x_3(\lambda)}-1   )\nonumber \\
+&+&x_2(\lambda),
+\end{eqnarray}
+with $\Phi$ being the phase angle of the Earth defined as the cotangens computed from the $x,y$ barycentric position of the Earth.
+This correction $A_{\mbox{corr}}(\lambda)$ is then subtracted from the computed 
+$E_f$ values, which efficiently removes any yearly variation. 
+
+\section{Results}\label{results}
+
+After applying the selection criteria described in \sect{quietregion} 
+%\LEt{ Please use "Sect."\ throughout.}
+and the subsequent correction for the 
+HMI's
+sensitivity change (\sect{sensicorr}) we obtain the dependency of the \brms{} values of the most quiet region at the central longitude as a function of heliographic latitude and time. In \fig{Brms-lat00-percentile}, we present the \brms{} values from May 2010 until May 2022 for the 
+Stonyhurst latitude and longitude $(\lambda,\varphi) = (0,0)^\circ$.
+The individual data points (red dots) are computed over an area of 15$^\circ$ in latitude and longitude and over a period of 8 hours. At disk center, this corresponds to an area of $\approx 180 \times 180$\,Mm$^2$, 
+%MJK To me this sounds like "which" is referring to a wrong place now; datapoint instead of area.
+%which 
+and therefore contains 30--40 supergranular cells. The \brms{} value thus contains
+\NW{} and \IN{} fields.
+Typical magnetograms at disk center at solar minimum (July 2010) and maximum (Nov 2014) are presented in \fig{2010-07-21_2014-11-09}. There is no obvious difference between the two maps: both show similar minimum and maximum field strengths, and the visible impression of the supergranular cells with the strong field patches of both polarities surrounding the \IN{} regions is indistinguishable.
+
+In \fig{Brms-lat00-percentile}, we can clearly see the solar cycle dependence of the 
+QS
+magnetic fields, consisting of \NW{} and \IN{}. The \brms{} values peak in the second half of 2014, 
+around half a year
+later compared to the
+declared maximum of solar cycle \#24 (April 2014, source: WDC-SILSO, Royal Observatory of Belgium, Brussels). The variation is statistically significant, as indicated by the mode and the 97\% percentiles, computed by fitting a log-normal distribution over a 1-year sliding window.
+
+A similar plot is presented in \fig{Brms-lat00-percentile-IN}, but now the \brms{} value was computed only for a $1\degree$ window in latitude and longitude, corresponding to an area of only $12\times 12$\,Mm$^2$ at disk center. The quiet-region selection criteria (\sect{quietregion}) guarantees that this patch lies fully within the \IN{} and is not "contaminated" by \NW{} fields. Clearly, there is no detectable dependence of \brms{} on the solar cycle. The 
+slight increase over the 12-year period might be an effect of the aging of the HMI instrument and the resulting decrease in the sensitivity for magnetic field measurements.
+
+The average \brms{} value in the \IN{} is in $\approx6$\,G. Using the area of one HMI pixel, this corresponds to a magnetic flux of $3\times 10^{16}$\,Mx. 
+This value is certainly affected by the sensitivity of the HMI instrument, and is reduced to $\lesssim5$\,G after the HMI sensitivity change described in Sect.~\ref{sensicorr}.
+
+\colfigtwocol{2010-07-21_2014-11-09}{Comparison of two disk-center magnetograms at solar minimum (2010-07-21) and 
+around the maximum seen in the disk-center \brms{} values
+(2014-11-09). The maps show the first frame of the 8\,h data cube.}
+
+\colfig{Brms-lat00-percentile}{\brms{} determined from the most quiet patches from 2010 to 
+2022
+at disk center. The patches of 15$^\circ$ size in longitude and latitude contain \NW{} and \IN{} fields. The solid red lines display the 97\% percentile level, the dashed gray line the mode of a log-normal fit to yearly-binned data moved in a sliding window of 100 days length.
+For all values of $\omega,$ the magnitude of $P$ is always an order of magnitude higher than
+the noise level outside the considered location of the ring.
+}
+
+
+\colfig{Brms-lat00-percentile-IN}{
+%\LEt{ Please add full caption instead of "Same as"}Same as \fig{Brms-lat00-percentile}, but for \brms{} determined from patch size of only of 1$^\circ$ in longitude and latitude, corresponding to \IN{} patches. 
+\brms{} determined from the most quiet patches from 2010 to 
+2022
+at disk center, but in contrast to \fig{Brms-lat00-percentile}, the patches size was 1$^\circ$ in longitude and latitude, corresponding to \IN{} patches. The solid red lines display the 97\% percentile level, the dashed gray line the mode of a log-normal fit to yearly-binned data moved in a sliding window of 100 days length.
+For all values of $\omega,$ the magnitude of $P$ is always an order of magnitude higher than
+the noise level outside the considered location of the ring.
+%AL I disagree with the LE: 
+%AL The repetition of the description of the lines forces the reader to hunt for discrepancies. It would be much clearer to say: 
+%AL "Lines, colors, and symbols are the same as in \fig{Brms-lat00-percentile}.
+}
+
+
+\subsection{Quiet Sun \fff butterfly diagram}\label{qsf}
+
+To investigate whether the \fff energy has any significant solar cycle dependence, we constructed butterfly-diagram-like plots by computing and removing the temporal mean, and then plotting the so-obtained data in a binned latitude-time diagram. 
+We compute the temporal mean over the whole time series as 
+\begin{equation}
+    \overline{\mef}(\lambda) = 1/n_t \sum_t \mef(\lambda,t),
+\end{equation}
+where $n_t$ is the total number of time points at a certain $\lambda$,  denoted with an overbar. Next, we compute the variation of the \fff energy around this level, defined as
+\begin{equation}
+    \mef'(\lambda,t)=\mef(\lambda,t)-\overline{\mef}(\lambda),
+\end{equation}
+and plot this quantity
+for the central meridian
+as function of latitude and time as in \fig{butterfly_lat}, 
+in patches 
+with a 3-month binning in time and roughly 6 degrees in latitude. 
+
+To estimate 
+the overall variability level of the QS, and compare it to the cycle variation level defined above,
+we use the standard deviation of the data in a patch.
+We take $N_t$ bins in time, $N_\lambda$ in latitude, and denote the number of \ef{} measurements contained in such a patch by $N_P$. We compute the average \fff energy in a patch as:
+\begin{equation}
+\langle \mef \rangle=1/N_P \sum_{N_P} \mef (\lambda,t).
+\end{equation}
+Then we can straightforwardly calculate the standard deviation as:
+\begin{equation}
+\sigma= \sqrt{\frac{1}{N_P}\sum_{\mbox{patch}} ( \mef(\lambda,t)
+- \left<{\mef} \right>)^2}.
+\end{equation}
+On this basis, we form the average error at each latitude by taking an average over time and denote it as $\overline{\sigma}$. 
+This quantity is plotted as the error bar in the right panel of 
+\fig{butterfly_lat}.
+By inspecting the level of variability around the temporal mean and the 
+overall variability of the QS, we must conclude that these signals are of the same order of magnitude. 
+In this respect, the solar cycle dependent signal is very weak, but if we compare that to the noise level in the data, both the QS variability level and cycle-dependent signal exceed the noise level by an order of magnitude; hence, this is not an issue related to the instrument sensitivity. We also note that the time evolution of the \fff in the northern hemisphere between the third and fourth quarter of the year 2018 appears very abrupt, as if some instrumental change in sensitivity would have taken place. We did search for such factors and found a focus update in the HMI instrument on 16 October 2018, but correcting for this effect introduced a similar jump in the southern hemisphere. Hence, it is difficult to attribute the jump to this particular change, taken that some other focus adjustments happened at other times, with no significant jumps in the \fffns.
+
+The potential cause of the strong QS variability level is most likely related to the strongly varying sub-surface magnetic fields that affect the \fffns,
+invisible in
+the surface \brms{} which was used as the selection criterion for really quiet patches. 
+This is illustrated in \fig{fmode_vs_brms}, where we show the measured \fff energy versus the \brms{} in the patches. The \fff energy is not correlated with the \brms{} seen at the surface, and strong, nearly constant, variability is seen at different epochs of the solar cycle. This poses clear limitations of the calibration method proposed here to detect weak transient signals in the \fff evolution.
+
+%AL create this plot with:
+% %run plot_fmode_butterfly.py -i ../qs_cubes --reread=False --fov 'FFOV' --show_cos=False --show_cycle=False
+\colfigtwocol{butterfly_lat}{Butterfly diagram of \fff  
+energy variations, $E'_f(\lambda,t)$, 
+computed from the collapsed ring diagrams (see bottom panel of \fig{ring_diagram}).
+The temporal average, $\overline{\mef}(\lambda)$, 
+has been
+subtracted from the data, 
+and
+is shown as the black line in the right panel. 
+Its error bars
+represent the time-averaged standard deviation of the fluctuations of the \fff 
+energy
+around the signal for every bin ($\overline{\sigma} (\lambda)$). 
+}
+
+\colfig{butterfly_lat_cut}{
+%\LEt{intro please.}
+Selected latitudinal cuts through the butterfly diagram and their comparison to the sunspot number. Top: Cut through butterfly diagram of \fff energy variation for three different latitudes (see legend). The solid lines represent a fit using a sine function. Bottom: NOAA sunspot number.}
+
+\fig{butterfly_lat} displays the butterfly diagram of the QS
+\fff energy determined
+from $15\degree \times 15\degree$ patches that showed only weak, small-scale magnetic structures.
+To compute the \fff
+energy, we have used the whole ring diagram data.
+Temporally averaged profile in latitude is removed for highlighting the variation in the
+\fff power. The period covered is somewhat larger than the 11 year 
+SC24,
+which
+began to show some magnetic activity from early 2010; this cycle had ended by around 2020 (see also the lower panel of \fig{butterfly_lat_cut}, 
+%\LEt{ Please use "Fig."\ consistently throughout.}
+showing the sunspot number of SC24 and SC25 up to the writing of this manuscript).
+Broadly, we find an anti-correlation of the \fff 
+energy with the activity cycle of the
+Sun --- during the solar minimum and early rising phase ($\sim 2010-12$), the \fff
+energies
+are greater, and around cycle maximum to the declining phase,
+the \fff
+energy 
+is suppressed.
+This correlation is strongest near the solar equator, within about $\pm 20\degree$ in
+latitude, and it decreases with higher latitudes.
+Interestingly, we observe a temporal shift in the \fff butterfly diagram with respect to the
+solar cycle, such that the minimum of the \fff occurs later, namely, in the declining phase of
+SC24, which is roughly around the end of the year in 2016.
+
+In mid-2017, we see weak strengthening of the \fff strength to commence, first occurring at higher southern latitudes. During the minimum (2018-2019) between the SC24 and 25, the strengthening appears stronger in the higher latitudes. It also continues after the minimum, when 
+SC25
+has already started its ascending phase. What is also noteworthy is that the \fff
+energy
+never rises as high as the values observed during the ascending phase of SC24 (2011-2012).
+
+In \fig{butterfly_lat_cut}, we present cuts through the butterfly
+diagram at three different latitudes, equator, and $\pm 29\degree$, and sinusoidal fits to the data points. The variability is strongest at the equator, but also contains the largest scatter. The minimum \fff energy 
+is obtained
+around the beginning of the year 2018. There, the difference in magnitude during SC24 and 25 is the largest. Southern higher latitudes show very weak variation in contrast to the equator, 
+while the northern one has an intermediate magnitude. 
+The shift with regard to the solar cycle is somewhat latitude-dependent. At the higher northern latitude, the \fff minimum occurs roughly a year earlier than at the equator. The shift in the \fff mode phase with regard to the sunspot cycle is on the order of three to four years, hence, it is more in phase with the 
+poloidal phase of the magnetic field than the toroidal one.
+
+\subsection{AR \fff with QS calibration}\label{arf}
+
+In this section, we compare the \fff time evolution before and after the emergence of 
+two ARs (11130 in \fig{AR11130_track} and 11105 in \fig{AR11105_track}) that were reported to show an enhancement both in \cite{SRB16} and \cite{Waidele22} with regard to a QS control patch
+in the opposite hemisphere several days before their emergence. The main difference in our analysis
+is that the \fff energy is now normalized to the actually measured average QS level
+around the specific time and latitude. To minimize
+the QS fluctuations, a Gaussian smoothing to the QS \ef\,is applied, 
+but the smoothing kernel width used is kept at 
+$5^\circ$ in longitudinal and latitudinal direction
+so that the fit to the data can be considered accurate. The
+\fff energy of 1 is thus
+equivalent to that of the QS, and values that are stronger (weaker) 
+indicate an enhancement (quenching) of the \fff with regard to QS.
+Another difference is that we use the
+full ring diagram when computing the \fff energy, while the
+other papers used only $k_x=0$ cuts. 
+%AL why here present perfect tense and not past tense?
+%We have, however, performed
+However, we performed
+analyses with $k_x=0$ and $k_y=0$ cuts and 
+%AL why here present perfect tense and not past tense?
+%have seen 
+saw
+no significant difference between the two, nor with regard to the full ring data, except for the
+increased noise level in \ef\,derived from single cuts.
+As the measurement is done exactly in the same
+manner for the QS and ARs, we still anticipate
+that this difference should not influence the results significantly. 
+Also, as more integrations are performed, the less noisy the 
+signal, thus improving the data quality. 
+
+The results from our AR analysis are shown with green symbols and lines in \fig{AR11130_track} and \fig{AR11105_track}: in the top panel, each orange point shows the normalized \fff energy, \eft, with four-hour cadence, 
+smoothed with a 24-hour boxcar to remove a daily fluctuation
+otherwise prominently present in the HMI data. The shaded areas show the QS variance, $E'_f$,
+determined from the standard deviation of the variation presented in \fig{fmode_vs_brms},
+is roughly constant (around 4--5\%) at all latitudes and longitudes. When it is used as normalization of the \fffns, then the uncertainty at large longitudes becomes very high, as is indicated by the rapidly 
+fanning 
+shaded areas toward the limbs. The \brms{} measured simultaneously at the surface is shown in the lowest panels of the figures with black symbols. 
+
+In the middle panels of \fig{AR11130_track} and \fig{AR11105_track}, we compare the different calibration curve candidates.
+The calibration curve used by 
+\cite{SRB16},
+based on more simple cosinus dependence of the form $\cos{\alpha} \left[q + \left(1-q \right) \cos{\alpha} \right]$ with $q=0.5$
+and $\cos\alpha = \cos\lambda \cos\varphi$, is shown with blue symbols and lines in the aforementioned panels.
+As this specific curve does not fit the QS data very well, we also performed a fit and determined the optimal value of $q$, that turns out to be $-0.045$; this curve and calibration with it are plotted with orange symbols and lines in the top and middle panel of the figures.
+The differences between these calibration curves are illustrated in the middle panels; in particular, the \cite{SRB16} calibration
+curve does not fit the data (overplotted with gray dots) well at larger longitudes. There, we can see it 
+is decreasing less 
+%significantly 
+strongly
+than shown by the data. Near the disk center the amplitude is too low to present the data well.
+The new cosinus fit and the Gaussian convolution applied to the QS
+data represent it better, with the consequence that the calibration curves decrease more steeply toward the limbs.
+The fitted cosinus curve has somewhat larger amplitude than the Gaussian convolution. This has the effect that the \eft\,calibrated
+with the cosinus fit tends to be always below the QS level. The Gaussian convolution calibration results at \eft\,values maximally at the QS level before the AR emergence.
+
+As can be seen
+from the top panels of \fig{AR11130_track} and \fig{AR11105_track}, 
+applying the new QS calibration curve flattens the signal profile in comparison to the
+earlier $q=0.5$ calibration used. For both of the selected ARs, the \fff energy close to the limb is below the QS level to start off with, which could indicate that both of these active regions occur in an environment
+already affected by a sub-surface magnetic field. 
+Applying the earlier calibration curve, a clear enhancement above the QS level is visible for AR11130, while for AR11105 the profile is similar, but the enhancement amplitude remains within the level of QS variability (shaded area). The new calibration shows a more modest enhancement, reaching its peak value at similar times as with the earlier calibration for AR11130, while somewhat earlier for AR11105, but its amplitude does not exceed the QS level significantly. Unfortunately, the possible enhancement of \fff energy of the selected ARs occurs so close to the limb that it is not entirely clear whether it is an artifact of the rather uncertain limb calibration data or a true effect. Obviously, a larger sample size should be studied, which would also include ARs that emerge closer to the west limb to adequately substantiate or refute this scenario.  
+
+%AL The shaded area in the AR plots at disk center is: 87/2650
+%AL: command to create this plot:
+%fmodetools.fmode_vs_brms(delta=5,clat=0,notitle=True,show_sigma=False)
+\colfig{fmode_vs_brms}{\fff
+energy
+as a function of \brms{} for the most quiet patches at disk center. The colors indicate the grouping according to the years. The standard deviation for the \fff variation is 87.}
+
+%MJK: command to create this plot:
+% fmodetools.plot_AR(arcode='11130',quadrant_index=[0,0,0],fit=['COS','COS','GAUSSIAN'],order=[0,1,1],magmode='fits',thumbnails=None,calib=True,tbin=365.25*2,yearly_remove=True,lonrg=[-65,65],plot_label=[r"$\cos$-curve ($q=0.5$)",r"$\cos$-fit ($q=-0.045$)","Gaussian convolution"])
+\colfig{AR11130_track}{Calibrated \fff strength (\eft, top), QS calibration data (\ef, gray dots) and fits (middle), and \brms\ (bottom) for AR11130. The line-plot colors in the top and the middle panel indicate \eft and \ef for various calibration methods as indicated in the legend. The shaded area in the top panel represents the standard deviation of the QS calibration derived from \fig{fmode_vs_brms} and scaled with the fitted calibration functions.}
+\colfig{AR11105_track}{
+Calibrated \fff strength (\eft, top), QS calibration data (\ef, gray dots) and fits (middle), and \brms\ (bottom) for AR11105. The line-plot colors in the top and the middle panel indicate \eft and \ef for various calibration methods as indicated in the legend. The shaded area in the top panel represents the standard deviation of the QS calibration derived from \fig{fmode_vs_brms} and scaled with the fitted calibration functions.
+%AL Same comment as above. "Same as" is much clearer.
+%\LEt{ Full intro.}
+%Same as \fig{AR11130_track}, but for AR11105.
+}
+
+\section{Discussion and conclusions}
+
+The first part of this paper presents an analysis of QS magnetism, where the main findings are the independence of the solar cycle  with regard to the \IN{} magnetic fluctuations, studied by using $1\degree$ patches, while \NW{} and \IN{} fields, studied by using $15 \degree$ patches, were found to show a statistically significant solar cycle dependence. The maximum of the magnetic fluctuations at the disk center was observed to exhibit a phase shift of roughly half a year w.r.t. to the sunspot-number-defined cycle. We interpret these findings in the following. 
+
+The independence of the \IN{} magnetic fields either reflects the fact that these fields, clearly on smaller scales than the supergranular cells, are generated by the fluctuation (or small-scale) dynamo alone, or then the sensitivity of the HMI instrument prevents  any variations from %AL: LE wrote "beings"
+being
+seen. The solar cycle dependence of the \NW{} and \IN{} fields reflects the fact that two separate processes are responsible for generating these fields. Turbulence is tangling the solar-cycle dependent large-scale sub-surface field resulting in magnetic fluctuations that have the same dependence, and these are then expelled to the edges of the supergranular cells. The magnetic fluctuations generated by the fluctuation dynamo also become expelled in a similar fashion, but as the growth of these fluctuations is exponential due to the dynamo instability, the fluctuation dynamo can quickly replenish the fluctuations also in the \IN{} regions. The tangling process can be envisioned to have an amplification time scale that is slower and only linear over time.
+
+As extensively reviewed in \cite{BS05}, in turbulent dynamo theory, the magnetic fields grow under the constraint of magnetic helicity
+conservation, which leads to a bihelical spectrum of magnetic helicity. Signs of such bihelical nature of the solar surface magnetic field have already been reported by \citet{B+17,S+18}. The accumulation of small-scale
+magnetic helicity leads to the quenching of large-scale dynamo. In order to further grow its large-scale
+magnetic field, the system must shed its small-scale helicity. Being an open system, the Sun
+may have fluxes of magnetic helicity where ARs could play a vital role in removing the magnetic
+helicity from small-scales, thus leading to a rejuvenation of
+the
+large-scale dynamo. This mechanism was proposed to lead to a phase shift 
+between the cycles for sunspot and magnetic helicity,
+that was seen to peak half a year later than the sunspot cycle in \cite{S+18}. We see similar evidence here for the solar-cycle dependent part of the magnetic fluctuations in the \NW{} and \IN{} -- the phase shift by half a year is consistent with the large-scale field being rejuvenated later, when ARs have already peaked, shedding some small-scale magnetic helicity out from the system to allow for the growth of the global field.
+
+The second part of our study describes how we built a novel method for calibrating the \fff energy using the very quiet patches harvested in the first part. Even though more than 22\,000 patches were analysed to obtain the statistics over the solar cycle, the \fff energy variations of the QS remained broad, while showing no clear correlation with the 
+rms magnetic field strength
+measured at the surface. We interpret this as an indication of the \fff energy being affected by sub-surface magnetic fields, and the surface rms magnetic field being an inadequate indicator to find the QS level. 
+The measured QS \fff energy, indeed, shows a solar-cycle variation, which is, in broad terms, anti-correlated with the solar cycle, the \fff energy being lower (higher) when the
+rms
+magnetic field is strong (weak).
+Such a behavior is expected in the light of many previous investigations, which have suggested \fff damping to occur as a result of absorption of the \fff mode by the magnetic fields in ARs \citep{Cally+94,CB97,SRB16}. This effect is the dominant one over the
+possible enhancement prior to AR emergence,
+as can be seen also in the hindcasted AR data in this 
+study. Combined with the heavy averaging, any possible enhancement 
+will be washed out from a statistic measuring the global behavior.
+
+The phase shift of several years between the sunspot cycle and the \fff modulation is too large to be explicable by the scenario suggested above for the half a year phase shift of the QS magnetism maximum w.r.t. the sunspot cycle. The \fff energy modulation appears to follow more closely the poloidal component of the global field than the toroidal part that is commonly thought to give rise to the ARs. These two field components are known to have a systematic phase difference of roughly $\pi$ \cite[see, e.g.,][]{char10}. 
+
+The general trend of the \fff energy being reduced during SC25 in comparison to SC24 could be a result of instrumental aging, but the clear differences seen over different latitudes and hemispheres is an argument that disfavors an overall instrumental degradation. If it were a physical effect, it would suggest that the sub-surface magnetic field is stronger during the ascending phase of SC25 than that of SC24, and that could lead to SC25 being stronger than SC24. Further investigations and fine tuning of the method are required to verify the results and conclusions reached in this study, however, the QS \fff energy seems to have potential applications in diagnosing the sub-surface magnetic fields in the Sun.
+
+The third and last part of our study present two hindcasted 
+AR \fff signals that have been proposed to show a clear enhancement of the \fff energy in the earlier studies \citep[][]{SRB16,Waidele22}, with our novel QS calibration method. In summary, our analysis shows that the transient
+and weak enhancement signal is very sensitive to the calibration
+method used. The new method for the QS calibration developed here tends to show a more flat signal with mild enhancement only in comparison to the earlier calibration method of \cite{SRB16}. Although a signature of an enhancement is seen in general, it remains unclear whether it is an effect caused by the uncertainties close to the limb or a real effect. In the light of the QS data, the magnitude of the enhancement is weaker than the QS variability level and, hence, its detection and usage as an AR emergence predictor is not possible with the QS calibration method.
+
+\begin{acknowledgements}
+We are also indebted to Dr. Harsha Raichur, the developer of the original \fff analysis pipeline, wherefrom this work stems. We acknowledge the fruitful discussions with Prof. Nishant Singh on the theoretical interpretation of the results and practical insights to the analysis.
+All SDO data used are publicly available from the Joint Science Operations Center (JSOC) at Stanford University supported by NASA Contract NAS5- 02139 (HMI), see \url{http://jsoc.stanford.edu/}. 
+The data analysis has been carried out on supercomputers in the facilities hosted by the CSC---IT
+Center for Science in Espoo, Finland, which are financed by the
+Finnish ministry of education.
+The data were also
+processed at the German Data Center for SDO (GDC-SDO), funded by the
+German Aerospace Center (DLR), and hosted by the Max Planck Institute for Solar System Research (Göttingen, Germany).
+This project has received funding from the European Research Council (ERC)
+under the European Union's Horizon 2020 research and innovation
+program (Project UniSDyn, grant agreement n:o 818665).
+
+\end{acknowledgements}
+
+\bibliography{main}{}
+\bibliographystyle{aasjournal}
+
+\end{document}
+
