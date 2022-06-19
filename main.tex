@@ -2,7 +2,6 @@
 %\documentclass[referee]{aa}
 \documentclass{aa}
 \usepackage{xcolor}
-%\usepackage{trackchanges}
 \usepackage{gensymb}
 \usepackage[colorlinks,allcolors=blue]{hyperref}
 \usepackage{comment}
@@ -110,8 +109,6 @@ clean it, and the automated pipeline we built for harvesting the data and compil
 Sect.~\ref{results} we discuss our findings for the QS magnetism, \fffns, and the lastly present some AR data with the QS calibration
 applied. 
 
-
-
 \section{Observations}\label{pipeline}
 
 Our analysis is based on data from HMI@SDO. We use two standard data products: (i) full-disk line-of-sight (LOS) magnetograms, computed every 720\,s by combining filtergrams obtained over a time interval of 1260\,s (\texttt{hmi.M\_720s}), and (ii) full-disk LOS dopplergrams, computed every 45\,s from six positions across the nominal 6173.3\,\AA{} spectral line (\texttt{hmi.V\_45s}). We processed the two data sets in a semi-automatic pipeline (see \fig{pipeline}), optimized for obtaining reliable information about the magnetic field in the QS regions and for a robust computation of the \fff power from the dopplergrams. The left tree in \fig{pipeline} describes the pipeline used for the magnetograms, the right tree for the dopplergrams.
@@ -122,7 +119,7 @@ both in the Stonyhurst coordinate system \cite[]{Thomson06},
 and time with $t$. 
 
 
-\colfig{figures/Pipeline2}{Data pipeline. The leftmost 
+\colfig{figures/Pipeline2}{Data pipeline deployed in the CSC HPC environment. The leftmost 
 tree illustrates the pipeline to collect the magnetograms in the most quiet patches, while the rightmost one the pipeline to track data from the quiet patches from the HMI database, and compute the \fff energy. The central path of AR processing is otherwise equivalent to the QS pipeline, but there AR coordinates are sent for tracking in the 
 MPS (in Germany) cluster environment, and an additional step, namely QS calibration, is performed in the end. Rectangular boxes represent analysis functions, and ellipsoids the derived data products. The rectangles with yellow frames stand for the corrective functions applied to the data. }
 
@@ -135,7 +132,7 @@ were downloaded from the Joint Science Operation Center (JSOC) hosted at Stanfor
 We neglected differential rotation due to
 the short tracking time.
 The step between tracked sequences was 4 hours, so that a total of 6 tracked sequences were gathered per one day, resulting in more than 
-$25765$ tracked sequences (as of 04-May-2022).
+$25700$ tracked sequences (as of 04-May-2022).
 
 From each tracked sequence, we extracted two data products by dividing the visible solar disk  between latitudes and longitudes from $-80\degree$ to +$80\degree$ into (i) $64\times 64$  overlapping patches of $15\degree$ (in solar latitude and longitude)  and (ii) $180\times 180$ patches of $1\degree$.
 Every of these patches therefore contains a space-time cube of LOS magnetograms at full spatial resolution at a 12-minute cadence,
@@ -187,7 +184,7 @@ The so-determined amplitude of the Heaviside step function is added to the
 \brms{}
 data points after 13-Apr-2016 for all data presented in this paper. No other correction, such as de-trending, was applied to the data.
 
-\colfig{fit-offset}{Determination of the correction for the HMI sensitivity change: the observing mode change on April 13 2016 causes a discontinuity in the level of \brms{} values of the \IN{} data. The original data are displayed in with the dark red and black dots, the corrected data with the light red dots. The dashed line indicates the polynomial fit of degree 3 used to obtain the offset.}
+\colfig{fit-offset}{Determination of the correction for the HMI sensitivity change: the observing mode change on April 13 2016 causes a discontinuity in the level of \brms{} values of the \IN{} data. The original data are displayed with the dark red and black dots, the corrected data with the light red dots. The dashed line indicates the polynomial fit of degree 3 used to obtain the offset.}
 
 \subsection{Dopplergrams}
 
@@ -257,7 +254,7 @@ As the end result, we have computed the \fff energy
 \begin{equation}
 E_f=
 \sum_{\mbox{$k_{\rm start}$}}^{\mbox{$k_{\rm end}$}}
-\sum_{\mbox{$\omega_{\rm min}$}}^{\mbox{$\omega_{\rm max}$}} P(\omega,k)
+\sum_{\mbox{$\nu_{\rm min}$}}^{\mbox{$\nu_{\rm max}$}} P(\nu,k)
 \end{equation}
 After completing the described steps in the CSC supercomputing
 environment, we have collected a total of 
@@ -355,7 +352,7 @@ with a 3-month binning in time and roughly 6 degrees in latitude.
 To estimate 
 the overall variability level of the QS, and compare it to the cycle variation level defined above,
 we will use the standard deviation of the data in a patch.
-We take $N_t$ bins in time, $N_\lambda$ in latitude, and denote the number of \ef measurements contained in such a patch by $N_P$. We compute the average \fff energy in a patch as
+We take $N_t$ bins in time, $N_\lambda$ in latitude, and denote the number of \ef{} measurements contained in such a patch by $N_P$. We compute the average \fff energy in a patch as
 \begin{equation}
 \langle \mef \rangle=1/N_P \sum_{N_P} \mef (\lambda,t).
 \end{equation}
@@ -426,8 +423,8 @@ energy
 never rises as high as the values observed during the ascending phase of SC24 (2011-2012).
 
 In \Fig{butterfly_lat_cut} we present cuts through the butterfly
-diagram at three different latitudes, equator, and $\pm 29\degree$, and sinusoidal fits to the data points. The variability is the strongest at the equator, but also contains the largest scatter. The minimum \fff energy 
-is obtained there 
+diagram at three different latitudes, equator, and $\pm 29\degree$, and sinusoidal fits to the data points. The variability is strongest at the equator, but also contains the largest scatter. The minimum \fff energy 
+is obtained
 around the beginning of the year 2018. There, the difference in magnitude during SC24 and 25 is the largest. Southern higher latitudes show very weak variation in contrast to the equator, 
 while the northern one with an intermediate magnitude. 
 The shift w.r.t. the solar cycle is somewhat latitude dependent. At the higher northern latitude, the \fff minimum occurs roughly a year earlier than at the equator. The shift in the \fff mode phase w.r.t. the sunspot cycle is of the order of three to four years, hence it is more in phase with the 
@@ -497,7 +494,7 @@ as a function of \brms{} for the most quiet patches at disk center. The colors i
 
 %MJK: command to create this plot:
 % fmodetools.plot_AR(arcode='11130',quadrant_index=[0,0,0],fit=['COS','COS','GAUSSIAN'],order=[0,1,1],magmode='fits',thumbnails=None,calib=True,tbin=365.25*2,yearly_remove=True,lonrg=[-65,65],plot_label=[r"$\cos$-curve ($q=0.5$)",r"$\cos$-fit ($q=-0.045$)","Gaussian convolution"])
-\colfig{AR11130_track}{Calibrated \fff strength (\eft, top), QS calibration data (\ef, gray dots) and fits (middle) and \brms\ (bottom) for AR11130. The line-plot colors in the top and the middle panel indicate \eft and \ef for various calibration methods as indicated in the legend. The shaded area in the top panel represents the standard deviation of the QS calibration derived from \fig{fmode_vs_brms} and scaled with the fitted calibration functions.}
+\colfig{AR11130_track}{Calibrated \fff strength (\eft, top), QS calibration data (\ef, gray dots) and fits (middle), and \brms\ (bottom) for AR11130. The line-plot colors in the top and the middle panel indicate \eft and \ef for various calibration methods as indicated in the legend. The shaded area in the top panel represents the standard deviation of the QS calibration derived from \fig{fmode_vs_brms} and scaled with the fitted calibration functions.}
 \colfig{AR11105_track}{Same as \fig{AR11130_track}, but for AR11105.}
 
 \section{Discussion and conclusions}
